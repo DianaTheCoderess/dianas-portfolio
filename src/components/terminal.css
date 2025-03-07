@@ -199,21 +199,15 @@
   100% { opacity: 0.8; filter: blur(1px); }
 }
 
-/* Matrix command animation */
-.matrix-dialogue div {
-  opacity: 0;
-  animation: matrixFadeIn 1.5s forwards;
-  animation-delay: calc(var(--index, 0) * 2s);
+/* Matrix command styling */
+.matrix-line {
+  margin-bottom: 1rem;
+  opacity: 0.9;
+  text-shadow: 0 0 8px currentColor;
+  animation: matrixGlow 2s infinite alternate;
 }
 
-.matrix-dialogue div:nth-child(1) { --index: 0; }
-.matrix-dialogue div:nth-child(2) { --index: 1; }
-.matrix-dialogue div:nth-child(3) { --index: 2; }
-.matrix-dialogue div:nth-child(4) { --index: 3; }
-
-@keyframes matrixFadeIn {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0.8; }
+@keyframes matrixGlow {
+  0% { text-shadow: 0 0 5px currentColor; }
+  100% { text-shadow: 0 0 15px currentColor, 0 0 20px currentColor; }
 }

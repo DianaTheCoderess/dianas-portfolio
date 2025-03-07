@@ -181,29 +181,61 @@ const clearCommand: TerminalCommand = {
   },
 }
 
-// Matrix Neo command - simulates the famous scene from the movie
+// Matrix Neo command - simulates the famous scene from the movie with typewriter effect
 const neoCommand: TerminalCommand = {
   name: "neo",
   description: "Wake up, Neo...",
   execute: () => {
+    // We'll use setTimeout in the externalAction to create the typewriter effect
     return {
-      output: (
-        <div className="matrix-dialogue">
-          <div style={{ marginBottom: "1rem" }}>
-            <span style={{ color: "#00f5ff" }}>{">"}</span> Wake up, Neo...
-          </div>
-          <div style={{ marginBottom: "1rem" }}>
-            <span style={{ color: "#00f5ff" }}>{">"}</span> The Matrix has you...
-          </div>
-          <div style={{ marginBottom: "1rem" }}>
-            <span style={{ color: "#00f5ff" }}>{">"}</span> Follow the white rabbit.
-          </div>
-          <div style={{ marginBottom: "1rem" }}>
-            <span style={{ color: "#ff3864" }}>{">"}</span> Knock, knock, Neo.
-          </div>
-        </div>
-      ),
-    }
+      output: "",
+      shouldClear: true,
+      externalAction: () => {
+        const messages = [
+          { text: "Wake up, Neo...", color: "#00f5ff", delay: 1000 },
+          { text: "The Matrix has you...", color: "#00f5ff", delay: 3000 },
+          { text: "Follow the white rabbit.", color: "#00f5ff", delay: 3000 },
+          { text: "Knock, knock, Neo.", color: "#ff3864", delay: 3000 }
+        ];
+        
+        // Get the terminal element to add messages to
+        const terminalElement = document.querySelector(".react-terminal");
+        if (!terminalElement) return;
+        
+        // Function to create and append a message with typewriter effect
+        const typeMessage = (message: { text: string, color: string }, index: number) => {
+          // Create a new line element
+          const lineElement = document.createElement("div");
+          lineElement.className = "react-terminal-line matrix-line";
+          terminalElement.appendChild(lineElement);
+          
+          // Add the prompt character
+          const promptSpan = document.createElement("span");
+          promptSpan.style.color = message.color;
+          promptSpan.textContent = "> ";
+          lineElement.appendChild(promptSpan);
+          
+          // Type the message character by character
+          let charIndex = 0;
+          const typeChar = () => {
+            if (charIndex < message.text.length) {
+              lineElement.appendChild(document.createTextNode(message.text.charAt(charIndex)));
+              charIndex++;
+              setTimeout(typeChar, 100); // Adjust typing speed here
+            } else if (index < messages.length - 1) {
+              // Schedule the next message
+              setTimeout(() => typeMessage(messages[index + 1], index + 1), message.delay);
+            }
+          };
+          
+          // Start typing
+          typeChar();
+        };
+        
+        // Start with the first message
+        setTimeout(() => typeMessage(messages[0], 0), 500);
+      }
+    };
   },
 }
 
