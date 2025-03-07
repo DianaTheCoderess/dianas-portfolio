@@ -42,7 +42,7 @@ export const TechStack: React.FC<TechStackProps> = ({ technologies }) => {
       <h2 className="text-cyber-blue font-mono text-xs sm:text-sm mb-3 sm:mb-4">
         TECH STACK
       </h2>
-      <div className="grid grid-cols-4 gap-2 sm:gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
         {visibleTechs.map((tech, index) => {
           return (
             <span

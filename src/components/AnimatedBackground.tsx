@@ -164,7 +164,19 @@ const AnimatedBackground: React.FC = () => {
     }
 
     window.addEventListener("resize", handleResize)
+    const handleTouch = (e: TouchEvent) => {
+      if (!isMobile) {
+        const touch = e.touches[0];
+        mousePosition.current = {
+          x: touch.clientX,
+          y: touch.clientY,
+        };
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("touchmove", handleTouch)
+    window.addEventListener("touchstart", handleTouch)
 
     resizeCanvas()
     createParticles()
@@ -176,6 +188,8 @@ const AnimatedBackground: React.FC = () => {
       }
       window.removeEventListener("resize", handleResize)
       window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("touchmove", handleTouch)
+      window.removeEventListener("touchstart", handleTouch)
     }
   }, [isMobile]) // Add isMobile to dependencies
 
