@@ -5,13 +5,20 @@ const currentYear = new Date().getFullYear()
 <footer class="py-6 px-4 sm:px-6">
     <div class="max-w-7xl mx-auto">
         <div class="cyber-card-subtle rounded-lg sm:rounded-xl p-2 relative overflow-hidden">
-            <div class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg p-4 flex items-center justify-between">
-                <p class="text-xs sm:text-sm text-cream/60">
-                    © {currentYear} All rights reserved.
-                </p>
-                <p class="text-xs sm:text-sm text-cream/60">
-                    Built with <span class="text-neon-pink">♥</span> using Astro
-                </p>
+            <div class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg p-4">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p class="text-xs sm:text-sm text-cream/60">
+                        © {currentYear} All rights reserved.
+                    </p>
+                    <div class="flex items-center gap-4 text-xs sm:text-sm text-cream/60">
+                        <a href="/impressum" class="hover:text-cyber-blue transition-colors">Impressum</a>
+                        <span>•</span>
+                        <a href="/legal" class="hover:text-cyber-blue transition-colors">Rechtliche Hinweise</a>
+                    </div>
+                    <p class="text-xs sm:text-sm text-cream/60">
+                        Built with <span class="text-neon-pink">♥</span> using Astro
+                    </p>
+                </div>
             </div>
         </div>
     </div>
