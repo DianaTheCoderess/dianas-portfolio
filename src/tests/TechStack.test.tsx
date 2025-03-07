@@ -25,7 +25,7 @@ describe("TechStack", () => {
     vi.useFakeTimers()
     
     const { rerender } = render(<TechStack technologies={mockTechnologies} />)
-    const initialTechs = screen.getAllByRole("listitem").map((el) => el.textContent)
+    const initialTechs = screen.getAllByTestId("tech-stack").map((el) => el.textContent)
 
     // Advance timers instead of using real setTimeout
     await act(async () => {
@@ -33,7 +33,7 @@ describe("TechStack", () => {
     })
     rerender(<TechStack technologies={mockTechnologies} />)
 
-    const updatedTechs = screen.getAllByRole("listitem").map((el) => el.textContent)
+    const updatedTechs = screen.getAllByTestId("tech-stack").map((el) => el.textContent)
 
     expect(updatedTechs).not.toEqual(initialTechs)
     
