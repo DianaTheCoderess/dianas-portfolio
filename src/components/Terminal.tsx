@@ -1,75 +1,179 @@
-import { CommandLine } from "@/components/CommandLine"
-import { CommandOutput } from "@/components/CommandOutput"
-import { useCommandHandler } from "@/hooks/useCommandHandler"
-import type { Command } from "@/types/terminalTypes"
-import type React from "react"
-import { useCallback, useRef, useState } from "react"
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  type KeyboardEvent,
+  type ChangeEvent,
+  type ReactNode,
+} from "react"
+import TerminalInput from "@/components/TerminalInput"
+import TerminalOutput from "@/components/TerminalOutput"
+import "@/styles/global.css"
 
-import { TERMINAL } from "@/constants"
+export enum ColorMode {
+  Light = 0,
+  Dark = 1,
+}
 
-export const Terminal: React.FC = () => {
-  const [commands, setCommands] = useState<Command[]>([])
-  const [commandHistory, setCommandHistory] = useState<string[]>([])
-  const [historyIndex, setHistoryIndex] = useState(-1)
-  const terminalRef = useRef<HTMLDivElement>(null)
+export interface Props {
+  name?: string
+  prompt?: string
+  height?: string
+  colorMode?: ColorMode
+  children?: ReactNode
+  onInput?: ((input: string) => void) | null | undefined
+  startingInputValue?: string
+}
 
-  const handleCommand = useCommandHandler({
-    onNewCommand: useCallback(
-      (newCommand: Command) => {
-        setCommands((prev) => [...prev, newCommand])
-        setCommandHistory((prev) => [...prev, newCommand.input])
-        setHistoryIndex(commandHistory.length)
+const Terminal = ({
+  name,
+  prompt,
+  height = "600px",
+  colorMode,
+  onInput,
+  children,
+  startingInputValue = "",
+}: Props) => {
+  const [currentLineInput, setCurrentLineInput] = useState("")
+  const [cursorPos, setCursorPos] = useState(0)
 
-        setTimeout(() => {
-          if (terminalRef.current) {
-            terminalRef.current.scrollTop = terminalRef.current.scrollHeight
-          }
-        }, 0)
-      },
-      [commandHistory.length],
-    ),
-    onClear: useCallback(() => {
-      setCommands([])
-    }, []),
-  })
+  const scrollIntoViewRef = useRef<HTMLDivElement>(null)
 
+  const updateCurrentLineInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setCurrentLineInput(event.target.value)
+  }
+
+  // Calculates the total width in pixels of the characters to the right of the cursor.
+  // Create a temporary span element to measure the width of the characters.
+  const calculateInputWidth = (
+    inputElement: HTMLInputElement,
+    chars: string,
+  ) => {
+    const span = document.createElement("span")
+    span.style.visibility = "hidden"
+    span.style.position = "absolute"
+    span.style.fontSize = window.getComputedStyle(inputElement).fontSize
+    span.style.fontFamily = window.getComputedStyle(inputElement).fontFamily
+    span.innerText = chars
+    document.body.appendChild(span)
+    const width = span.getBoundingClientRect().width
+    document.body.removeChild(span)
+    // Return the negative width, since the cursor position is to the left of the input suffix
+    return -width
+  }
+
+  const clamp = (value: number, min: number, max: number) => {
+    if (value > max) return max
+    if (value < min) return min
+    return value
+  }
+
+  const handleInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (!onInput) {
+      return
+    }
+    if (event.key === "Enter") {
+      onInput(currentLineInput)
+      setCursorPos(0)
+      setCurrentLineInput("")
+      setTimeout(
+        () =>
+          scrollIntoViewRef?.current?.scrollIntoView({
+            behavior: "auto",
+            block: "nearest",
+          }),
+        500,
+      )
+    } else if (
+      ["ArrowLeft", "ArrowRight", "ArrowDown", "ArrowUp", "Delete"].includes(
+        event.key,
+      )
+    ) {
+      const inputElement = event.currentTarget
+      let charsToRightOfCursor = ""
+      let cursorIndex =
+        currentLineInput.length - (inputElement.selectionStart || 0)
+      cursorIndex = clamp(cursorIndex, 0, currentLineInput.length)
+
+      if (event.key === "ArrowLeft") {
+        if (cursorIndex > currentLineInput.length - 1) cursorIndex--
+        charsToRightOfCursor = currentLineInput.slice(
+          currentLineInput.length - 1 - cursorIndex,
+        )
+      } else if (event.key === "ArrowRight" || event.key === "Delete") {
+        charsToRightOfCursor = currentLineInput.slice(
+          currentLineInput.length - cursorIndex + 1,
+        )
+      } else if (event.key === "ArrowUp") {
+        charsToRightOfCursor = currentLineInput.slice(0)
+      }
+
+      const inputWidth = calculateInputWidth(inputElement, charsToRightOfCursor)
+      setCursorPos(inputWidth)
+    }
+  }
+
+  useEffect(() => {
+    setCurrentLineInput(startingInputValue.trim())
+  }, [startingInputValue])
+
+  // We use a hidden input to capture terminal input; make sure the hidden input is focused when clicking anywhere on the terminal
+  useEffect(() => {
+    if (onInput == null) {
+      return
+    }
+    // keep reference to listeners so we can perform cleanup
+    const elListeners: {
+      terminalEl: Element
+      listener: EventListenerOrEventListenerObject
+    }[] = []
+    for (const terminalEl of document.getElementsByClassName(
+      "react-terminal-wrapper",
+    )) {
+      const listener = () =>
+        (
+          terminalEl?.querySelector(".terminal-hidden-input") as HTMLElement
+        )?.focus()
+      terminalEl?.addEventListener("click", listener)
+      elListeners.push({ terminalEl, listener })
+    }
+    return function cleanup() {
+      for (const elListener of elListeners) {
+        elListener.terminalEl.removeEventListener("click", elListener.listener)
+      }
+    }
+  }, [onInput])
+
+  const classes = ["react-terminal-wrapper"]
+  if (colorMode === ColorMode.Light) {
+    classes.push("react-terminal-light")
+  }
   return (
-    <div className="cyber-window rounded-lg sm:rounded-xl relative overflow-hidden cursor-text group" style={{ height: `${TERMINAL.HEIGHT}px` }}>
-      {/* Grid Background */}
-      <div className="absolute inset-0 grid gap-4 p-4 opacity-20 pointer-events-none" 
-           style={{ 
-             gridTemplateColumns: `repeat(${TERMINAL.GRID_COLS}, minmax(0, 1fr))`,
-             gridTemplateRows: `repeat(${TERMINAL.GRID_ROWS}, minmax(0, 1fr))`
-           }}>
-        {Array.from({ length: TERMINAL.GRID_CELLS }).map((_, i) => (
-          <div key={i} className="bg-cyber-blue/30 rounded-full w-2 h-2" />
-        ))}
+    <div className={classes.join(" ")} data-terminal-name={name}>
+      <div className="react-terminal" style={{ height }}>
+        {children}
+        {typeof onInput === "function" && (
+          <div
+            className="react-terminal-line react-terminal-input react-terminal-active-input"
+            data-terminal-prompt={prompt || "$"}
+            key="terminal-line-prompt"
+          >
+            {currentLineInput}
+            <span className="cursor" style={{ left: `${cursorPos + 1}px` }} />
+          </div>
+        )}
+        <div ref={scrollIntoViewRef} />
       </div>
-
-      {/* Glow Effects */}
-      <div className="absolute inset-0 bg-linear-to-b from-neon-pink/5 to-cyber-blue/5 pointer-events-none" />
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        <div className="absolute inset-0 bg-linear-to-r from-neon-pink/10 via-transparent to-cyber-blue/10" />
-      </div>
-
-      {/* Terminal Content */}
-      <div
-        ref={terminalRef}
-        className="h-full font-mono text-sm overflow-y-auto space-y-4 terminal-scrollbar p-4"
-      >
-        {commands.map((cmd, index) => (
-          <CommandOutput key={`${cmd.input}-${index}`} command={cmd} />
-        ))}
-        <CommandLine
-          onCommand={handleCommand}
-          commandHistory={commandHistory}
-          historyIndex={historyIndex}
-          onHistoryChange={setHistoryIndex}
-        />
-      </div>
-
-      {/* Bottom Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-deep-purple/90 to-transparent pointer-events-none" />
+      <input
+        className="terminal-hidden-input"
+        placeholder="Terminal Hidden Input"
+        value={currentLineInput}
+        onChange={updateCurrentLineInput}
+        onKeyDown={handleInputKeyDown}
+      />
     </div>
   )
 }
+
+export { TerminalInput, TerminalOutput }
+export default Terminal
