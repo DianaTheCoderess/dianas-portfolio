@@ -7,6 +7,9 @@ export type CommandType =
   | "clear"
   | "projects"
   | "whoami"
+  | "theme"
+  | "github"
+  | "linkedin"
 
 export interface CommandOutput {
   type?: OutputType
@@ -17,8 +20,10 @@ export interface CommandOutput {
 
 export interface Command {
   input: string
-  output: CommandOutput | string
+  output: CommandOutput | string | React.ReactNode
   isError?: boolean
+  externalAction?: () => void
+  shouldClear?: boolean
 }
 
 export interface AvailableCommands {
