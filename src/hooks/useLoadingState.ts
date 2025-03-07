@@ -2,13 +2,7 @@ import type { LoadingState } from "@/types/loadingScreenTypes"
 import { useCallback, useEffect, useReducer } from "react"
 import loading_messages from "../data/loading_messages.txt?raw"
 
-export const ANIMATION_TIMINGS = {
-  LINE_DELAY: 300,
-  TEXT_UPDATE: 750,
-  COMPLETION_DELAY: 400,
-  LOADING_DURATION: 2000,
-  FRAME_RATE: 16,
-}
+import { ANIMATION_TIMINGS } from "@/constants"
 
 type LoadingAction =
   | { type: "INITIALIZE_TEXTS"; payload: string[] }

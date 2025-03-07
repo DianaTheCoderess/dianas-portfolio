@@ -5,6 +5,8 @@ import type { Command } from "@/types/terminalTypes"
 import type React from "react"
 import { useCallback, useRef, useState } from "react"
 
+import { TERMINAL } from "@/constants"
+
 export const Terminal: React.FC = () => {
   const [commands, setCommands] = useState<Command[]>([])
   const [commandHistory, setCommandHistory] = useState<string[]>([])
@@ -32,10 +34,14 @@ export const Terminal: React.FC = () => {
   })
 
   return (
-    <div className="cyber-window rounded-lg sm:rounded-xl relative overflow-hidden h-[500px] cursor-text group">
+    <div className="cyber-window rounded-lg sm:rounded-xl relative overflow-hidden cursor-text group" style={{ height: `${TERMINAL.HEIGHT}px` }}>
       {/* Grid Background */}
-      <div className="absolute inset-0 grid grid-cols-8 grid-rows-8 gap-4 p-4 opacity-20 pointer-events-none">
-        {Array.from({ length: 64 }).map((_, i) => (
+      <div className="absolute inset-0 grid gap-4 p-4 opacity-20 pointer-events-none" 
+           style={{ 
+             gridTemplateColumns: `repeat(${TERMINAL.GRID_COLS}, minmax(0, 1fr))`,
+             gridTemplateRows: `repeat(${TERMINAL.GRID_ROWS}, minmax(0, 1fr))`
+           }}>
+        {Array.from({ length: TERMINAL.GRID_CELLS }).map((_, i) => (
           <div key={i} className="bg-cyber-blue/30 rounded-full w-2 h-2" />
         ))}
       </div>

@@ -34,10 +34,14 @@ const contactInfo = {
 const projects = resumeData.projects
 ---
 
-<div class="cyber-window rounded-lg sm:rounded-xl relative overflow-hidden h-[500px] cursor-text group">
+<div class="cyber-window rounded-lg sm:rounded-xl relative overflow-hidden cursor-text group" style={{ height: `${TERMINAL.HEIGHT}px` }}>
   {/* Grid Background */}
-  <div class="absolute inset-0 grid grid-cols-8 grid-rows-8 gap-4 p-4 opacity-20 pointer-events-none">
-    {Array.from({ length: 64 }).map(() => (
+  <div class="absolute inset-0 grid gap-4 p-4 opacity-20 pointer-events-none" 
+       style={{ 
+         gridTemplateColumns: `repeat(${TERMINAL.GRID_COLS}, minmax(0, 1fr))`,
+         gridTemplateRows: `repeat(${TERMINAL.GRID_ROWS}, minmax(0, 1fr))`
+       }}>
+    {Array.from({ length: TERMINAL.GRID_CELLS }).map(() => (
       <div class="bg-cyber-blue/30 rounded-full w-2 h-2"></div>
     ))}
   </div>
