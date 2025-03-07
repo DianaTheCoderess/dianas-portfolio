@@ -1,4 +1,4 @@
-import ResumeDownload from "@/components/ResumeDownload"
+import { ResumeDownload } from "@/components/ResumeDownload"
 import { render, screen } from "@testing-library/react"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 

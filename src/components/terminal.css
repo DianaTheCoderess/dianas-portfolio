@@ -147,7 +147,7 @@
 
 .react-terminal-input:before {
   margin-right: 0.75em;
-  content: ">";
+  content: "$";
   color: var(--terminal-accent);
   text-shadow: 0 0 5px rgba(255, 56, 100, 0.5);
 }

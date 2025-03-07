@@ -187,4 +187,6 @@ const AnimatedBackground: React.FC = () => {
   )
 }
 
-export default AnimatedBackground
+AnimatedBackground.displayName = "AnimatedBackground"
+
+export { AnimatedBackground }

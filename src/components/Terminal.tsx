@@ -6,15 +6,13 @@ import React, {
   type ChangeEvent,
   type ReactNode,
 } from "react"
-import TerminalInput from "@/components/TerminalInput"
-import TerminalOutput from "@/components/TerminalOutput"
 
-export enum ColorMode {
+enum ColorMode {
   Light = 0,
   Dark = 1,
 }
 
-export interface Props {
+interface TerminalProps {
   name?: string
   prompt?: string
   height?: string
@@ -34,7 +32,7 @@ const Terminal = ({
   children,
   startingInputValue = "",
   className = "",
-}: Props) => {
+}: TerminalProps) => {
   const [currentLineInput, setCurrentLineInput] = useState("")
   const [cursorPos, setCursorPos] = useState(0)
 
@@ -188,5 +186,5 @@ const Terminal = ({
   )
 }
 
-export { TerminalInput, TerminalOutput }
-export default Terminal
+export type { TerminalProps }
+export { ColorMode, Terminal }

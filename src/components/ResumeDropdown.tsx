@@ -37,9 +37,6 @@ const ResumeDropdown = ({ onOpen, onDownload }: ResumeDropdownProps) => {
         className="bg-deep-purple/95 border border-neon-pink/20"
         // Ensure the dropdown closes after an item is clicked
         onInteractOutside={() => setOpen(false)}
-        // Prevent layout shift
-        sideOffset={5}
-        style={{ position: 'fixed', transform: 'none' }}
       >
         <DropdownMenuItem
           onClick={() => {
@@ -66,4 +63,5 @@ const ResumeDropdown = ({ onOpen, onDownload }: ResumeDropdownProps) => {
   )
 }
 
-export default ResumeDropdown
+export type { ResumeDropdownProps }
+export { ResumeDropdown }

@@ -1,7 +1,7 @@
 ---
 import Header from "@/components/Header.astro"
-import resumeData from "@/data/resume.json"
 import Layout from "@/layouts/Layout.astro"
+import Footer from "@/components/Footer.astro"
 
 const skillCategories = [
   {
@@ -22,63 +22,68 @@ const skillCategories = [
 ]
 ---
 
-<Layout title={`Skills - ${resumeData.basics.name}`}>
-  <Header />
-  
-  <main class="min-h-screen pt-24 sm:pt-32 md:pt-40">
-    <div class="px-4 sm:px-6">
-      <div class="max-w-7xl mx-auto">
-        <div class="cyber-card rounded-xl sm:rounded-2xl p-2 sm:p-4 relative overflow-hidden group">
-          <!-- Animated border effect -->
-          <div class="absolute inset-0 bg-linear-to-r from-neon-pink via-cyber-blue to-neon-pink opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-border"></div>
-          
-          <div class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-8 md:p-12">
-            <div class="space-y-8">
-              <!-- Section Title -->
-              <div class="space-y-4">
-                <span class="inline-block text-cyber-blue font-mono text-xs sm:text-sm tracking-wider px-2 py-1">&lt; skills /&gt;</span>
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-cream">Skills & Expertise</h1>
-              </div>
+<Layout title={"Skills"}>
+  <div class="min-h-screen flex flex-col">
+      <Header/>
 
-              <!-- Skills Grid -->
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {skillCategories.map((category) => (
-                  <div class="cyber-card p-1 rounded-lg">
-                    <div class="bg-deep-purple/95 rounded-lg p-6 h-full">
-                      <div class="space-y-4">
-                        <div class="flex items-center gap-3">
-                          <span class="text-2xl">{category.icon}</span>
-                          <h2 class="text-xl font-bold text-neon-pink">{category.name}</h2>
-                        </div>
+      <main class="min-h-screen pt-24 sm:pt-32 md:pt-40">
+          <div class="px-4 sm:px-6">
+              <div class="max-w-7xl mx-auto">
+                  <div class="cyber-card rounded-xl sm:rounded-2xl p-2 sm:p-4 relative overflow-hidden group">
+                      <!-- Animated border effect -->
+                      <div class="absolute inset-0 bg-linear-to-r from-neon-pink via-cyber-blue to-neon-pink opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-border"></div>
 
-                        <div class="space-y-2">
-                          {category.skills.map((skill) => (
-                            <div class="flex items-center gap-2">
-                              <div class="w-1 h-1 bg-cyber-blue rounded-full"></div>
-                              <span class="text-cream/80">{skill}</span>
-                            </div>
-                          ))}
-                        </div>
+                      <div class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-8 md:p-12">
+                          <div class="space-y-8">
+                              <!-- Section Title -->
+                              <div class="space-y-4">
+                                  <span class="inline-block text-cyber-blue font-mono text-xs sm:text-sm tracking-wider px-2 py-1">&lt; skills /&gt;</span>
+                                  <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-cream">Skills &
+                                      Expertise</h1>
+                              </div>
+
+                              <!-- Skills Grid -->
+                              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {skillCategories.map((category) => (
+                                        <div class="cyber-card p-1 rounded-lg">
+                                            <div class="bg-deep-purple/95 rounded-lg p-6 h-full">
+                                                <div class="space-y-4">
+                                                    <div class="flex items-center gap-3">
+                                                        <span class="text-2xl">{category.icon}</span>
+                                                        <h2 class="text-xl font-bold text-neon-pink">{category.name}</h2>
+                                                    </div>
+
+                                                    <div class="space-y-2">
+                                                      {category.skills.map((skill) => (
+                                                              <div class="flex items-center gap-2">
+                                                                  <div class="w-1 h-1 bg-cyber-blue rounded-full"></div>
+                                                                  <span class="text-cream/80">{skill}</span>
+                                                              </div>
+                                                      ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                ))}
+                              </div>
+
+                              <!-- Additional Info -->
+                              <div class="mt-12 p-6 bg-deep-purple/50 rounded-lg border border-neon-pink/20">
+                                  <div class="space-y-4">
+                                      <h2 class="text-2xl font-bold text-cyber-blue">Always Learning</h2>
+                                      <p class="text-cream/80">
+                                          Technology never stands still, and neither do I. I'm constantly exploring new
+                                          tools
+                                          and technologies to stay at the forefront of web development.
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
-                    </div>
                   </div>
-                ))}
               </div>
-
-              <!-- Additional Info -->
-              <div class="mt-12 p-6 bg-deep-purple/50 rounded-lg border border-neon-pink/20">
-                <div class="space-y-4">
-                  <h2 class="text-2xl font-bold text-cyber-blue">Always Learning</h2>
-                  <p class="text-cream/80">
-                    Technology never stands still, and neither do I. I'm constantly exploring new tools 
-                    and technologies to stay at the forefront of web development.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </main>
+      </main>
+      <Footer/>
+  </div>
 </Layout>

@@ -1,11 +1,11 @@
 ---
-import AnimatedName from "@/components/AnimatedName"
+import { AnimatedName } from "@/components/AnimatedName"
 import Footer from "@/components/Footer.astro"
 import Header from "@/components/Header.astro"
-import LoadingScreen from "@/components/LoadingScreen"
-import ResumeDownload from "@/components/ResumeDownload"
+import { LoadingScreen } from "@/components/LoadingScreen"
+import { ResumeDownload } from "@/components/ResumeDownload"
 import { TechStack } from "@/components/TechStack"
-import TerminalController from "@/components/TerminalController"
+import { TerminalController } from "@/components/TerminalController"
 import { VisibilityWrapper } from "@/components/VisibilityWrapper"
 import { Link } from "@/components/ui/Link"
 import resumeData from "@/data/resume.json"
@@ -64,11 +64,6 @@ const socialIcons = {
                                                 <p class="text-cyber-blue font-mono text-sm sm:text-base md:text-lg -mt-2 mb-4">
                                                     <span class="subtitle cursor-default inline-block">your go-to code sorceress</span>
                                                 </p>
-                                                <!--<p-->
-                                                <!--  class="text-sm sm:text-base md:text-lg text-cream/90 leading-relaxed max-w-xl"-->
-                                                <!--&gt;-->
-                                                <!--    {resume.basics?.summary}-->
-                                                <!--</p>-->
                                             </div>
 
                                             <div class="flex flex-wrap gap-3 sm:gap-4">
@@ -175,22 +170,5 @@ const socialIcons = {
                     0 0 40px #00f6ff;
             }
         }
-        
-        /* Prevent layout shift when dropdown opens */
-        html {
-            overflow-y: scroll;
-        }
-        
-        /* Ensure dropdown doesn't cause layout shift */
-        body {
-            padding-right: 0 !important;
-        }
     </style>
-<script>
-  // Calculate scrollbar width and set it as a CSS variable
-  document.addEventListener('DOMContentLoaded', () => {
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
-  });
-</script>
 </Layout>

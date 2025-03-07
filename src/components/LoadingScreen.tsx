@@ -7,8 +7,6 @@ const LoadingScreen = () => {
 
   if (!isVisible) return null
 
-  console.log("LoadingScreen")
-
   return (
     <div
       className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6 transition-opacity duration-500 bg-deep-purple/95"
@@ -45,4 +43,4 @@ const LoadingScreen = () => {
   )
 }
 
-export default LoadingScreen
+export { LoadingScreen }

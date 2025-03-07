@@ -4,11 +4,10 @@ interface LoadingLinesProps {
   lines: LoadingLine[]
 }
 
-export const LoadingLines = ({ lines }: LoadingLinesProps) => {
+const LoadingLines = ({ lines }: LoadingLinesProps) => {
   return (
     <div className="h-[4.5rem] sm:h-[5.25rem] md:h-[6rem] mb-2 sm:mb-3">
       {lines.map((line, index) => {
-        console.log(line)
         return (
           <div
             key={line.id}
@@ -23,3 +22,6 @@ export const LoadingLines = ({ lines }: LoadingLinesProps) => {
     </div>
   )
 }
+
+export type { LoadingLinesProps }
+export { LoadingLines }

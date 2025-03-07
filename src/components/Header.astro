@@ -2,7 +2,7 @@
 import resumeData from "../data/resume.json"
 
 const navItems = [
-  { name: "About", href: "/under-construction" },
+  { name: "About", href: "/about" },
   { name: "Projects", href: "/under-construction" },
   { name: "Skills", href: "/under-construction" },
   { name: "Blog", href: "/under-construction" },
@@ -12,34 +12,18 @@ const navItems = [
 
 <header class="fixed top-0 left-0 w-full z-50 p-4 sm:px-6 sm:py-8">
     <nav class="max-w-7xl mx-auto">
-        <div
-                class="cyber-card rounded-xl sm:rounded-2xl p-2 sm:p-4 relative overflow-hidden group"
-        >
-            <div
-                    class="absolute inset-0 bg-linear-to-r from-neon-pink via-cyber-blue to-neon-pink opacity-0 group-hover:opacity-100 animate-border transition-opacity duration-300"
-            >
-            </div>
-            <div
-                    class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-4"
-            >
+        <div class="cyber-card rounded-xl sm:rounded-2xl p-2 sm:p-4 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-linear-to-r from-neon-pink via-cyber-blue to-neon-pink opacity-0 group-hover:opacity-100 animate-border transition-opacity duration-300"/>
+            <div class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-4">
                 <div class="flex items-center justify-between">
-                    <!-- Logo Section -->
                     <div class="flex items-center gap-4 sm:gap-6">
-                        <a
-                                href="/"
-                                class="flex items-center gap-2 sm:gap-3 group"
-                        >
-                            <div
-                                    class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-neon-pink/10 flex items-center justify-center border border-neon-pink/20 group-hover:border-cyber-blue/50 transition-colors duration-300"
-                            >
-                                <span
-                                        class="font-mono text-sm sm:text-base text-neon-pink group-hover:text-cyber-blue transition-colors duration-300"
-                                >~/</span
-                                >
+                        <a href="/" class="flex items-center gap-2 sm:gap-3 group">
+                            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-neon-pink/10 flex items-center justify-center border border-neon-pink/20 group-hover:border-cyber-blue/50 transition-colors duration-300">
+                                <span class="font-mono text-sm sm:text-base text-neon-pink group-hover:text-cyber-blue transition-colors duration-300">
+                                    ~/
+                                </span>
                             </div>
-                            <span
-                                    class="text-cream font-semibold tracking-wide hidden sm:block"
-                            >
+                            <span class="text-cream font-semibold tracking-wide hidden sm:block">
                                 Diana's NetPalace
                             </span>
                         </a>
@@ -49,39 +33,36 @@ const navItems = [
                     <div class="hidden md:flex items-center gap-8">
                       {
                         navItems.map((item) => (
-                                <a
-                                        href={item.href}
-                                        class="relative text-cream/80 hover:text-cyber-blue transition-colors duration-300 group"
-                                >
-                                    <span class="text-sm font-medium">
-                                        {item.name}
-                                    </span>
-                                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyber-blue transition-all duration-300 group-hover:w-full" />
-                                </a>
+                            <a href={item.href} class="relative text-cream/80 hover:text-cyber-blue transition-colors duration-300 group">
+                                <span class="text-sm font-mono">
+                                    {item.name}
+                                </span>
+                                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyber-blue transition-all duration-300 group-hover:w-full" />
+                            </a>
                         ))
                       }
                     </div>
 
                     <!-- Mobile Menu Button -->
                     <button
-                            id="mobile-menu-button"
-                            class="md:hidden text-cream/80 hover:text-cyber-blue transition-colors duration-300"
-                            aria-label="Toggle menu"
-                            aria-expanded="false"
+                        id="mobile-menu-button"
+                        class="md:hidden text-cream/80 hover:text-cyber-blue transition-colors duration-300"
+                        aria-label="Toggle menu"
+                        aria-expanded="false"
                     >
                         <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-5 h-5 sm:w-6 sm:h-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-5 h-5 sm:w-6 sm:h-6"
                         >
                             <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                            ></path>
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                            />
                         </svg>
                     </button>
                 </div>
@@ -91,12 +72,9 @@ const navItems = [
                     <div class="space-y-2 py-3">
                       {
                         navItems.map((item) => (
-                                <a
-                                        href={item.href}
-                                        class="block px-4 py-2 text-cream/80 hover:text-cyber-blue hover:bg-deep-purple/50 rounded-lg transition-colors duration-300"
-                                >
-                                  {item.name}
-                                </a>
+                            <a href={item.href} class="block px-4 py-2 text-cream/80 hover:text-cyber-blue hover:bg-deep-purple/50 rounded-lg transition-colors duration-300">
+                              {item.name}
+                            </a>
                         ))
                       }
                     </div>
@@ -107,19 +85,15 @@ const navItems = [
 </header>
 
 <script>
-  // Mobile menu functionality
-  const mobileMenuButton = document.getElementById("mobile-menu-button");
-  const mobileMenu = document.getElementById("mobile-menu");
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById("mobile-menu-button")
+    const mobileMenu = document.getElementById("mobile-menu")
 
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener("click", () => {
-      const isExpanded =
-        mobileMenuButton.getAttribute("aria-expanded") === "true";
-      mobileMenuButton.setAttribute(
-        "aria-expanded",
-        (!isExpanded).toString(),
-      );
-      mobileMenu.classList.toggle("hidden");
-    });
-  }
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+            const isExpanded = mobileMenuButton.getAttribute("aria-expanded") === "true"
+            mobileMenuButton.setAttribute("aria-expanded", (!isExpanded).toString())
+            mobileMenu.classList.toggle("hidden")
+        })
+    }
 </script>

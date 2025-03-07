@@ -1,4 +1,4 @@
-import AnimatedBackground from "@/components/AnimatedBackground"
+import { AnimatedBackground } from "@/components/AnimatedBackground"
 import { render } from "@testing-library/react"
 import { describe, expect, it, vi } from "vitest"
 

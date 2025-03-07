@@ -3,6 +3,7 @@ import Header from "@/components/Header.astro"
 import resumeData from "@/data/resume.json"
 import Layout from "@/layouts/Layout.astro"
 import type { ResumeSchema } from "@/types/resumeTypes"
+import Footer from "@/components/Footer.astro"
 
 const resume: ResumeSchema = resumeData
 
@@ -31,7 +32,7 @@ const projects = [
 ]
 ---
 
-<Layout title={`Projects - ${resume.basics?.name}`}>
+<Layout title={"Projects"}>
   <Header />
   
   <main class="min-h-screen pt-24 sm:pt-32 md:pt-40">
@@ -85,4 +86,5 @@ const projects = [
       </div>
     </div>
   </main>
+  <Footer/>
 </Layout>

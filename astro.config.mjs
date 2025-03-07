@@ -12,6 +12,7 @@ const { STORYBLOK_TOKEN } = loadEnv(process.env.NODE_ENV, process.cwd(), "")
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+// biome-ignore lint/style/noDefaultExport: <explanation>
 export default defineConfig({
   integrations: [
     react(),
@@ -31,7 +32,11 @@ export default defineConfig({
   output: "server",
   adapter: netlify(),
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss({
+        applyBaseStyles: false,
+      }),
+    ],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),

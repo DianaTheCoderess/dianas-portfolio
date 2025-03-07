@@ -74,7 +74,7 @@
 - [x] Supports arrow key navigation
 - [ ] Handles errors gracefully
 
-### CommandOutput
+### TerminalOutput
 - [x] Renders command output correctly
 - [x] Handles different output types
 - [x] Displays error messages
