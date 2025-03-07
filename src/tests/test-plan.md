@@ -47,8 +47,8 @@
 
 ### Header
 - [✅] Contains navigation links
-- [ ] Logo links to home
-- [ ] Mobile menu toggle works
+- [✅] Logo links to home
+- [✅] Mobile menu toggle works
 - [ ] Sticky positioning works
 - [ ] Active state shows correctly
 
