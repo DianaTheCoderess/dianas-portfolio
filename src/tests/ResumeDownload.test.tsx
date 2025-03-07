@@ -31,44 +31,7 @@ vi.mock("@/data/resume.json", () => ({
 describe("ResumeDownload", () => {
   // Mock window.open and document.createElement
   const mockOpen = vi.fn()
-  const mockCreateElement = vi.fn()
-  const mockAppendChild = vi.fn()
-  const mockRemoveChild = vi.fn()
   const mockClick = vi.fn()
-
-  beforeEach(() => {
-    // Reset the DOM
-    document.body.innerHTML = '<div id="root"></div>';
-    
-    vi.stubGlobal("open", mockOpen)
-
-    // Mock createElement to return a link with mocked methods
-    const mockLink = {
-      setAttribute: vi.fn(),
-      click: mockClick,
-      download: "",
-      href: "",
-    }
-
-    // Save original createElement method
-    const originalCreateElement = document.createElement.bind(document);
-    
-    // Mock createElement
-    document.createElement = vi.fn().mockImplementation((tag) => {
-      if (tag === "a") return mockLink;
-      return originalCreateElement(tag);
-    });
-
-    document.body.appendChild = mockAppendChild
-    document.body.removeChild = mockRemoveChild
-  })
-
-  afterEach(() => {
-    vi.unstubAllGlobals()
-    vi.clearAllMocks()
-    cleanup()
-    document.body.innerHTML = '';
-  })
 
   it("renders download button", () => {
     render(<ResumeDownload />)
@@ -81,11 +44,13 @@ describe("ResumeDownload", () => {
     render(<ResumeDownload />)
 
     // Find and click the dropdown trigger
+
     const dropdownTrigger = screen.getByRole("button", { name: /resume/i })
     fireEvent.click(dropdownTrigger)
-
     // Find and click the "Open in Browser" option
-    const viewOption = screen.getByText(/open in browser/i)
+
+    screen.debug()
+    const viewOption = screen.getByText(/Open in Browser/i)
     fireEvent.click(viewOption)
 
     // Verify window.open was called
