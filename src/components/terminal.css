@@ -205,6 +205,12 @@
   opacity: 0.9;
   text-shadow: 0 0 8px currentColor;
   animation: matrixGlow 2s infinite alternate;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.matrix-fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 @keyframes matrixGlow {
