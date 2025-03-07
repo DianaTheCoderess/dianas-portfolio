@@ -38,17 +38,9 @@ describe("ResumeDownload", () => {
 
   beforeEach(() => {
     // Reset the DOM
-    document.body.innerHTML = '';
-    
-    // Create a container for our tests
-    const div = document.createElement('div');
-    div.id = 'root';
-    document.body.appendChild(div);
+    document.body.innerHTML = '<div id="root"></div>';
     
     vi.stubGlobal("open", mockOpen)
-
-    // Store the original implementation
-    const originalCreateElement = document.createElement;
 
     // Mock createElement to return a link with mocked methods
     const mockLink = {
@@ -58,11 +50,14 @@ describe("ResumeDownload", () => {
       href: "",
     }
 
+    // Save original createElement method
+    const originalCreateElement = document.createElement.bind(document);
+    
+    // Mock createElement
     document.createElement = vi.fn().mockImplementation((tag) => {
-      if (tag === "a") return mockLink
-      // For other elements, return actual DOM elements
-      return originalCreateElement.call(document, tag);
-    })
+      if (tag === "a") return mockLink;
+      return originalCreateElement(tag);
+    });
 
     document.body.appendChild = mockAppendChild
     document.body.removeChild = mockRemoveChild
