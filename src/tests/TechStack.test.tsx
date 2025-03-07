@@ -24,6 +24,16 @@ describe("TechStack", () => {
     // Setup fake timers
     vi.useFakeTimers()
     
+    // Mock the shuffle function to return a predictable result
+    const originalShuffle = Array.prototype.sort;
+    const mockShuffle = vi.fn(() => {
+      // Return a reversed array to ensure it's different
+      return mockTechnologies.slice().reverse();
+    });
+    
+    // Apply the mock
+    Array.prototype.sort = mockShuffle;
+    
     const { rerender } = render(<TechStack technologies={mockTechnologies} />)
     const initialTechs = screen.getAllByTestId("tech-stack").map((el) => el.textContent)
 
@@ -35,7 +45,12 @@ describe("TechStack", () => {
 
     const updatedTechs = screen.getAllByTestId("tech-stack").map((el) => el.textContent)
 
+    // Restore the original shuffle function
+    Array.prototype.sort = originalShuffle;
+    
+    // Verify the technologies have been reordered
     expect(updatedTechs).not.toEqual(initialTechs)
+    expect(updatedTechs[0]).not.toEqual(initialTechs[0])
     
     // Clean up timers
     vi.useRealTimers()
