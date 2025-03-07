@@ -175,21 +175,24 @@ const clearCommand: TerminalCommand = {
   description: "Clear terminal",
   execute: () => {
     // Remove any matrix elements that might be in the DOM
-    const matrixElements = document.querySelectorAll("[data-matrix-element]");
-    matrixElements.forEach(el => el.remove());
-    
+    const matrixElements = document.querySelectorAll("[data-matrix-element]")
+    // biome-ignore lint/complexity/noForEach: <explanation>
+    matrixElements.forEach((el) => el.remove())
+
     // Make sure the input line is visible again
-    const inputLine = document.querySelector(".react-terminal-active-input");
+    const inputLine = document.querySelector(".react-terminal-active-input")
     if (inputLine) {
-      inputLine.classList.remove("matrix-hidden");
+      inputLine.classList.remove("matrix-hidden")
     }
-    
+
     // Also restore the hidden input
-    const hiddenInput = document.querySelector(".terminal-hidden-input") as HTMLElement;
+    const hiddenInput = document.querySelector(
+      ".terminal-hidden-input",
+    ) as HTMLElement
     if (hiddenInput) {
-      hiddenInput.style.display = "";
+      hiddenInput.style.display = ""
     }
-    
+
     return {
       output: "",
       shouldClear: true,
@@ -208,87 +211,96 @@ const neoCommand: TerminalCommand = {
       shouldClear: true,
       externalAction: () => {
         const messages = [
-          { text: "Wake up, Neo...", color: "#00f5ff", delay: 1000 },
-          { text: "The Matrix has you...", color: "#00f5ff", delay: 3000 },
-          { text: "Follow the white rabbit.", color: "#00f5ff", delay: 3000 },
-          { text: "Knock, knock, Neo.", color: "#ff3864", delay: 3000 }
-        ];
-        
+          { text: "Wake up, Neo...", delay: 3000 },
+          { text: "The Matrix has you...", delay: 3000 },
+          { text: "Follow the white rabbit.", delay: 3000 },
+          { text: "Knock, knock, Neo.", delay: 3000 },
+        ]
+
         // Add a custom attribute to mark matrix elements for easy cleanup
-        const matrixAttr = "data-matrix-element";
-        
+        const matrixAttr = "data-matrix-element"
+
         // Get the terminal element to add messages to
-        const terminalElement = document.querySelector(".react-terminal");
-        if (!terminalElement) return;
-        
+        const terminalElement = document.querySelector(".react-terminal")
+        if (!terminalElement) return
+
         // Get the input line element (the one with the prompt)
-        const inputLine = document.querySelector(".react-terminal-active-input");
-        if (!inputLine) return;
-        
+        const inputLine = document.querySelector(".react-terminal-active-input")
+        if (!inputLine) return
+
         // Hide the input line during the animation
-        inputLine.classList.add("matrix-hidden");
-        
+        inputLine.classList.add("matrix-hidden")
+
         // Also hide any other input elements that might be present
-        const hiddenInput = document.querySelector(".terminal-hidden-input") as HTMLElement;
+        const hiddenInput = document.querySelector(
+          ".terminal-hidden-input",
+        ) as HTMLElement
         if (hiddenInput) {
-          hiddenInput.style.display = "none";
+          hiddenInput.style.display = "none"
         }
-        
+
         // Function to create and append a message with typewriter effect
-        const typeMessage = (message: { text: string, color: string }, index: number) => {
+        const typeMessage = (
+          message: { text: string; delay: number },
+          index: number,
+        ) => {
           // Create a new line element that will appear before the input line
-          const lineElement = document.createElement("div");
-          lineElement.className = "react-terminal-line matrix-line";
-          lineElement.setAttribute(matrixAttr, "true");
-          terminalElement.appendChild(lineElement);
-          
+          const lineElement = document.createElement("div")
+          lineElement.className = "react-terminal-line matrix-line"
+          lineElement.setAttribute(matrixAttr, "true")
+          terminalElement.appendChild(lineElement)
+
           // Add the prompt character
-          const promptSpan = document.createElement("span");
-          promptSpan.style.color = message.color;
-          promptSpan.textContent = "$ ";
-          lineElement.appendChild(promptSpan);
-          
+          const promptSpan = document.createElement("span")
+          promptSpan.textContent = "$ "
+          lineElement.appendChild(promptSpan)
+
           // Type the message character by character
-          let charIndex = 0;
+          let charIndex = 0
           const typeChar = () => {
             if (charIndex < message.text.length) {
-              lineElement.appendChild(document.createTextNode(message.text.charAt(charIndex)));
-              charIndex++;
-              setTimeout(typeChar, 100); // Adjust typing speed here
+              lineElement.appendChild(
+                document.createTextNode(message.text.charAt(charIndex)),
+              )
+              charIndex++
+              setTimeout(typeChar, 100) // Adjust typing speed here
             } else if (index < messages.length - 1) {
               // Schedule the next message, but first fade out the current message
               setTimeout(() => {
                 // Add fade-out class
-                lineElement.classList.add("matrix-fade-out");
-                
+                lineElement.classList.add("matrix-fade-out")
+
                 // After fade out completes, remove the element and show next message
                 setTimeout(() => {
-                  lineElement.remove();
-                  typeMessage(messages[index + 1], index + 1);
-                }, 1000); // Fade out duration
-              }, message.delay);
+                  lineElement.remove()
+                  typeMessage(messages[index + 1], index + 1)
+                }, 1000) // Fade out duration
+              }, message.delay)
             } else {
               // This is the last message, show the input line again after a delay
               setTimeout(() => {
-                inputLine.classList.remove("matrix-hidden");
-                
+                lineElement.remove()
+                inputLine.classList.remove("matrix-hidden")
+
                 // Also restore the hidden input
-                const hiddenInput = document.querySelector(".terminal-hidden-input") as HTMLElement;
+                const hiddenInput = document.querySelector(
+                  ".terminal-hidden-input",
+                ) as HTMLElement
                 if (hiddenInput) {
-                  hiddenInput.style.display = "";
+                  hiddenInput.style.display = ""
                 }
-              }, message.delay);
+              }, message.delay)
             }
-          };
-          
+          }
+
           // Start typing
-          typeChar();
-        };
-        
+          typeChar()
+        }
+
         // Start with the first message
-        setTimeout(() => typeMessage(messages[0], 0), 500);
-      }
-    };
+        setTimeout(() => typeMessage(messages[0], 0), 500)
+      },
+    }
   },
 }
 
