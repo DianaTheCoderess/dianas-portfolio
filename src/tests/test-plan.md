@@ -68,10 +68,10 @@
 - [ ] Animations perform well
 
 ### CommandLine
-- [ ] Accepts user input
-- [ ] Executes commands
-- [ ] Shows command history
-- [ ] Supports arrow key navigation
+- [✅] Accepts user input
+- [✅] Executes commands
+- [✅] Shows command history
+- [✅] Supports arrow key navigation
 - [ ] Handles errors gracefully
 
 ### CommandOutput

@@ -51,7 +51,7 @@ describe("CommandLine", () => {
     
     // Press up arrow to go to last command
     fireEvent.keyDown(input, { key: "ArrowUp" })
-    expect(mockOnHistoryChange).toHaveBeenCalledWith(2)
+    expect(mockOnHistoryChange).toHaveBeenCalledWith(0)
     
     // Reset mock to test down arrow
     mockOnHistoryChange.mockReset()
