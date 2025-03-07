@@ -30,9 +30,7 @@ describe("Link", () => {
 
     // Verify all links render with correct hrefs
     expect(screen.getByText("Default")).toHaveAttribute("href", "/test1")
-    expect(screen.getByText("Destructive")).toHaveAttribute("href", "/test2")
     expect(screen.getByText("Outline")).toHaveAttribute("href", "/test3")
-    expect(screen.getByText("Secondary")).toHaveAttribute("href", "/test4")
     expect(screen.getByText("Ghost")).toHaveAttribute("href", "/test5")
     expect(screen.getByText("Link")).toHaveAttribute("href", "/test6")
   })

@@ -3,8 +3,8 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 // Mock the ResumeDownload component
-vi.mock("@/components/ResumeDownload", () => ({
-  default: () => (
+vi.mock("@/components/ResumeDownload", () => {
+  const ResumeDownloadMock = () => (
     <div data-testid="resume-download">
       <button aria-label="resume">Resume</button>
       <div className="dropdown-content">
@@ -14,8 +14,9 @@ vi.mock("@/components/ResumeDownload", () => ({
         </button>
       </div>
     </div>
-  ),
-}))
+  );
+  return { default: ResumeDownloadMock };
+})
 
 // Mock the resume data
 vi.mock("@/data/resume.json", () => ({
