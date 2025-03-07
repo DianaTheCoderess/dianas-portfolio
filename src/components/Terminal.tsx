@@ -23,16 +23,18 @@ export interface Props {
   children?: ReactNode
   onInput?: ((input: string) => void) | null | undefined
   startingInputValue?: string
+  className?: string
 }
 
 const Terminal = ({
   name,
   prompt,
-  height = "600px",
+  height = "400px",
   colorMode,
   onInput,
   children,
   startingInputValue = "",
+  className = "",
 }: Props) => {
   const [currentLineInput, setCurrentLineInput] = useState("")
   const [cursorPos, setCursorPos] = useState(0)
@@ -148,8 +150,17 @@ const Terminal = ({
   if (colorMode === ColorMode.Light) {
     classes.push("react-terminal-light")
   }
+  if (className) {
+    classes.push(className)
+  }
+  
   return (
-    <div className={classes.join(" ")} data-terminal-name={name}>
+    <div className={classes.join(" ")} data-terminal-name={name || "CYBER-TERMINAL v1.0"}>
+      <div className="react-terminal-window-buttons">
+        <button className="red-btn"></button>
+        <button className="yellow-btn"></button>
+        <button className="green-btn"></button>
+      </div>
       <div className="react-terminal" style={{ height }}>
         {children}
         {typeof onInput === "function" && (

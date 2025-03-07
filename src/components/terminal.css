@@ -1,26 +1,48 @@
 .react-terminal-wrapper {
   width: 100%;
-  background: #252a33;
-  color: #eee;
-  font-size: 18px;
+  background: rgba(20, 20, 35, 0.9);
+  color: #00f6ff;
+  font-size: 16px;
   font-family: "Fira Mono", Consolas, Menlo, Monaco, "Courier New", Courier,
     monospace;
-  border-radius: 4px;
-  padding: 75px 45px 35px;
+  border-radius: 8px;
+  padding: 60px 25px 25px;
   position: relative;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  border: 1px solid rgba(0, 246, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 246, 255, 0.2);
+  backdrop-filter: blur(5px);
 }
 
 .react-terminal {
   overflow: auto;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 246, 255, 0.5) rgba(20, 20, 35, 0.3);
+}
+
+.react-terminal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.react-terminal::-webkit-scrollbar-track {
+  background: rgba(20, 20, 35, 0.3);
+  border-radius: 3px;
+}
+
+.react-terminal::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 246, 255, 0.5);
+  border-radius: 3px;
 }
 
 .react-terminal-wrapper.react-terminal-light {
-  background: #ddd;
-  color: #1a1e24;
+  background: rgba(220, 220, 235, 0.9);
+  color: #ff00aa;
+  border: 1px solid rgba(255, 0, 170, 0.3);
+  box-shadow: 0 0 15px rgba(255, 0, 170, 0.2);
 }
 
 .react-terminal-window-buttons {
@@ -33,10 +55,11 @@
 }
 
 .react-terminal-window-buttons button {
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   border: 0;
+  transition: all 0.2s ease;
 }
 
 .react-terminal-window-buttons button.clickable {
@@ -44,34 +67,55 @@
 }
 
 .react-terminal-window-buttons button.red-btn {
-  background: #d9515d;
+  background: #ff3864;
+  box-shadow: 0 0 5px #ff3864;
 }
 
 .react-terminal-window-buttons button.yellow-btn {
-  background: #f4c025;
+  background: #ffde59;
+  box-shadow: 0 0 5px #ffde59;
 }
 
 .react-terminal-window-buttons button.green-btn {
-  background: #3ec930;
+  background: #00f6ff;
+  box-shadow: 0 0 5px #00f6ff;
+}
+
+.react-terminal-window-buttons button:hover {
+  transform: scale(1.2);
 }
 
 .react-terminal-wrapper:after {
   content: attr(data-terminal-name);
   position: absolute;
-  color: #a2a2a2;
-  top: 5px;
+  color: rgba(0, 246, 255, 0.7);
+  top: 12px;
   left: 0;
   width: 100%;
   text-align: center;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   pointer-events: none;
+  text-shadow: 0 0 5px rgba(0, 246, 255, 0.5);
 }
 
 .react-terminal-wrapper.react-terminal-light:after {
-  color: #d76d77;
+  color: rgba(255, 0, 170, 0.7);
+  text-shadow: 0 0 5px rgba(255, 0, 170, 0.5);
 }
 
 .react-terminal-line {
   white-space: pre;
+  margin-bottom: 0.3em;
+  line-height: 1.4;
+  text-shadow: 0 0 2px rgba(0, 246, 255, 0.5);
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .react-terminal-line:before {
@@ -79,16 +123,18 @@
   content: "";
   display: inline-block;
   vertical-align: middle;
-  color: #a2a2a2;
+  color: rgba(0, 246, 255, 0.7);
 }
 
 .react-terminal-light .react-terminal-line:before {
-  color: #d76d77;
+  color: rgba(255, 0, 170, 0.7);
 }
 
 .react-terminal-input:before {
   margin-right: 0.75em;
-  content: "$";
+  content: ">";
+  color: #ff3864;
+  text-shadow: 0 0 5px rgba(255, 56, 100, 0.5);
 }
 
 .react-terminal-input[data-terminal-prompt]:before {
@@ -98,25 +144,37 @@
 .react-terminal-wrapper:focus-within .react-terminal-active-input .cursor {
   position: relative;
   display: inline-block;
-  width: 0.55em;
+  width: 0.5em;
   height: 1em;
   top: 0.225em;
-  background: #fff;
-  -webkit-animation: blink 1s infinite;
-  animation: blink 1s infinite;
+  background: #00f6ff;
+  box-shadow: 0 0 8px #00f6ff;
+  -webkit-animation: blink 1.2s infinite;
+  animation: blink 1.2s infinite;
+}
+
+.react-terminal-light:focus-within .react-terminal-active-input .cursor {
+  background: #ff00aa;
+  box-shadow: 0 0 8px #ff00aa;
 }
 
 /* Cursor animation */
 
 @-webkit-keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
   50% {
-    opacity: 0;
+    opacity: 0.2;
   }
 }
 
 @keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
   50% {
-    opacity: 0;
+    opacity: 0.2;
   }
 }
 
