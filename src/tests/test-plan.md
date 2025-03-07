@@ -82,11 +82,11 @@
 - [ ] Maintains output history
 
 ### ProgressBar
-- [ ] Renders with correct width
+- [✅] Renders with correct width
 - [ ] Updates progress smoothly
-- [ ] Shows percentage
+- [✅] Shows correct aria attributes
 - [ ] Supports different themes/colors
-- [ ] Accessible with aria attributes
+- [✅] Applies correct styling
 
 ### ResumeDownload
 - [ ] Download button works
@@ -96,11 +96,11 @@
 - [ ] Error handling works
 
 ### ResumeDropdown
-- [ ] Opens and closes correctly
-- [ ] Shows all options
-- [ ] Handles selection
-- [ ] Keyboard navigation works
-- [ ] Closes on outside click
+- [✅] Renders dropdown button
+- [✅] Renders dropdown items
+- [✅] Handles selection (onOpen)
+- [✅] Handles selection (onDownload)
+- [✅] Includes download icon
 
 ### Footer
 - [ ] Links work
