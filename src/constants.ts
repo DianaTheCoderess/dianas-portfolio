@@ -11,17 +11,6 @@ export const AVAILABLE_COMMANDS: AvailableCommands = {
   whoami: "Display current user",
 } as const
 
-// Colors
-export const COLORS = {
-  WARM_PURPLE: "#2a1b3d",
-  NEON_PINK: "#ff6b97",
-  SOFT_PURPLE: "#9d4edd",
-  CYBER_BLUE: "#00f5ff",
-  WARM_GOLD: "#ffd700",
-  CREAM: "#fff5e4",
-  DEEP_PURPLE: "#1a1025",
-} as const
-
 // Animation Timings
 export const ANIMATION_TIMINGS = {
   LINE_DELAY: 300,
@@ -39,16 +28,7 @@ export const TERMINAL = {
   GRID_ROWS: 8,
 } as const
 
-// Loading Screen Constants
-export const LOADING_SCREEN = {
-  MAX_WIDTH_SM: "90vw",
-  MAX_WIDTH_MD: "lg",
-  MAX_WIDTH_LG: "xl",
-} as const
-
-// Animation Durations
-export const ANIMATION_DURATIONS = {
-  DEFAULT: 300,
-  MEDIUM: 500,
-  SLOW: 750,
-} as const
+// Tech Stack Constants
+export const TECH_STACK = {
+  UPDATE_INTERVAL: 4000,
+}

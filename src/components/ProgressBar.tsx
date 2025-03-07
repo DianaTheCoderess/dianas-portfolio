@@ -8,6 +8,7 @@ export const ProgressBar = ({ progress }: ProgressBarProps) => {
   return (
     <div
       className="relative h-1.5 sm:h-2"
+      data-testid="loading-progress"
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={progress}

@@ -1,6 +1,5 @@
 import { LoadingLines } from "@/components/LoadingLines"
 import { ProgressBar } from "@/components/ProgressBar"
-import { LOADING_SCREEN } from "@/constants.ts"
 import { useLoadingState } from "@/hooks/useLoadingState"
 
 const LoadingScreen = () => {
@@ -16,7 +15,9 @@ const LoadingScreen = () => {
       aria-label="Loading screen"
     >
       <div
-        className={`cyber-window w-full max-w-[95%] sm:max-w-lg md:max-w-xl rounded-lg sm:rounded-xl relative overflow-hidden`}
+        className={
+          "cyber-window w-full max-w-[95%] sm:max-w-lg md:max-w-xl rounded-lg sm:rounded-xl relative overflow-hidden"
+        }
       >
         <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
           <div className="terminal-text font-mono">

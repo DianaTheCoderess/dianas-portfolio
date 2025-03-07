@@ -1,5 +1,6 @@
 import ResumeDropdown from "@/components/ResumeDropdown"
 import { fireEvent, render, screen } from "@testing-library/react"
+import type React from "react"
 import { describe, expect, it, vi } from "vitest"
 
 // Mock the Dropdown component since we can't easily test the actual dropdown in JSDOM
@@ -14,22 +15,17 @@ vi.mock("@/components/ui/Dropdown", () => {
     DropdownMenuContent: ({ children }: { children: React.ReactNode }) => (
       <div data-testid="dropdown-content">{children}</div>
     ),
-    DropdownMenuItem: ({ 
-      children, 
-      onClick, 
-      ...props 
-    }: { 
-      children: React.ReactNode; 
-      onClick?: () => void; 
-      [key: string]: any 
+    DropdownMenuItem: ({
+      children,
+      onClick,
+      ...props
+    }: {
+      children: React.ReactNode
+      onClick?: () => void
     }) => {
       // This implementation ensures onClick is properly handled
       return (
-        <button 
-          data-testid="dropdown-item" 
-          onClick={onClick} 
-          {...props}
-        >
+        <button data-testid="dropdown-item" onClick={onClick} {...props}>
           {children}
         </button>
       )
