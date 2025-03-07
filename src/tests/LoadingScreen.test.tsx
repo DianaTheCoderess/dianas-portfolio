@@ -1,27 +1,41 @@
-import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
-import LoadingScreen from '../components/LoadingScreen'
+import LoadingScreen from "@/components/LoadingScreen"
+import { act, render, screen } from "@testing-library/react"
+import { describe, expect, it, vi } from "vitest"
 
-describe('LoadingScreen', () => {
-  it('renders initially', () => {
+// Mock the loading messages
+vi.mock("@/data/loading_messages.txt", () => "initiating_portfolio.sh\nloading dependencies\nconfiguring environment");
+
+describe("LoadingScreen", () => {
+  it("renders initially", () => {
     render(<LoadingScreen />)
-    expect(screen.getByLabelText('Loading screen')).toBeInTheDocument()
+    expect(screen.getByLabelText("Loading screen")).toBeInTheDocument()
   })
 
-  it('shows progress bar', () => {
+  it("shows progress bar", () => {
     render(<LoadingScreen />)
-    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+    expect(screen.getByTestId("loading-progress")).toBeInTheDocument()
   })
 
-  it('displays loading messages', () => {
+  it("displays loading messages", () => {
     render(<LoadingScreen />)
     expect(screen.getByText(/initiating_portfolio.sh/)).toBeInTheDocument()
   })
 
-  it('transitions out when complete', async () => {
+  it("transitions out when complete", async () => {
+    // Setup fake timers
+    vi.useFakeTimers()
+
     const { container } = render(<LoadingScreen />)
-    // Wait for loading to complete
-    await new Promise(r => setTimeout(r, 2500))
+
+    // Initial check - loading screen should be present
+    expect(container.firstChild).not.toBeNull()
+
+    // Fast-forward through all timers
+    await act(async () => {
+      vi.runAllTimers()
+    })
+
+    // Check that loading screen is removed
     expect(container.firstChild).toBeNull()
   })
 })

@@ -29,10 +29,10 @@ describe("Link", () => {
     )
 
     // Verify all links render with correct hrefs
-    expect(screen.getByText("Default")).toHaveAttribute("href", "/test1")
-    expect(screen.getByText("Outline")).toHaveAttribute("href", "/test3")
-    expect(screen.getByText("Ghost")).toHaveAttribute("href", "/test5")
-    expect(screen.getByText("Link")).toHaveAttribute("href", "/test6")
+    expect(screen.getByRole("link", { name: "Default" })).toHaveAttribute("href", "/test1")
+    expect(screen.getByRole("link", { name: "Outline" })).toHaveAttribute("href", "/test3")
+    expect(screen.getByRole("link", { name: "Ghost" })).toHaveAttribute("href", "/test5")
+    expect(screen.getByRole("link", { name: "Link" })).toHaveAttribute("href", "/test6")
   })
 
   it("renders with different sizes", () => {
@@ -54,10 +54,10 @@ describe("Link", () => {
     )
 
     // Verify all links render with correct hrefs
-    expect(screen.getByText("Default")).toHaveAttribute("href", "/size1")
-    expect(screen.getByText("Small")).toHaveAttribute("href", "/size2")
-    expect(screen.getByText("Large")).toHaveAttribute("href", "/size3")
-    expect(screen.getByText("Icon")).toHaveAttribute("href", "/size4")
+    expect(screen.getByRole("link", { name: "Default" })).toHaveAttribute("href", "/size1")
+    expect(screen.getByRole("link", { name: "Small" })).toHaveAttribute("href", "/size2")
+    expect(screen.getByRole("link", { name: "Large" })).toHaveAttribute("href", "/size3")
+    expect(screen.getByRole("link", { name: "Icon" })).toHaveAttribute("href", "/size4")
   })
 
   it("applies additional className", () => {
@@ -66,7 +66,8 @@ describe("Link", () => {
         Custom
       </Link>,
     )
-    expect(screen.getByText("Custom")).toHaveClass("custom-class")
+    const link = screen.getByRole("link", { name: "Custom" })
+    expect(link).toHaveClass("custom-class")
   })
 
   it("forwards additional props", () => {
@@ -75,7 +76,7 @@ describe("Link", () => {
         External
       </Link>,
     )
-    const link = screen.getByText("External")
+    const link = screen.getByRole("link", { name: "External" })
     expect(link).toHaveAttribute("target", "_blank")
     expect(link).toHaveAttribute("rel", "noopener noreferrer")
   })

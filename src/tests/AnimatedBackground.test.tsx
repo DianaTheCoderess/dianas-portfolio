@@ -1,27 +1,37 @@
-import { render } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
-import AnimatedBackground from '../components/AnimatedBackground'
+import AnimatedBackground from "@/components/AnimatedBackground"
+import { render } from "@testing-library/react"
+import { describe, expect, it, vi } from "vitest"
 
-describe('AnimatedBackground', () => {
-  it('renders canvas element', () => {
+describe("AnimatedBackground", () => {
+  it("renders canvas element", () => {
     const { container } = render(<AnimatedBackground />)
-    expect(container.querySelector('canvas')).toBeInTheDocument()
+    expect(container.querySelector("canvas")).toBeInTheDocument()
   })
 
-  it('handles window resize', () => {
+  it("handles window resize", () => {
     const { container } = render(<AnimatedBackground />)
-    window.dispatchEvent(new Event('resize'))
-    expect(container.querySelector('canvas')).toHaveAttribute('width')
-    expect(container.querySelector('canvas')).toHaveAttribute('height')
+    window.dispatchEvent(new Event("resize"))
+    const canvas = container.querySelector("canvas")
+    expect(canvas).toHaveAttribute("width")
+    expect(canvas).toHaveAttribute("height")
   })
 
-  it('handles mouse movement', () => {
+  it("handles mouse movement", () => {
+    // Mock requestAnimationFrame before rendering
+    const animationFrame = vi.spyOn(window, "requestAnimationFrame")
+
+    // Render the component
     render(<AnimatedBackground />)
-    window.dispatchEvent(new MouseEvent('mousemove', {
-      clientX: 100,
-      clientY: 100
-    }))
-    // Animation should continue running
-    expect(window.requestAnimationFrame).toHaveBeenCalled()
+
+    // Trigger mouse movement
+    window.dispatchEvent(
+      new MouseEvent("mousemove", {
+        clientX: 100,
+        clientY: 100,
+      }),
+    )
+
+    // Verify animation frame was requested
+    expect(animationFrame).toHaveBeenCalled()
   })
 })

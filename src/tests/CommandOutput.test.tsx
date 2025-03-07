@@ -50,8 +50,6 @@ describe("CommandOutput", () => {
     }
     
     render(<CommandOutput output={complexOutput} />)
-    // This test assumes the component can handle object output
-    // and converts it to a string representation
     expect(screen.getByText("item1")).toBeInTheDocument()
     expect(screen.getByText("item2")).toBeInTheDocument()
     expect(screen.getByText("item3")).toBeInTheDocument()
