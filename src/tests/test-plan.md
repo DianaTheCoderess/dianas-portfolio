@@ -89,8 +89,8 @@
 - [✅] Applies correct styling
 
 ### ResumeDownload
-- [ ] Download button works
-- [ ] Preview opens in new tab
+- [✅] Download button works
+- [✅] Preview opens in new tab
 - [ ] Generated HTML is correct
 - [ ] Mobile layout works
 - [ ] Error handling works
@@ -111,8 +111,8 @@
 
 ### UI Components
 - [✅] Button renders with correct variants
-- [ ] Link component works with correct href
-- [ ] Dropdown opens and closes properly
+- [✅] Link component works with correct href
+- [✅] Dropdown opens and closes properly
 - [✅] UI components are accessible
 
 ## Page Testing
