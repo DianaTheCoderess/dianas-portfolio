@@ -23,104 +23,106 @@ const socialIcons = {
 ---
 
 <Layout title={`${resume.basics?.name} - Portfolio`}>
-    <LoadingScreen client:load />
+        <VisibilityWrapper client:load>
+            <div class="min-h-screen flex flex-col">
+                <Header/>
 
-    <VisibilityWrapper client:load class="min-h-screen flex flex-col">
-        <Header />
-
-        <main class="flex-1 pt-16 sm:pt-24 md:pt-32">
-            <section class="px-3 sm:px-6">
-                <div class="max-w-7xl mx-auto">
-                    <div
-                        class="cyber-card rounded-xl sm:rounded-2xl p-2 sm:p-4 relative overflow-hidden group"
-                    >
-                        <div
-                            class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-8 md:p-12"
-                        >
+                <main class="flex-1 pt-24 sm:pt-32 md:pt-40">
+                    <section class="px-3 sm:px-6">
+                        <div class="max-w-7xl mx-auto">
                             <div
-                                class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+                              class="cyber-card rounded-xl sm:rounded-2xl p-2 sm:p-4 relative overflow-hidden group"
                             >
-                                <!-- Left Column: Main Content -->
-                                <div class="space-y-6 sm:space-y-8">
-                                    <div class="space-y-4 sm:space-y-6">
-                                        <div class="inline-block">
+                                <div
+                                  class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-8 md:p-12"
+                                >
+                                    <div
+                                      class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+                                    >
+                                        <!-- Left Column: Main Content -->
+                                        <div class="space-y-6 sm:space-y-8">
+                                            <div class="space-y-4 sm:space-y-6">
+                                                <div class="inline-block">
                                             <span
-                                                class="text-cyber-blue font-mono text-xs sm:text-sm tracking-wider"
-                                                >&lt; welcome /&gt;</span
+                                              class="text-cyber-blue font-mono text-xs sm:text-sm tracking-wider"
+                                            >&lt; welcome /&gt;</span
                                             >
-                                        </div>
-                                        <h1
-                                            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
-                                        >
-                                            Hello, I'm
-                                            <span
-                                                class="text-neon-pink block mt-2"
-                                                >{
-                                                    resume.basics?.name?.split(
-                                                        " ",
-                                                    )[0]
-                                                }</span
-                                            >
-                                        </h1>
-                                        <p
-                                            class="text-sm sm:text-base md:text-lg text-cream/90 leading-relaxed max-w-xl"
-                                        >
-                                            {resume.basics?.summary}
-                                        </p>
-                                    </div>
+                                                </div>
+                                                <h1
+                                                  class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
+                                                >
+                                                    Hello, I'm
+                                                    <span
+                                                      class="text-neon-pink block mt-2"
+                                                    >{
+                                                        resume.basics?.name?.split(
+                                                          " ",
+                                                        )[0]
+                                                    }</span
+                                                    >
+                                                </h1>
+                                                <p
+                                                  class="text-sm sm:text-base md:text-lg text-cream/90 leading-relaxed max-w-xl"
+                                                >
+                                                    {resume.basics?.summary}
+                                                </p>
+                                            </div>
 
-                                    <div class="flex flex-wrap gap-3 sm:gap-4">
-                                        <ResumeDownload client:load />
-                                        <Link client:load href={`mailto:${resume.basics?.email}`} variant="cyber" >
-                                            Contact me!
-                                        </Link>
-                                    </div>
-                                    
-                                    <div class="pb-2">
-                                        <TechStack technologies={techStack} client:load />
-                                    </div>
+                                            <div class="flex flex-wrap gap-3 sm:gap-4">
+                                                <ResumeDownload client:load/>
+                                                <Link client:load href={`mailto:${resume.basics?.email}`}
+                                                      variant="cyber">
+                                                    Contact me!
+                                                </Link>
+                                            </div>
 
-                                    <!-- Social Links-->
-                                    {
-                                        resumeData.basics.profiles.length >
-                                            0 && (
-                                            <div class="flex gap-3 sm:gap-4">
-                                                {resume.basics?.profiles?.map(
-                                                    (profile) => (
+                                            <div class="pb-2">
+                                                <TechStack technologies={techStack} client:load/>
+                                            </div>
+
+                                            <!-- Social Links-->
+                                            {
+                                              resumeData.basics.profiles.length >
+                                              0 && (
+                                                <div class="flex gap-3 sm:gap-4">
+                                                    {resume.basics?.profiles?.map(
+                                                      (profile) => (
                                                         <a
-                                                            href={profile.url}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            class="p-2 sm:p-3 bg-deep-purple/50 rounded-lg sm:rounded-xl text-cream/80 border border-neon-pink/20 hover:border-cyber-blue/50 hover:text-cyber-blue transition-all duration-300 group"
-                                                            aria-label={`Visit ${profile.network} profile`}
+                                                          href={profile.url}
+                                                          target="_blank"
+                                                          rel="noopener noreferrer"
+                                                          class="p-2 sm:p-3 bg-deep-purple/50 rounded-lg sm:rounded-xl text-cream/80 border border-neon-pink/20 hover:border-cyber-blue/50 hover:text-cyber-blue transition-all duration-300 group"
+                                                          aria-label={`Visit ${profile.network} profile`}
                                                         >
                                                             <Fragment
-                                                                set:html={
-                                                                    socialIcons[
-                                                                        profile.network as keyof typeof socialIcons
+                                                              set:html={
+                                                                  socialIcons[
+                                                                    profile.network as keyof typeof socialIcons
                                                                     ]
-                                                                }
+                                                              }
                                                             />
                                                         </a>
-                                                    ),
-                                                )}
-                                            </div>
-                                        )
-                                    }
+                                                      ),
+                                                    )}
+                                                </div>
+                                              )
+                                            }
+                                        </div>
+
+                                        <!--&lt;!&ndash; Right Column: Terminal &ndash;&gt;-->
+                                        <!--<div class="relative hidden lg:block">-->
+                                        <!--    <Terminal />-->
+                                        <!--</div>-->
+                                    </div>
                                 </div>
-                                
-                                <!--&lt;!&ndash; Right Column: Terminal &ndash;&gt;-->
-                                <!--<div class="relative hidden lg:block">-->
-                                <!--    <Terminal />-->
-                                <!--</div>-->
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <Footer />
-    </VisibilityWrapper>
+                    </section>
+                </main>
+                <Footer/>
+            </div>
+        </VisibilityWrapper>
+    <LoadingScreen client:load />
 
     <style>
         .invisible {
