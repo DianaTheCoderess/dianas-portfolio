@@ -6,6 +6,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/Dropdown"
 import { Download, FileText } from "lucide-react"
+import type React from "react"
+import { useState } from "react"
 
 interface ResumeDropdownProps {
   onOpen: () => void
@@ -13,26 +15,44 @@ interface ResumeDropdownProps {
 }
 
 const ResumeDropdown = ({ onOpen, onDownload }: ResumeDropdownProps) => {
+  const [open, setOpen] = useState(false)
+
+  const handleButtonClick = (e: React.MouseEvent) => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault()
+      e.stopPropagation()
+      setOpen(!open)
+    }
+  }
+
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <Button
-        // className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 md:px-8 md:py-4 bg-neon-pink hover:bg-cyber-blue transition-all duration-300 rounded-lg sm:rounded-xl text-deep-purple font-semibold transform hover:scale-105 hover:shadow-lg hover:shadow-cyber-blue/20 text-sm sm:text-base"
-        >
+        <Button variant="default" onClick={handleButtonClick}>
           <Download className="w-5 h-5" />
           Resume
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-deep-purple/95 border border-neon-pink/20">
+      <DropdownMenuContent
+        className="bg-deep-purple/95 border border-neon-pink/20"
+        // Ensure the dropdown closes after an item is clicked
+        onInteractOutside={() => setOpen(false)}
+      >
         <DropdownMenuItem
-          onClick={onDownload}
+          onClick={() => {
+            onDownload()
+            setOpen(false)
+          }}
           className="text-cream hover:text-cyber-blue hover:bg-deep-purple/50 cursor-pointer gap-2"
         >
           <Download className="w-4 h-4" />
           Download HTML
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={onOpen}
+          onClick={() => {
+            onOpen()
+            setOpen(false)
+          }}
           className="text-cream hover:text-cyber-blue hover:bg-deep-purple/50 cursor-pointer gap-2"
         >
           <FileText className="w-4 h-4" />
