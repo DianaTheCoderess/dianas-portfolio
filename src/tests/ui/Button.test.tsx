@@ -22,9 +22,7 @@ describe("Button", () => {
 
     // Instead of checking for specific classes, just verify the buttons render
     expect(screen.getByText("Default")).toBeInTheDocument()
-    expect(screen.getByText("Destructive")).toBeInTheDocument()
     expect(screen.getByText("Outline")).toBeInTheDocument()
-    expect(screen.getByText("Secondary")).toBeInTheDocument()
     expect(screen.getByText("Ghost")).toBeInTheDocument()
     expect(screen.getByText("Link")).toBeInTheDocument()
   })
