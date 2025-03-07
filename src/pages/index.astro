@@ -186,4 +186,11 @@ const socialIcons = {
             padding-right: 0 !important;
         }
     </style>
+<script>
+  // Calculate scrollbar width and set it as a CSS variable
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+  });
+</script>
 </Layout>
