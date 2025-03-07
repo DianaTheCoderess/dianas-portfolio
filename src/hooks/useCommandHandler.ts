@@ -1,5 +1,5 @@
+import type { Command } from "@/types/terminalTypes"
 import { useCallback } from "react"
-import type { Command } from "../types/terminalTypes"
 
 interface UseCommandHandlerProps {
   onNewCommand: (newCommand: Command) => void

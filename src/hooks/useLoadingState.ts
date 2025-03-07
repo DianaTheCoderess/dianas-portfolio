@@ -1,6 +1,6 @@
+import type { LoadingState } from "@/types/loadingScreenTypes"
 import { useCallback, useEffect, useReducer } from "react"
 import loading_messages from "../data/loading_messages.txt?raw"
-import type { LoadingState } from "../types/loadingScreenTypes"
 
 export const ANIMATION_TIMINGS = {
   LINE_DELAY: 300,

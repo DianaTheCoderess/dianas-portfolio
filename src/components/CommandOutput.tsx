@@ -1,5 +1,5 @@
+import type { Command } from "@/types/terminalTypes"
 import type React from "react"
-import type { Command } from "../types/terminalTypes"
 
 interface CommandOutputProps {
   command: Command

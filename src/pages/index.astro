@@ -1,18 +1,18 @@
 ---
 import Header from "../components/Header.astro"
 import LoadingScreen from "../components/LoadingScreen"
-// import ResumeDownload from "../components/ResumeDownload"
-// import { TechStack } from "../components/TechStack"
+import ResumeDownload from "../components/ResumeDownload"
+import { TechStack } from "../components/TechStack"
+// import Terminal from "../components/Terminal.astro"
 import { VisibilityWrapper } from "../components/VisibilityWrapper"
 import { Link } from "../components/ui/Link"
-// import Terminal from "../components/Terminal.astro"
 import resumeData from "../data/resume.json"
 import Layout from "../layouts/Layout.astro"
 import type { ResumeSchema } from "../types/resumeTypes"
 
 const resume: ResumeSchema = resumeData
 
-const techStack = resume.skills?.flatMap((skill) => skill.keywords) || []
+const techStack = resume.skills?.flatMap((skill) => skill.keywords || []) || []
 
 // Social media icons mapping
 const socialIcons = {
@@ -68,16 +68,18 @@ const socialIcons = {
                                         </p>
                                     </div>
 
-                                    <!--<div class="flex flex-wrap gap-3 sm:gap-4">-->
-                                    <!--    <ResumeDownload client:load />-->
-                                    <!--    <Link client:load href={`mailto:${resume.basics?.email}`} variant="cyber" >-->
-                                    <!--        Contact me!-->
-                                    <!--    </Link>-->
-                                    <!--</div>-->
+                                    <div class="flex flex-wrap gap-3 sm:gap-4">
+                                        <ResumeDownload client:load />
+                                        <Link client:load href={`mailto:${resume.basics?.email}`} variant="cyber" >
+                                            Contact me!
+                                        </Link>
+                                    </div>
                                     
-                                    <!--<TechStack technologies={techStack} client:load />-->
+                                    <div class="pb-2">
+                                        <TechStack technologies={techStack} client:load />
+                                    </div>
 
-                                    <!-- Social Links 
+                                    <!-- Social Links-->
                                     {
                                         resumeData.basics.profiles.length >
                                             0 && (
@@ -104,13 +106,12 @@ const socialIcons = {
                                             </div>
                                         )
                                     }
-                                </div>-->
-
+                                </div>
+                                
                                 <!--&lt;!&ndash; Right Column: Terminal &ndash;&gt;-->
                                 <!--<div class="relative hidden lg:block">-->
                                 <!--    <Terminal />-->
                                 <!--</div>-->
-                                </div>
                             </div>
                         </div>
                     </div>

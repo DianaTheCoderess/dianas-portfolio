@@ -1,3 +1,4 @@
+import type React from "react"
 import { useEffect, useState } from "react"
 
 interface TechStackProps {
@@ -42,7 +43,6 @@ export const TechStack: React.FC<TechStackProps> = ({ technologies }) => {
       </h2>
       <div className="grid grid-cols-4 gap-2 sm:gap-3">
         {visibleTechs.map((tech, index) => {
-          if (tech.trim() === "") return null
           return (
             <span
               key={`${tech}-${index}`}

@@ -1,6 +1,6 @@
-import { ResumeDropdown } from "./ResumeDropdown"
-import resumeData from "../data/resume.json"
+import { ResumeDropdown } from "@/components/ResumeDropdown"
 import { render } from "jsonresume-theme-even"
+import resumeData from "../data/resume.json"
 
 const ResumeDownload = () => {
   const generateResumeURL = async () => {

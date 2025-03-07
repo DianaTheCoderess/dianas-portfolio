@@ -4,10 +4,9 @@ import { fileURLToPath } from "node:url"
 import netlify from "@astrojs/netlify"
 import react from "@astrojs/react"
 import { storyblok } from "@storyblok/astro"
+import tailwindcss from "@tailwindcss/vite"
 import { defineConfig } from "astro/config"
 import { loadEnv } from "vite"
-
-import tailwindcss from "@tailwindcss/vite"
 
 const { STORYBLOK_TOKEN } = loadEnv(process.env.NODE_ENV, process.cwd(), "")
 const __filename = fileURLToPath(import.meta.url)

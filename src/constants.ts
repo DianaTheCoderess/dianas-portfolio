@@ -1,4 +1,4 @@
-import type { AvailableCommands } from "./types/terminalTypes"
+import type { AvailableCommands } from "@/types/terminalTypes"
 
 export const AVAILABLE_COMMANDS: AvailableCommands = {
   help: "List all available commands",

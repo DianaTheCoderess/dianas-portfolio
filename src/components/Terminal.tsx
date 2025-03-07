@@ -1,9 +1,9 @@
+import { CommandLine } from "@/components/CommandLine"
+import { CommandOutput } from "@/components/CommandOutput"
+import { useCommandHandler } from "@/hooks/useCommandHandler"
+import type { Command } from "@/types/terminalTypes"
 import type React from "react"
 import { useCallback, useRef, useState } from "react"
-import { useCommandHandler } from "../hooks/useCommandHandler"
-import type { Command } from "../types/terminalTypes"
-import { CommandLine } from "./CommandLine"
-import { CommandOutput } from "./CommandOutput"
 
 export const Terminal: React.FC = () => {
   const [commands, setCommands] = useState<Command[]>([])

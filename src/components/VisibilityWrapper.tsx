@@ -1,4 +1,4 @@
-import { useLoadingState } from "../hooks/useLoadingState"
+import { useLoadingState } from "@/hooks/useLoadingState"
 import type { ReactNode } from "react"
 import React from "react"
 
