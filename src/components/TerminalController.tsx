@@ -3,7 +3,8 @@ import Terminal, {
   TerminalInput,
   TerminalOutput,
 } from "@/components/Terminal"
-import React, { useState, useEffect } from "react"
+import type React from "react"
+import { useState, useEffect } from "react"
 
 import "@/components/terminal.css"
 
@@ -14,20 +15,25 @@ const TerminalController = () => {
   useEffect(() => {
     // Initialize with a typing effect
     const initialMessages = [
-      "Initializing cybernetic interface...",
-      "Establishing neural connection...",
       "Welcome to Diana's NetPalace Terminal",
       "",
       "Type 'help' to see available commands.",
     ]
-    
+
     let timeout = 0
     initialMessages.forEach((message, index) => {
-      timeout += (index === 0 ? 0 : 500)
+      timeout += index === 0 ? 0 : 500
       setTimeout(() => {
-        setLineData(prev => [
+        setLineData((prev) => [
           ...prev,
-          <TerminalOutput key={`init-${index}`}>{message}</TerminalOutput>
+          <TerminalOutput
+            key={`init-${
+              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+              index
+            }`}
+          >
+            {message}
+          </TerminalOutput>,
         ])
       }, timeout)
     })
@@ -37,23 +43,55 @@ const TerminalController = () => {
     const trimmedInput = input.trim().toLowerCase()
     let ld = [...lineData]
     ld.push(<TerminalInput key={`input-${Date.now()}`}>{input}</TerminalInput>)
-    
+
     if (trimmedInput === "") {
       // Do nothing for empty input
     } else if (trimmedInput === "help") {
       ld.push(
         <TerminalOutput key={`output-help-${Date.now()}`}>
           <span style={{ color: "#ff3864" }}>AVAILABLE COMMANDS:</span>
-        </TerminalOutput>
+        </TerminalOutput>,
       )
-      ld.push(<TerminalOutput key={`output-help-1`}>about - Learn about Diana</TerminalOutput>)
-      ld.push(<TerminalOutput key={`output-help-2`}>skills - View technical skills</TerminalOutput>)
-      ld.push(<TerminalOutput key={`output-help-3`}>projects - Browse portfolio projects</TerminalOutput>)
-      ld.push(<TerminalOutput key={`output-help-4`}>contact - Get contact information</TerminalOutput>)
-      ld.push(<TerminalOutput key={`output-help-5`}>github - Visit GitHub profile</TerminalOutput>)
-      ld.push(<TerminalOutput key={`output-help-6`}>linkedin - Visit LinkedIn profile</TerminalOutput>)
-      ld.push(<TerminalOutput key={`output-help-7`}>theme - Toggle light/dark mode</TerminalOutput>)
-      ld.push(<TerminalOutput key={`output-help-8`}>clear - Clear terminal</TerminalOutput>)
+      ld.push(
+        <TerminalOutput key={"output-help-1"}>
+          about - Learn about Diana
+        </TerminalOutput>,
+      )
+      ld.push(
+        <TerminalOutput key={"output-help-2"}>
+          skills - View technical skills
+        </TerminalOutput>,
+      )
+      ld.push(
+        <TerminalOutput key={"output-help-3"}>
+          projects - Browse portfolio projects
+        </TerminalOutput>,
+      )
+      ld.push(
+        <TerminalOutput key={"output-help-4"}>
+          contact - Get contact information
+        </TerminalOutput>,
+      )
+      ld.push(
+        <TerminalOutput key={"output-help-5"}>
+          github - Visit GitHub profile
+        </TerminalOutput>,
+      )
+      ld.push(
+        <TerminalOutput key={"output-help-6"}>
+          linkedin - Visit LinkedIn profile
+        </TerminalOutput>,
+      )
+      ld.push(
+        <TerminalOutput key={"output-help-7"}>
+          theme - Toggle light/dark mode
+        </TerminalOutput>,
+      )
+      ld.push(
+        <TerminalOutput key={"output-help-8"}>
+          clear - Clear terminal
+        </TerminalOutput>,
+      )
     } else if (trimmedInput === "about") {
       ld.push(
         <TerminalOutput key={`output-about-${Date.now()}`}>
@@ -61,10 +99,11 @@ const TerminalController = () => {
           <br />
           Full-stack developer specializing in modern web technologies.
           <br />
-          Passionate about creating elegant, efficient, and user-friendly applications.
+          Passionate about creating elegant, efficient, and user-friendly
+          applications.
           <br />
           Based in Berlin, Germany.
-        </TerminalOutput>
+        </TerminalOutput>,
       )
     } else if (trimmedInput === "skills") {
       ld.push(
@@ -78,7 +117,7 @@ const TerminalController = () => {
           Database: PostgreSQL, MongoDB, Redis
           <br />
           DevOps: Docker, AWS, CI/CD, Git
-        </TerminalOutput>
+        </TerminalOutput>,
       )
     } else if (trimmedInput === "projects") {
       ld.push(
@@ -92,7 +131,7 @@ const TerminalController = () => {
           2. NeuralNotes - AI-powered note-taking app
           <br />
           3. QuantumDash - Analytics dashboard
-        </TerminalOutput>
+        </TerminalOutput>,
       )
     } else if (trimmedInput.startsWith("projects open")) {
       const projectNum = trimmedInput.split(" ")[2]
@@ -103,7 +142,11 @@ const TerminalController = () => {
       } else if (projectNum === "3") {
         window.open("/projects#quantumdash", "_blank")
       } else {
-        ld.push(<TerminalOutput key={`output-error-${Date.now()}`}>Invalid project number</TerminalOutput>)
+        ld.push(
+          <TerminalOutput key={`output-error-${Date.now()}`}>
+            Invalid project number
+          </TerminalOutput>,
+        )
       }
     } else if (trimmedInput === "contact") {
       ld.push(
@@ -115,33 +158,45 @@ const TerminalController = () => {
           LinkedIn: linkedin.com/in/diana-example
           <br />
           GitHub: github.com/diana-example
-        </TerminalOutput>
+        </TerminalOutput>,
       )
     } else if (trimmedInput === "github") {
       window.open("https://github.com", "_blank")
-      ld.push(<TerminalOutput key={`output-github-${Date.now()}`}>Opening GitHub profile...</TerminalOutput>)
+      ld.push(
+        <TerminalOutput key={`output-github-${Date.now()}`}>
+          Opening GitHub profile...
+        </TerminalOutput>,
+      )
     } else if (trimmedInput === "linkedin") {
       window.open("https://linkedin.com", "_blank")
-      ld.push(<TerminalOutput key={`output-linkedin-${Date.now()}`}>Opening LinkedIn profile...</TerminalOutput>)
+      ld.push(
+        <TerminalOutput key={`output-linkedin-${Date.now()}`}>
+          Opening LinkedIn profile...
+        </TerminalOutput>,
+      )
     } else if (trimmedInput === "theme") {
-      setColorMode(colorMode === ColorMode.Dark ? ColorMode.Light : ColorMode.Dark)
+      setColorMode(
+        colorMode === ColorMode.Dark ? ColorMode.Light : ColorMode.Dark,
+      )
       ld.push(
         <TerminalOutput key={`output-theme-${Date.now()}`}>
           Switched to {colorMode === ColorMode.Dark ? "light" : "dark"} mode
-        </TerminalOutput>
+        </TerminalOutput>,
       )
     } else if (trimmedInput === "clear") {
       ld = []
     } else {
       ld.push(
         <TerminalOutput key={`output-error-${Date.now()}`}>
-          <span style={{ color: "#ff3864" }}>Command not recognized: {input}</span>
+          <span style={{ color: "#ff3864" }}>
+            Command not recognized: {input}
+          </span>
           <br />
           Type 'help' to see available commands.
-        </TerminalOutput>
+        </TerminalOutput>,
       )
     }
-    
+
     setLineData(ld)
   }
 
