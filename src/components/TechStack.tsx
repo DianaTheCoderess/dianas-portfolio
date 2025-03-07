@@ -1,3 +1,4 @@
+import { TECH_STACK } from "@/constants.ts"
 import type React from "react"
 import { useEffect, useState } from "react"
 
@@ -31,7 +32,7 @@ export const TechStack: React.FC<TechStackProps> = ({ technologies }) => {
 
     const interval = setInterval(() => {
       setVisibleTechs((prev) => getNextBatch(prev))
-    }, 3000)
+    }, TECH_STACK.UPDATE_INTERVAL)
 
     return () => clearInterval(interval)
   }, [technologies, totalVisible])
