@@ -91,9 +91,9 @@
 ### ResumeDownload
 - [✅] Download button works
 - [✅] Preview opens in new tab
-- [ ] Generated HTML is correct
+- [✅] Generated HTML is correct
 - [ ] Mobile layout works
-- [ ] Error handling works
+- [✅] Error handling works
 
 ### ResumeDropdown
 - [✅] Renders dropdown button
