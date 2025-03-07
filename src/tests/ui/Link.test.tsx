@@ -71,7 +71,7 @@ describe("Link", () => {
 
   it("forwards additional props", () => {
     render(
-      <Link href="/test" rel="noopener noreferrer">
+      <Link href="/test" target="_blank" rel="noopener noreferrer">
         External
       </Link>,
     )
