@@ -202,12 +202,16 @@ const neoCommand: TerminalCommand = {
         const terminalElement = document.querySelector(".react-terminal");
         if (!terminalElement) return;
         
+        // Get the input line element (the one with the prompt)
+        const inputLine = document.querySelector(".react-terminal-active-input");
+        if (!inputLine) return;
+        
         // Function to create and append a message with typewriter effect
         const typeMessage = (message: { text: string, color: string }, index: number) => {
-          // Create a new line element
+          // Create a new line element that will appear before the input line
           const lineElement = document.createElement("div");
           lineElement.className = "react-terminal-line matrix-line";
-          terminalElement.appendChild(lineElement);
+          terminalElement.insertBefore(lineElement, inputLine);
           
           // Add the prompt character
           const promptSpan = document.createElement("span");
@@ -223,8 +227,17 @@ const neoCommand: TerminalCommand = {
               charIndex++;
               setTimeout(typeChar, 100); // Adjust typing speed here
             } else if (index < messages.length - 1) {
-              // Schedule the next message
-              setTimeout(() => typeMessage(messages[index + 1], index + 1), message.delay);
+              // Schedule the next message, but first fade out the current message
+              setTimeout(() => {
+                // Add fade-out class
+                lineElement.classList.add("matrix-fade-out");
+                
+                // After fade out completes, remove the element and show next message
+                setTimeout(() => {
+                  lineElement.remove();
+                  typeMessage(messages[index + 1], index + 1);
+                }, 1000); // Fade out duration
+              }, message.delay);
             }
           };
           
