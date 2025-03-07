@@ -181,6 +181,32 @@ const clearCommand: TerminalCommand = {
   },
 }
 
+// Matrix Neo command - simulates the famous scene from the movie
+const neoCommand: TerminalCommand = {
+  name: "neo",
+  description: "Wake up, Neo...",
+  execute: () => {
+    return {
+      output: (
+        <div className="matrix-dialogue">
+          <div style={{ marginBottom: "1rem" }}>
+            <span style={{ color: "#00f5ff" }}>{">"}</span> Wake up, Neo...
+          </div>
+          <div style={{ marginBottom: "1rem" }}>
+            <span style={{ color: "#00f5ff" }}>{">"}</span> The Matrix has you...
+          </div>
+          <div style={{ marginBottom: "1rem" }}>
+            <span style={{ color: "#00f5ff" }}>{">"}</span> Follow the white rabbit.
+          </div>
+          <div style={{ marginBottom: "1rem" }}>
+            <span style={{ color: "#ff3864" }}>{">"}</span> Knock, knock, Neo.
+          </div>
+        </div>
+      ),
+    }
+  },
+}
+
 // Register all built-in commands
 export function registerBuiltInCommands(): void {
   commandRegistry.register(helpCommand)
@@ -191,4 +217,5 @@ export function registerBuiltInCommands(): void {
   commandRegistry.register(githubCommand)
   commandRegistry.register(linkedinCommand)
   commandRegistry.register(clearCommand)
+  commandRegistry.register(neoCommand)
 }
