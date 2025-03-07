@@ -10,6 +10,7 @@ export type CommandType =
   | "theme"
   | "github"
   | "linkedin"
+  | "neo"
 
 export interface CommandOutput {
   type?: OutputType
