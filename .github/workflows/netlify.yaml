@@ -25,6 +25,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
         
+      - name: Install Netlify
+        run: pnpm install netlify-cli -g
+      
+      
       - name: Build project
         run: pnpm run build
         
@@ -36,16 +40,9 @@ jobs:
         uses: davelosert/vitest-coverage-report-action@v2
 
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v3
-        with:
-          publish-dir: './dist'
-          production-branch: main
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
-          enable-pull-request-comment: false
-          enable-commit-comment: false
-          overwrites-pull-request-comment: false
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
+        id: netlify_deploy
+        run: |
+          netlify deploy \
+            --dir dist \
+            --site ${{ secrets.NETLIFY_SITE_ID }} \
+            --auth ${{ secrets.NETLIFY_API_TOKEN }}
