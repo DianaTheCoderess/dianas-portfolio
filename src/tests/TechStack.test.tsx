@@ -21,10 +21,11 @@ describe("TechStack", () => {
   })
 
   it("updates technologies periodically", async () => {
+    // Setup fake timers
+    vi.useFakeTimers()
+    
     const { rerender } = render(<TechStack technologies={mockTechnologies} />)
-    const initialTechs = screen.getAllByRole("").map((el) => el.textContent)
-
-    console.log(initialTechs)
+    const initialTechs = screen.getAllByRole("listitem").map((el) => el.textContent)
 
     // Advance timers instead of using real setTimeout
     await act(async () => {
@@ -32,10 +33,11 @@ describe("TechStack", () => {
     })
     rerender(<TechStack technologies={mockTechnologies} />)
 
-    const updatedTechs = screen
-      .getAllByText("Kubernetes")
-      .map((el) => el.textContent)
+    const updatedTechs = screen.getAllByRole("listitem").map((el) => el.textContent)
 
     expect(updatedTechs).not.toEqual(initialTechs)
+    
+    // Clean up timers
+    vi.useRealTimers()
   })
 })
