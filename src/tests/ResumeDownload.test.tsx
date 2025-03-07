@@ -2,52 +2,9 @@ import ResumeDownload from "@/components/ResumeDownload"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
-// Skip these tests for now until we can properly mock the component
-describe.skip("ResumeDownload", () => {
-  // Mock window.open and document.createElement
-  const mockOpen = vi.fn()
-  const mockCreateElement = vi.fn()
-  const mockAppendChild = vi.fn()
-  const mockRemoveChild = vi.fn()
-  const mockClick = vi.fn()
-
-  beforeEach(() => {
-    vi.stubGlobal("open", mockOpen)
-
-    // Mock createElement to return a link with mocked methods
-    const mockLink = {
-      setAttribute: vi.fn(),
-      click: mockClick,
-      download: "",
-      href: "",
-    }
-
-    document.createElement = vi.fn().mockImplementation((tag) => {
-      if (tag === "a") return mockLink
-      return {}
-    })
-
-    document.body.appendChild = mockAppendChild
-    document.body.removeChild = mockRemoveChild
-  })
-
-  afterEach(() => {
-    vi.unstubAllGlobals()
-    vi.clearAllMocks()
-  })
-
-  it("renders download button", () => {
-    // This test is skipped
-  })
-
-  it("opens resume in browser when view option is clicked", () => {
-    // This test is skipped
-  })
-
-  it("downloads resume when download option is clicked", () => {
-    // This test is skipped
-  })
-})
+// Set up the DOM environment for tests
+import { cleanup } from "@testing-library/react"
+import "@testing-library/jest-dom"
 
 // Mock the resume data
 vi.mock("@/data/resume.json", () => ({
@@ -80,7 +37,18 @@ describe("ResumeDownload", () => {
   const mockClick = vi.fn()
 
   beforeEach(() => {
+    // Reset the DOM
+    document.body.innerHTML = '';
+    
+    // Create a container for our tests
+    const div = document.createElement('div');
+    div.id = 'root';
+    document.body.appendChild(div);
+    
     vi.stubGlobal("open", mockOpen)
+
+    // Store the original implementation
+    const originalCreateElement = document.createElement;
 
     // Mock createElement to return a link with mocked methods
     const mockLink = {
@@ -92,7 +60,8 @@ describe("ResumeDownload", () => {
 
     document.createElement = vi.fn().mockImplementation((tag) => {
       if (tag === "a") return mockLink
-      return {}
+      // For other elements, return actual DOM elements
+      return originalCreateElement.call(document, tag);
     })
 
     document.body.appendChild = mockAppendChild
@@ -102,6 +71,8 @@ describe("ResumeDownload", () => {
   afterEach(() => {
     vi.unstubAllGlobals()
     vi.clearAllMocks()
+    cleanup()
+    document.body.innerHTML = '';
   })
 
   it("renders download button", () => {
