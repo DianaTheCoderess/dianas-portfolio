@@ -10,7 +10,7 @@ export default getViteConfig({
     setupFiles: ["./src/tests/setup.ts"],
     include: ["src/**/*.test.{ts,tsx}"],
     coverage: {
-      reporter: ["json-summary"],
+      reporter: ["json", "json-summary", "text"],
       reportOnFailure: true,
     },
     globals: true,
