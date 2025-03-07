@@ -1,45 +1,17 @@
-import { type VariantProps, cva } from "class-variance-authority"
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import { Button, type ButtonProps } from "@/components/ui/Button"
+import type React from "react"
 
-const linkVariants = cva(
-  "transition-colors duration-300", 
-  {
-    variants: {
-      variant: {
-        default: "text-cyber-blue hover:text-neon-pink underline-offset-4 hover:underline",
-        subtle: "text-cream/80 hover:text-cyber-blue",
-      }
-    },
-    defaultVariants: {
-      variant: "default"
-    }
-  }
-)
-
-export interface LinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    VariantProps<typeof linkVariants> {
-  external?: boolean
+export interface LinkProps extends ButtonProps {
+  href: string
+  children: React.ReactNode
 }
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ className, variant, external, ...props }, ref) => {
-    const externalProps = external ? {
-      target: "_blank",
-      rel: "noopener noreferrer"
-    } : {}
+const Link: React.FC<LinkProps> = ({ href, children, ...props }) => {
+  return (
+    <Button {...props} asChild>
+      <a href={href}>{children}</a>
+    </Button>
+  )
+}
 
-    return (
-      <a
-        className={cn(linkVariants({ variant, className }))}
-        ref={ref}
-        {...externalProps}
-        {...props}
-      />
-    )
-  }
-)
-Link.displayName = "Link"
-
-export { Link, linkVariants }
+export { Link }

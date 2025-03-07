@@ -1,13 +1,14 @@
 ---
-import Header from "../components/Header.astro"
-import Terminal from "../components/Terminal.astro"
+import Header from "@/components/Header.astro"
+import Terminal from "@/components/Terminal.astro"
+import Layout from "@/layouts/Layout.astro"
 import resumeData from "../data/resume.json"
-import Layout from "../layouts/Layout.astro"
 
-import LoadingScreen from "../components/LoadingScreen"
-import ResumeDownload from "../components/ResumeDownload"
-import { VisibilityWrapper } from "../components/VisibilityWrapper"
-import type { ResumeSchema } from "../types/resumeTypes"
+import LoadingScreen from "@/components/LoadingScreen"
+import ResumeDownload from "@/components/ResumeDownload"
+import { VisibilityWrapper } from "@/components/VisibilityWrapper"
+import { Link } from "@/components/ui/Link"
+import type { ResumeSchema } from "@/types/resumeTypes"
 
 const resume: ResumeSchema = resumeData
 
@@ -68,23 +69,14 @@ const socialIcons = {
                                     </div>
 
                                     <div class="flex flex-wrap gap-3 sm:gap-4">
-                                        <!--<a-->
-                                        <!--    href="/projects"-->
-                                        <!--    class="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 md:px-8 md:py-4 bg-neon-pink hover:bg-cyber-blue transition-all duration-300 rounded-lg sm:rounded-xl text-deep-purple font-semibold transform hover:scale-105 hover:shadow-lg hover:shadow-cyber-blue/20 text-sm sm:text-base text-center"-->
-                                        <!--&gt;-->
-                                        <!--    View Projects-->
-                                        <!--</a>-->
                                         <ResumeDownload client:load />
-                                        <a
-                                            href={`mailto:${resume.basics?.email}`}
-                                            class="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 md:px-8 md:py-4 border-2 border-neon-pink hover:border-cyber-blue text-neon-pink hover:text-cyber-blue transition-all duration-300 rounded-lg sm:rounded-xl font-semibold transform hover:scale-105 text-center text-sm sm:text-base"
-                                        >
-                                            Contact Me
-                                        </a>
+                                        <Link href={`mailto:${resume.basics?.email}`} variant="cyber" >
+                                            Contact me!
+                                        </Link>
                                     </div>
 
                                     <!-- Tech Stack -->
-                                    <div
+                                    <!--<div
                                         class="border-t border-cream/10 pt-6 sm:pt-8"
                                     >
                                         <h2
@@ -105,7 +97,7 @@ const socialIcons = {
                                         </div>
                                     </div>
 
-                                    <!-- Social Links -->
+                                     Social Links 
                                     {
                                         resumeData.basics.profiles.length >
                                             0 && (
@@ -132,12 +124,12 @@ const socialIcons = {
                                             </div>
                                         )
                                     }
-                                </div>
+                                </div>-->
 
-                                <!-- Right Column: Terminal -->
-                                <div class="relative hidden lg:block">
-                                    <Terminal />
-                                </div>
+                                <!--&lt;!&ndash; Right Column: Terminal &ndash;&gt;-->
+                                <!--<div class="relative hidden lg:block">-->
+                                <!--    <Terminal />-->
+                                <!--</div>-->
                             </div>
                         </div>
                     </div>
@@ -147,21 +139,6 @@ const socialIcons = {
     </VisibilityWrapper>
 
     <style>
-        @keyframes borderAnimation {
-            0%,
-            100% {
-                transform: translateX(-100%);
-            }
-            50% {
-                transform: translateX(100%);
-            }
-        }
-
-        .animate-border {
-            height: 2px;
-            animation: borderAnimation 4s linear infinite;
-        }
-
         .invisible {
             visibility: hidden;
             opacity: 0;

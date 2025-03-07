@@ -9,9 +9,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-neon-pink text-cream shadow-[0_0_10px_rgba(255,107,151,0.3)] hover:bg-neon-pink/90 hover:shadow-[0_0_15px_rgba(255,107,151,0.5)]",
-        cyber: "bg-cyber-blue text-deep-purple shadow-[0_0_10px_rgba(0,245,255,0.3)] hover:bg-cyber-blue/90 hover:shadow-[0_0_15px_rgba(0,245,255,0.5)]",
-        outline: "border border-neon-pink/20 bg-deep-purple/50 backdrop-blur-sm hover:border-cyber-blue/50 hover:text-cyber-blue",
+        default:
+          "bg-neon-pink text-cream shadow-[0_0_10px_rgba(255,107,151,0.3)] hover:bg-neon-pink/90 hover:shadow-[0_0_15px_rgba(255,107,151,0.5)]",
+        cyber:
+          "bg-cyber-blue text-deep-purple shadow-[0_0_10px_rgba(0,245,255,0.3)] hover:bg-cyber-blue/90 hover:shadow-[0_0_15px_rgba(0,245,255,0.5)]",
+        outline:
+          "border border-neon-pink/20 bg-deep-purple/50 backdrop-blur-sm hover:border-cyber-blue/50 hover:text-cyber-blue",
         ghost: "text-cream hover:bg-deep-purple/50 hover:text-cyber-blue",
         link: "text-cyber-blue underline-offset-4 hover:text-neon-pink hover:underline",
       },
@@ -33,27 +36,16 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
-  href?: string
-  external?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, href, external, ...props }, ref) => {
-    const Comp = asChild ? Slot : href ? 'a' : 'button'
-    
-    const linkProps = href ? {
-      href,
-      ...(external && {
-        target: "_blank",
-        rel: "noopener noreferrer"
-      })
-    } : {}
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
 
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
-        {...linkProps}
         {...props}
       />
     )
