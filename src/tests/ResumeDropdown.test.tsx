@@ -8,11 +8,21 @@ vi.mock("@/components/ui/Dropdown", () => {
     DropdownMenu: ({ children }) => <div data-testid="dropdown-menu">{children}</div>,
     DropdownMenuTrigger: ({ children }) => <div data-testid="dropdown-trigger">{children}</div>,
     DropdownMenuContent: ({ children }) => <div data-testid="dropdown-content">{children}</div>,
-    DropdownMenuItem: ({ children, onSelect }) => (
-      <button data-testid="dropdown-item" onClick={onSelect}>
-        {children}
-      </button>
-    ),
+    DropdownMenuItem: ({ onSelect, children }) => {
+      // This implementation ensures the onSelect function is called when clicked
+      return (
+        <button 
+          data-testid="dropdown-item" 
+          onClick={() => {
+            if (typeof onSelect === 'function') {
+              onSelect();
+            }
+          }}
+        >
+          {children}
+        </button>
+      );
+    },
   }
 })
 
