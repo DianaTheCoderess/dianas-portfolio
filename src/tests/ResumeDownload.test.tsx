@@ -32,6 +32,32 @@ describe("ResumeDownload", () => {
   // Mock window.open and document.createElement
   const mockOpen = vi.fn()
   const mockClick = vi.fn()
+  const originalCreateElement = document.createElement
+  const mockAnchor = {
+    href: '',
+    download: '',
+    click: mockClick
+  }
+
+  beforeEach(() => {
+    // Setup window.open mock
+    window.open = mockOpen
+    
+    // Setup document.createElement mock
+    document.createElement = vi.fn((tagName) => {
+      if (tagName === 'a') {
+        return mockAnchor
+      }
+      return originalCreateElement.call(document, tagName)
+    })
+  })
+
+  afterEach(() => {
+    // Reset mocks
+    vi.resetAllMocks()
+    document.createElement = originalCreateElement
+    cleanup()
+  })
 
   it("renders download button", () => {
     render(<ResumeDownload />)
@@ -44,12 +70,10 @@ describe("ResumeDownload", () => {
     render(<ResumeDownload />)
 
     // Find and click the dropdown trigger
-
     const dropdownTrigger = screen.getByRole("button", { name: /resume/i })
     fireEvent.click(dropdownTrigger)
+    
     // Find and click the "Open in Browser" option
-
-    screen.debug()
     const viewOption = screen.getByText(/Open in Browser/i)
     fireEvent.click(viewOption)
 
@@ -70,6 +94,7 @@ describe("ResumeDownload", () => {
 
     // Verify the download link was created and clicked
     expect(document.createElement).toHaveBeenCalledWith("a")
+    expect(mockAnchor.download).toBeTruthy()
     expect(mockClick).toHaveBeenCalled()
   })
 })
