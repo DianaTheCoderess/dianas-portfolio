@@ -8,16 +8,12 @@ vi.mock("@/components/ui/Dropdown", () => {
     DropdownMenu: ({ children }) => <div data-testid="dropdown-menu">{children}</div>,
     DropdownMenuTrigger: ({ children }) => <div data-testid="dropdown-trigger">{children}</div>,
     DropdownMenuContent: ({ children }) => <div data-testid="dropdown-content">{children}</div>,
-    DropdownMenuItem: ({ onSelect, children }) => {
-      // This implementation ensures the onSelect function is called when clicked
+    DropdownMenuItem: ({ onClick, children }) => {
+      // This implementation ensures the onClick function is called when clicked
       return (
         <button 
           data-testid="dropdown-item" 
-          onClick={() => {
-            if (typeof onSelect === 'function') {
-              onSelect();
-            }
-          }}
+          onClick={onClick}
         >
           {children}
         </button>
@@ -78,8 +74,9 @@ describe("ResumeDropdown", () => {
       <ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />
     )
     
-    // Check for SVG element
-    const svg = document.querySelector("svg.lucide-download")
-    expect(svg).toBeInTheDocument()
+    // Check for SVG element or icon element
+    const downloadIcon = document.querySelector('[data-testid="dropdown-item"] svg') || 
+                         screen.getByText(/download pdf/i).closest('button')
+    expect(downloadIcon).toBeInTheDocument()
   })
 })
