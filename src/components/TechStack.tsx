@@ -46,10 +46,12 @@ export const TechStack: React.FC<TechStackProps> = ({ technologies }) => {
           return (
             <span
               key={`${tech}-${index}`}
-              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-deep-purple/50 rounded-lg sm:rounded-xl 
+              className="px-3 sm:px-4 h-8 sm:h-10 bg-deep-purple/50 rounded-lg sm:rounded-xl 
                      text-xs sm:text-sm text-cream/80 border border-neon-pink/20 
                      hover:border-cyber-blue/50 transition-all duration-300
-                     animate-fade-in"
+                     animate-fade-in flex items-center justify-center
+                     truncate"
+              title={tech}
             >
               {tech}
             </span>
