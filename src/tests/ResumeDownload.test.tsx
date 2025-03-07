@@ -66,30 +66,32 @@ describe("ResumeDownload", () => {
     expect(downloadButton).toBeInTheDocument()
   })
 
-  it("opens resume in browser when view option is clicked", () => {
+  it("opens resume in browser when view option is clicked", async () => {
     render(<ResumeDownload />)
 
     // Find and click the dropdown trigger
     const dropdownTrigger = screen.getByRole("button", { name: /resume/i })
     fireEvent.click(dropdownTrigger)
     
-    // Find and click the "Open in Browser" option
-    const viewOption = screen.getByText(/Open in Browser/i)
+    // Wait for dropdown to appear and find the view button by its role
+    // Using a more specific query that matches how the dropdown items are structured
+    const viewOption = await screen.findByRole("menuitem", { name: /view/i })
     fireEvent.click(viewOption)
 
     // Verify window.open was called
     expect(mockOpen).toHaveBeenCalled()
   })
 
-  it("downloads resume when download option is clicked", () => {
+  it("downloads resume when download option is clicked", async () => {
     render(<ResumeDownload />)
 
     // Find and click the dropdown trigger
     const dropdownTrigger = screen.getByRole("button", { name: /resume/i })
     fireEvent.click(dropdownTrigger)
 
-    // Find and click the "Download HTML" option
-    const downloadOption = screen.getByText(/download html/i)
+    // Wait for dropdown to appear and find the download button by its role
+    // Using a more specific query that matches how the dropdown items are structured
+    const downloadOption = await screen.findByRole("menuitem", { name: /download/i })
     fireEvent.click(downloadOption)
 
     // Verify the download link was created and clicked
