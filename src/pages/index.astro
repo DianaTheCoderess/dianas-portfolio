@@ -175,5 +175,15 @@ const socialIcons = {
                     0 0 40px #00f6ff;
             }
         }
+        
+        /* Prevent layout shift when dropdown opens */
+        html {
+            overflow-y: scroll;
+        }
+        
+        /* Ensure dropdown doesn't cause layout shift */
+        body {
+            padding-right: 0 !important;
+        }
     </style>
 </Layout>
