@@ -1,15 +1,6 @@
-import { Button } from "@/components/ui/Button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/Dropdown"
 import { render } from "jsonresume-theme-even"
 import resumeData from "../data/resume.json"
+import { ResumeDropdown } from "./ResumeDropdown"
 
 const ResumeDownload = () => {
   const generateResumeURL = async () => {
@@ -44,20 +35,7 @@ const ResumeDownload = () => {
     }
   }
 
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">Open</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+  return <ResumeDropdown onOpen={handleOpen} onDownload={handleDownload} />
 }
 
 export default ResumeDownload
