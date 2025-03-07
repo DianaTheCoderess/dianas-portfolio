@@ -2,9 +2,12 @@ import { LoadingLines } from "@/components/LoadingLines"
 import { ProgressBar } from "@/components/ProgressBar"
 import { LOADING_SCREEN } from "@/constants.ts"
 import { useLoadingState } from "@/hooks/useLoadingState"
+import { useSearchParams } from "react-router-dom"
 
 const LoadingScreen = () => {
-  const { progress, isVisible, visibleLines } = useLoadingState()
+  const [searchParams] = useSearchParams()
+  const skipLoading = searchParams.get('skip-loading')
+  const { progress, isVisible, visibleLines } = useLoadingState(skipLoading === 'true')
 
   if (!isVisible) return null
 

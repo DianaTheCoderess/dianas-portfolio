@@ -67,8 +67,13 @@ function loadingReducer(
   }
 }
 
-export function useLoadingState() {
-  const [state, dispatch] = useReducer(loadingReducer, initialState)
+export function useLoadingState(skipLoading = false) {
+  const [state, dispatch] = useReducer(loadingReducer, {
+    ...initialState,
+    isVisible: !skipLoading,
+    status: skipLoading ? "complete" : "initializing",
+    progress: skipLoading ? 100 : 0
+  })
 
   const scheduleAnimation = useCallback(
     (callback: () => void, delay: number) => {
