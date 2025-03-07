@@ -1,0 +1,88 @@
+---
+import Header from "../components/Header.astro"
+import resumeData from "../data/resume.json"
+import Layout from "../layouts/Layout.astro"
+import type { ResumeSchema } from "../types/resumeTypes"
+
+const resume: ResumeSchema = resumeData
+
+const projects = [
+  {
+    title: "Project 1",
+    description:
+      "A cyberpunk-themed web application showcasing modern web technologies.",
+    tags: ["React", "TypeScript", "Tailwind CSS"],
+    image: "https://picsum.photos/seed/1/800/600",
+  },
+  {
+    title: "Project 2",
+    description:
+      "An innovative solution for real-time data visualization and analysis.",
+    tags: ["Node.js", "WebGL", "Three.js"],
+    image: "https://picsum.photos/seed/2/800/600",
+  },
+  {
+    title: "Project 3",
+    description:
+      "A cutting-edge mobile-first application with seamless user experience.",
+    tags: ["Next.js", "GraphQL", "Prisma"],
+    image: "https://picsum.photos/seed/3/800/600",
+  },
+]
+---
+
+<Layout title={`Projects - ${resume.basics?.name}`}>
+  <Header />
+  
+  <main class="min-h-screen pt-24 sm:pt-32 md:pt-40">
+    <div class="px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="cyber-card rounded-xl sm:rounded-2xl p-2 sm:p-4 relative overflow-hidden group">
+          <!-- Animated border effect -->
+          <div class="absolute inset-0 bg-linear-to-r from-neon-pink via-cyber-blue to-neon-pink opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-border"></div>
+          
+          <div class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-8 md:p-12">
+            <div class="space-y-8">
+              <!-- Section Title -->
+              <div class="space-y-4">
+                <span class="inline-block text-cyber-blue font-mono text-xs sm:text-sm tracking-wider px-2 py-1">&lt; projects /&gt;</span>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-cream">My Projects</h1>
+              </div>
+
+              <!-- Projects Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projects.map((project) => (
+                  <div class="cyber-card p-1 rounded-lg group/card">
+                    <div class="relative bg-deep-purple/95 rounded-lg overflow-hidden">
+                      <div class="aspect-video relative overflow-hidden">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          class="w-full h-full object-cover transform group-hover/card:scale-110 transition-transform duration-500"
+                        />
+                        <div class="absolute inset-0 bg-linear-to-t from-deep-purple/90 to-transparent"></div>
+                      </div>
+
+                      <div class="p-4 space-y-3">
+                        <h3 class="text-xl font-bold text-neon-pink">{project.title}</h3>
+                        <p class="text-cream/80 text-sm">{project.description}</p>
+                        
+                        <div class="flex flex-wrap gap-2 mt-3">
+                          {project.tags.map((tag) => (
+                            <span class="inline-block px-2 py-1 text-xs bg-deep-purple/50 rounded-sm text-cyber-blue border border-cyber-blue/20">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

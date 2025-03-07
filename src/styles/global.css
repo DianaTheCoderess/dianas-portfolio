@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color Variables */
+  --color-warm-purple: #2a1b3d;
+  --color-neon-pink: #ff6b97;
+  --color-soft-purple: #9d4edd;
+  --color-cyber-blue: #00f5ff;
+  --color-warm-gold: #ffd700;
+  --color-cream: #fff5e4;
+  --color-deep-purple: #1a1025;
+
+  /* Font Variables */
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Animation Variables */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse: pulse 4s ease-in-out infinite;
+  --animate-fade-in: fadeIn 0.5s ease-in forwards;
+  --animate-blink: blink 1s step-end infinite;
+  --animate-border: border 4s linear infinite;
+
+  /* Keyframe Animations */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes border {
+    0%,
+    100% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes gridPulse {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+}
+
+@layer base {
+  /* Border compatibility styles for Tailwind v4 */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-deep-purple, currentColor);
+  }
+
+  /* Basic layout styles */
+  html {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Selection styles */
+  ::selection {
+    background: var(--color-neon-pink);
+    color: white;
+  }
+}
+
+@utility cyberpunk-overlay {
+  @apply fixed inset-0 pointer-events-none z-0;
+  background: linear-gradient(
+      90deg,
+      rgba(255, 107, 151, 0.05) 1px,
+      transparent 1px
+    )
+    0 0 / 20px 20px,
+    linear-gradient(0deg, rgba(0, 245, 255, 0.05) 1px, transparent 1px) 0 0 /
+    20px 20px;
+  animation: gridPulse 4s ease-in-out infinite;
+}
+
+@utility cyber-card {
+  @apply bg-deep-purple/80 backdrop-blur-md border border-neon-pink/20;
+  box-shadow: 0 0 10px rgba(255, 107, 151, 0.2), inset 0 0 20px
+    rgba(0, 245, 255, 0.1);
+}
+
+@utility mobile-menu {
+  @apply transition-all duration-300 ease-in-out origin-top opacity-100;
+
+  &.hidden {
+    @apply scale-y-0 opacity-0 pointer-events-none;
+  }
+}
+
+@utility custom-scrollbar {
+  @apply w-3 from-neon-pink to-cyber-blue;
+
+  &::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-deep-purple/50 rounded-sm;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-neon-pink to-cyber-blue rounded-sm;
+
+    &:hover {
+      @apply from-cyber-blue to-neon-pink;
+    }
+  }
+}
+
+@utility animate-border {
+  height: 2px;
+  animation: var(--animate-border);
+}

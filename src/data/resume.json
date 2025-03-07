@@ -1,0 +1,328 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/refs/tags/v1.2.1/schema.json",
+  "basics": {
+    "name": "Diana Bendziula",
+    "label": "Software Engineer & DevOps",
+    "image": "",
+    "email": "diana@bendziula.com",
+    "phone": "",
+    "url": "https://diana.bendziula.com/",
+    "summary": "",
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "DianaTheCoderess",
+        "url": "https://github.com/DianaTheCoderess/"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "diana-bendziula-660429142",
+        "url": "https://www.linkedin.com/in/diana-bendziula-660429142/"
+      }
+    ],
+    "location": {}
+  },
+  "work": [
+    {
+      "name": "PARIMEO GmbH",
+      "location": "Jena, Germany",
+      "description": "",
+      "summary": " ",
+      "position": "Software Engineer / DevOps / SysAdmin",
+      "website": "https://parimeo.de/",
+      "startDate": "2019-08",
+      "endDate": "2025-02"
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "Staatliches Berufsschulzentrum Hermsdorf",
+      "area": "Fachinformatik für Anwendungsentwicklung",
+      "studyType": "",
+      "startDate": "2019-09",
+      "endDate": "2022-05"
+    },
+    {
+      "institution": "Bauhaus-Universität Weimar",
+      "area": "Medieninformatik",
+      "studyType": "",
+      "startDate": "2018-09",
+      "endDate": "2019-07"
+    },
+    {
+      "institution": "Ernst-Abbe-Hochschule Jena",
+      "area": "Medizintechnik",
+      "studyType": "",
+      "startDate": "2017-09",
+      "endDate": "2018-07"
+    },
+    {
+      "institution": "Lietz Internat Schloss Bieberstein",
+      "area": "Gymnasium",
+      "studyType": "",
+      "startDate": "2014",
+      "endDate": "2016"
+    }
+  ],
+  "awards": [],
+  "certificates": [
+    {
+      "name": "CMCA - CoreMedia Certified Administrator",
+      "date": "2023-03",
+      "issuer": "CoreMedia",
+      "url": "https://enablement.coremedia.com/"
+    }
+  ],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Programming",
+      "keywords": [
+        "Java",
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Go",
+        "Kotlin",
+        "Rust",
+        "C#",
+        "C++"
+      ]
+    },
+    {
+      "name": "Frontend Development",
+      "keywords": [
+        "React",
+        "Angular",
+        "Next.js",
+        "Tailwind",
+        "Node.js",
+        "HTML",
+        "CSS",
+        "SASS"
+      ]
+    },
+    {
+      "name": "Databases",
+      "keywords": [
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "SQLite",
+        "Redis",
+        "InfluxDB"
+      ]
+    },
+    {
+      "name": "CI/CD",
+      "keywords": [
+        "Jenkins",
+        "Travis CI",
+        "CircleCI",
+        "GitLab CI/CD",
+        "DroneCI",
+        "GitHub Actions",
+        "ArgoCD",
+        "Flux CD"
+      ]
+    },
+    {
+      "name": "Testing",
+      "keywords": ["Jest", "JUnit", "Mockito", "Enzyme", "Cypress"]
+    },
+    {
+      "name": "Unix/Linux Administration"
+    },
+    {
+      "name": "Frameworks",
+      "keywords": [
+        "SpringBoot",
+        "NextJS",
+        "Astro",
+        "Remix",
+        "Django",
+        "FastAPI",
+        "Hibernate"
+      ]
+    },
+    {
+      "name": "Cloud Computing Services",
+      "keywords": ["AWS", "GCP", "Azure", "Hetzner", "OpenStack", "Cloudstack"]
+    },
+    {
+      "name": "IaC",
+      "keywords": ["Terraform", "Pulumi", "Ansible", "SaltStack"]
+    },
+    {
+      "name": "Version Control",
+      "keywords": ["GitHub", "Gitlab", "Bitbucket", "Gitea"]
+    },
+    {
+      "name": "Network Administration"
+    },
+    {
+      "name": "Containers & Virtualization",
+      "keywords": [
+        "Docker",
+        "Kubernetes",
+        "Vagrant",
+        "KVM",
+        "Openshift",
+        "Proxmox",
+        "XCP-ng"
+      ]
+    },
+    {
+      "name": "Monitoring",
+      "keywords": ["Prometheus", "Grafana", "CheckMK"]
+    },
+    {
+      "name": "Scripting",
+      "keywords": ["Shell", "Bash", "Fish"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "German",
+      "fluency": "Native"
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    },
+    {
+      "language": "French",
+      "fluency": "Basic"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Coding and Programming",
+      "keywords": [
+        "Full Stack Development",
+        "DevOps",
+        "Cybersecurity",
+        "Cloud Computing",
+        "AI and Machine Learning",
+        "Data Analysis",
+        "Docker and Kubernetes"
+      ]
+    },
+    {
+      "name": "Music",
+      "keywords": [
+        "Guitar",
+        "Piano",
+        "Singing",
+        "Songwriting",
+        "Music Production",
+        "Live Performance"
+      ]
+    },
+    {
+      "name": "DIY Projects/Maker Culture",
+      "keywords": [
+        "SmartHome",
+        "Home Automation",
+        "Woodworking",
+        "Home Improvement",
+        "Crafting",
+        "RaspberryPi",
+        "Arduino Projects",
+        "Soldering",
+        "IoT"
+      ]
+    },
+    {
+      "name": "HomeLab",
+      "keywords": [
+        "Server",
+        "Kubernetes",
+        "RaspberryPi",
+        "SmartHome",
+        "Proxmox",
+        "Virtual Machines",
+        "UniFi",
+        "Network Administration",
+        "Hardware Repair & Upgrade",
+        "CI/CD",
+        "Task Automation",
+        "Self-Hosting",
+        "Linux System Administration",
+        "Server Management"
+      ]
+    },
+    {
+      "name": "Gaming",
+      "keywords": ["PC Gaming", "XBOX", "Table-Top RPGs"]
+    },
+    {
+      "name": "Hiking and Outdoor Activities"
+    },
+    {
+      "name": "Cooking / Baking"
+    }
+  ],
+  "references": [],
+  "projects": [
+    {
+      "name": "Bundesdruckerei GmbH - Bundesportal",
+      "roles": ["DevOps", "Developer"],
+      "startDate": "2023-05",
+      "endDate": "2024-12",
+      "url": "https://verwaltung.bund.de/",
+      "keywords": [
+        "Openshift",
+        "SpringBoot",
+        "ELK Stack",
+        "Grafana",
+        "Prometheus",
+        "Keycloak"
+      ]
+    },
+    {
+      "name": "PVH Corp. - Calvin Klein",
+      "roles": ["DevOps", "CMS Development"],
+      "startDate": "2022-07",
+      "endDate": "2023-05",
+      "entity": "Calvin Klein & Tommy Hilfiger",
+      "url": "https://www.calvinklein.de/",
+      "keywords": [
+        "Kubernetes",
+        "Dynatrace",
+        "SpringBoot",
+        "CoreMedia CMS",
+        "ELK Stack"
+      ]
+    },
+    {
+      "name": "IDA Innovations- und Digitalagentur GmbH",
+      "description": "KIKA Mediathek Relaunch",
+      "startDate": "2021-06",
+      "endDate": "2022-07",
+      "url": "https://www.kika.de/"
+    },
+    {
+      "name": "AUSY Technologies/Randstad Digital - Telefónica/O2",
+      "description": "",
+      "startDate": "2020-05",
+      "endDate": "2021-05"
+    },
+    {
+      "name": "PARIMEO GmbH"
+    }
+  ],
+  "meta": {
+    "theme": "jsonresume-theme-even",
+    "themeOptions": {
+      "colors": {
+        "background": ["#1A1025", "#1A1025"],
+        "dimmed": ["#9D4EDD", "#9D4EDD"],
+        "primary": ["#FF6B97", "#FF6B97"],
+        "secondary": ["#FFF5E4", "#FFF5E4"],
+        "accent": ["#00F5FF", "#00F5FF"]
+      }
+    }
+  }
+}

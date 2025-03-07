@@ -1,0 +1,71 @@
+---
+import Header from "../components/Header.astro"
+import resumeData from "../data/resume.json"
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout title={`About - ${resumeData.basics.name}`}>
+  <Header />
+  
+  <main class="min-h-screen pt-24 sm:pt-32 md:pt-40">
+    <div class="px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="cyber-card rounded-xl sm:rounded-2xl p-2 sm:p-4 relative overflow-hidden group">
+          <!-- Animated border effect -->
+          <div class="absolute inset-0 bg-linear-to-r from-neon-pink via-cyber-blue to-neon-pink opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <div class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-8 md:p-12">
+            <div class="space-y-8">
+              <!-- Section Title -->
+              <div class="space-y-4">
+                <span class="inline-block text-cyber-blue font-mono text-xs sm:text-sm tracking-wider px-2 py-1">&lt; about /&gt;</span>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-cream">About Me</h1>
+              </div>
+
+              <!-- Bio Section -->
+              <div class="space-y-6">
+                <div class="max-w-none">
+                  <p class="text-lg text-cream/90 leading-relaxed">
+                    {resumeData.basics.summary}
+                  </p>
+                  
+                  <div class="mt-8 space-y-4">
+                    <h2 class="text-2xl font-bold text-neon-pink">What I Do</h2>
+                    <p class="text-cream/90">
+                      As a {resumeData.basics.label}, I specialize in creating innovative digital solutions 
+                      that combine cutting-edge technology with intuitive user experiences. My approach 
+                      focuses on writing clean, maintainable code while ensuring optimal performance 
+                      and scalability.
+                    </p>
+                  </div>
+
+                  <!-- Contact Info -->
+                  <div class="mt-8 space-y-4">
+                    <h2 class="text-2xl font-bold text-neon-pink">Let's Connect</h2>
+                    <div class="space-y-3">
+                      <p class="text-cream/90">
+                        I'm always interested in hearing about new projects and opportunities.
+                      </p>
+                      <div class="flex gap-4">
+                        {resumeData.basics.profiles.map((profile) => (
+                          <a
+                            href={profile.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-deep-purple/50 rounded-lg text-cream/80 border border-neon-pink/20 hover:border-cyber-blue/50 hover:text-cyber-blue transition-all duration-300"
+                          >
+                            {profile.network}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
