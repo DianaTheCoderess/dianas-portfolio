@@ -5,14 +5,34 @@ import Terminal, {
 } from "@/components/Terminal"
 import type React from "react"
 import { useState, useEffect } from "react"
+import commandRegistry from "@/lib/terminal/CommandRegistry"
+import { registerBuiltInCommands } from "@/lib/terminal/BuiltInCommands"
 
-import "@/components/terminal.css"
+import "@/styles/global.css"
 
+// Register the theme command directly in this component since it needs access to state
 const TerminalController = () => {
   const [colorMode, setColorMode] = useState(ColorMode.Dark)
   const [lineData, setLineData] = useState<React.ReactNode[]>([])
 
+  // Register commands and initialize terminal
   useEffect(() => {
+    // Register all built-in commands
+    registerBuiltInCommands()
+
+    // Register the theme command (needs access to component state)
+    commandRegistry.register({
+      name: "theme",
+      description: "Toggle light/dark mode",
+      execute: () => {
+        const newMode = colorMode === ColorMode.Dark ? ColorMode.Light : ColorMode.Dark
+        setColorMode(newMode)
+        return {
+          output: `Switched to ${colorMode === ColorMode.Dark ? "light" : "dark"} mode`,
+        }
+      },
+    })
+
     // Initialize with a typing effect
     const initialMessages = [
       "Welcome to Diana's NetPalace Terminal",
@@ -37,155 +57,44 @@ const TerminalController = () => {
         ])
       }, timeout)
     })
-  }, [])
+  }, [colorMode])
 
   function onInput(input: string) {
-    const trimmedInput = input.trim().toLowerCase()
+    const trimmedInput = input.trim()
+    if (!trimmedInput) return // Do nothing for empty input
+
+    // Add the input to the terminal
     let ld = [...lineData]
     ld.push(<TerminalInput key={`input-${Date.now()}`}>{input}</TerminalInput>)
 
-    if (trimmedInput === "") {
-      // Do nothing for empty input
-    } else if (trimmedInput === "help") {
-      ld.push(
-        <TerminalOutput key={`output-help-${Date.now()}`}>
-          <span style={{ color: "#ff3864" }}>AVAILABLE COMMANDS:</span>
-        </TerminalOutput>,
-      )
-      ld.push(
-        <TerminalOutput key={"output-help-1"}>
-          about - Learn about Diana
-        </TerminalOutput>,
-      )
-      ld.push(
-        <TerminalOutput key={"output-help-2"}>
-          skills - View technical skills
-        </TerminalOutput>,
-      )
-      ld.push(
-        <TerminalOutput key={"output-help-3"}>
-          projects - Browse portfolio projects
-        </TerminalOutput>,
-      )
-      ld.push(
-        <TerminalOutput key={"output-help-4"}>
-          contact - Get contact information
-        </TerminalOutput>,
-      )
-      ld.push(
-        <TerminalOutput key={"output-help-5"}>
-          github - Visit GitHub profile
-        </TerminalOutput>,
-      )
-      ld.push(
-        <TerminalOutput key={"output-help-6"}>
-          linkedin - Visit LinkedIn profile
-        </TerminalOutput>,
-      )
-      ld.push(
-        <TerminalOutput key={"output-help-7"}>
-          theme - Toggle light/dark mode
-        </TerminalOutput>,
-      )
-      ld.push(
-        <TerminalOutput key={"output-help-8"}>
-          clear - Clear terminal
-        </TerminalOutput>,
-      )
-    } else if (trimmedInput === "about") {
-      ld.push(
-        <TerminalOutput key={`output-about-${Date.now()}`}>
-          <span style={{ color: "#ff3864" }}>ABOUT DIANA:</span>
-          <br />
-          Full-stack developer specializing in modern web technologies.
-          <br />
-          Passionate about creating elegant, efficient, and user-friendly
-          applications.
-          <br />
-          Based in Berlin, Germany.
-        </TerminalOutput>,
-      )
-    } else if (trimmedInput === "skills") {
-      ld.push(
-        <TerminalOutput key={`output-skills-${Date.now()}`}>
-          <span style={{ color: "#ff3864" }}>TECHNICAL SKILLS:</span>
-          <br />
-          Frontend: React, TypeScript, Next.js, Astro
-          <br />
-          Backend: Node.js, Express, Python, Django
-          <br />
-          Database: PostgreSQL, MongoDB, Redis
-          <br />
-          DevOps: Docker, AWS, CI/CD, Git
-        </TerminalOutput>,
-      )
-    } else if (trimmedInput === "projects") {
-      ld.push(
-        <TerminalOutput key={`output-projects-${Date.now()}`}>
-          <span style={{ color: "#ff3864" }}>FEATURED PROJECTS:</span>
-          <br />
-          Use 'projects open [number]' to view details
-          <br />
-          1. CyberCommerce - E-commerce platform
-          <br />
-          2. NeuralNotes - AI-powered note-taking app
-          <br />
-          3. QuantumDash - Analytics dashboard
-        </TerminalOutput>,
-      )
-    } else if (trimmedInput.startsWith("projects open")) {
-      const projectNum = trimmedInput.split(" ")[2]
-      if (projectNum === "1") {
-        window.open("/projects#cybercommerce", "_blank")
-      } else if (projectNum === "2") {
-        window.open("/projects#neuralnotes", "_blank")
-      } else if (projectNum === "3") {
-        window.open("/projects#quantumdash", "_blank")
-      } else {
+    // Parse the command and arguments
+    const args = trimmedInput.split(" ")
+    const commandName = args[0].toLowerCase()
+    const commandArgs = args.slice(1)
+
+    // Check if the command exists in the registry
+    if (commandRegistry.hasCommand(commandName)) {
+      const command = commandRegistry.getCommand(commandName)!
+      const result = command.execute(commandArgs)
+
+      // Handle external actions (like opening URLs)
+      if (result.externalAction) {
+        result.externalAction()
+      }
+
+      // Handle clearing the terminal
+      if (result.shouldClear) {
+        ld = []
+      } else if (result.output) {
+        // Add the output to the terminal
         ld.push(
-          <TerminalOutput key={`output-error-${Date.now()}`}>
-            Invalid project number
-          </TerminalOutput>,
+          <TerminalOutput key={`output-${commandName}-${Date.now()}`}>
+            {result.output}
+          </TerminalOutput>
         )
       }
-    } else if (trimmedInput === "contact") {
-      ld.push(
-        <TerminalOutput key={`output-contact-${Date.now()}`}>
-          <span style={{ color: "#ff3864" }}>CONTACT INFO:</span>
-          <br />
-          Email: diana@example.com
-          <br />
-          LinkedIn: linkedin.com/in/diana-example
-          <br />
-          GitHub: github.com/diana-example
-        </TerminalOutput>,
-      )
-    } else if (trimmedInput === "github") {
-      window.open("https://github.com", "_blank")
-      ld.push(
-        <TerminalOutput key={`output-github-${Date.now()}`}>
-          Opening GitHub profile...
-        </TerminalOutput>,
-      )
-    } else if (trimmedInput === "linkedin") {
-      window.open("https://linkedin.com", "_blank")
-      ld.push(
-        <TerminalOutput key={`output-linkedin-${Date.now()}`}>
-          Opening LinkedIn profile...
-        </TerminalOutput>,
-      )
-    } else if (trimmedInput === "theme") {
-      setColorMode(
-        colorMode === ColorMode.Dark ? ColorMode.Light : ColorMode.Dark,
-      )
-      ld.push(
-        <TerminalOutput key={`output-theme-${Date.now()}`}>
-          Switched to {colorMode === ColorMode.Dark ? "light" : "dark"} mode
-        </TerminalOutput>,
-      )
-    } else if (trimmedInput === "clear") {
-      ld = []
     } else {
+      // Command not found
       ld.push(
         <TerminalOutput key={`output-error-${Date.now()}`}>
           <span style={{ color: "#ff3864" }}>
@@ -193,7 +102,7 @@ const TerminalController = () => {
           </span>
           <br />
           Type 'help' to see available commands.
-        </TerminalOutput>,
+        </TerminalOutput>
       )
     }
 
@@ -210,38 +119,6 @@ const TerminalController = () => {
       >
         {lineData}
       </Terminal>
-      <style jsx>{`
-        .terminal-container {
-          width: 100%;
-          height: 100%;
-          position: relative;
-        }
-        
-        .terminal-container::before {
-          content: "";
-          position: absolute;
-          top: -2px;
-          left: -2px;
-          right: -2px;
-          bottom: -2px;
-          background: linear-gradient(45deg, #ff3864, #00f6ff);
-          z-index: -1;
-          border-radius: 10px;
-          opacity: 0.7;
-          animation: borderGlow 4s infinite alternate;
-        }
-        
-        @keyframes borderGlow {
-          0% {
-            opacity: 0.5;
-            filter: blur(3px);
-          }
-          100% {
-            opacity: 0.8;
-            filter: blur(1px);
-          }
-        }
-      `}</style>
     </div>
   )
 }

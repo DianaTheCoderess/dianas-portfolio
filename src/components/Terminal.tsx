@@ -8,7 +8,6 @@ import React, {
 } from "react"
 import TerminalInput from "@/components/TerminalInput"
 import TerminalOutput from "@/components/TerminalOutput"
-import "@/styles/global.css"
 
 export enum ColorMode {
   Light = 0,
@@ -153,13 +152,16 @@ const Terminal = ({
   if (className) {
     classes.push(className)
   }
-  
+
   return (
-    <div className={classes.join(" ")} data-terminal-name={name || "CYBER-TERMINAL v1.0"}>
+    <div
+      className={classes.join(" ")}
+      data-terminal-name={name || "CYBER-TERMINAL v1.0"}
+    >
       <div className="react-terminal-window-buttons">
-        <button className="red-btn"></button>
-        <button className="yellow-btn"></button>
-        <button className="green-btn"></button>
+        <button className="red-btn" type="button" />
+        <button className="yellow-btn" type="button" />
+        <button className="green-btn" type="button" />
       </div>
       <div className="react-terminal" style={{ height }}>
         {children}
