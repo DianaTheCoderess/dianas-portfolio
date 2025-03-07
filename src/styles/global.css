@@ -98,29 +98,14 @@
   /* Basic layout styles */
   html {
     height: 100%;
-    overflow-y: scroll; /* Always show scrollbar */
+    overflow-y: auto;
     overflow-x: hidden;
-    margin-right: 0 !important; /* Prevent layout shift */
-    width: 100%;
-    scrollbar-width: thin; /* For Firefox */
   }
 
   body {
     min-height: 100%;
     overflow-x: hidden;
-    padding-right: 0 !important; /* Prevent padding being added by libraries */
     width: 100%;
-    position: relative;
-  }
-
-  /* Prevent layout shift from modals/dropdowns */
-  :root {
-    --scrollbar-width: calc(100vw - 100%);
-  }
-
-  /* Apply padding to compensate for scrollbar */
-  .compensate-for-scrollbar {
-    margin-right: var(--scrollbar-width) !important;
   }
 
   main {
@@ -196,11 +181,4 @@
       var(--color-cyber-blue);
     transform: scale(1.02);
   }
-}
-
-/* Fix for dropdown layout shift */
-.dropdown-menu-content {
-  position: fixed !important;
-  transform: none !important;
-  margin-right: 0 !important;
 }

@@ -1,7 +1,7 @@
 import { Button, type ButtonProps } from "./Button"
 import type React from "react"
 
-export interface LinkProps extends ButtonProps {
+interface LinkProps extends ButtonProps {
   href: string
   children: React.ReactNode
 }
@@ -13,5 +13,7 @@ const Link: React.FC<LinkProps> = ({ href, children, ...props }) => {
     </Button>
   )
 }
+Link.displayName = "Link"
 
+export type { LinkProps }
 export { Link }

@@ -3,44 +3,50 @@ import { Image } from "astro:assets"
 import underConstruction from "@/assets/under-construction.png"
 import Header from "@/components/Header.astro"
 import Layout from "@/layouts/Layout.astro"
+import Footer from "@/components/Footer.astro"
 ---
 
-<Layout title={`Under Construction`}>
-  <Header />
-  
-  <main class="min-h-screen pt-24 sm:pt-32 md:pt-40">
-    <div class="px-4 sm:px-6">
-      <div class="max-w-7xl mx-auto">
-        <div class="cyber-card rounded-xl sm:rounded-2xl p-2 sm:p-4 relative overflow-hidden group">
-          <div class="absolute inset-0 bg-linear-to-r from-neon-pink via-cyber-blue to-neon-pink opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          
-          <div class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-8 md:p-12">
-            <div class="space-y-8 text-center">
-              <div class="space-y-4">
-                <span class="inline-block text-cyber-blue font-mono text-xs sm:text-sm tracking-wider px-2 py-1">&lt; 404 /&gt;</span>
-                <div class="relative w-48 h-48 mx-auto mb-6">
-                  <Image src={underConstruction}
-                         alt="cyber_developer"
-                         class="w-full h-full object-cover rounded-full border-2 border-neon-pink/50 glow-image" />
-                  <!--<div class="absolute inset-0 rounded-full bg-gradient-to-r from-neon-pink/20 via-cyber-blue/20 to-neon-pink/20 animate-pulse"></div>-->
-                </div>
-            
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-neon-pink">Under Construction</h1>
-                <p class="text-cream/80 text-lg">This page is currently being built. Please check back later!</p>
-              </div>
+<Layout title={"Under Construction"}>
+  <div class="min-h-screen flex flex-col">
+      <Header/>
 
-              <div class="flex justify-center">
-                <a 
-                  href="/"
-                  class="inline-flex items-center gap-2 px-6 py-3 bg-deep-purple/50 rounded-lg text-cream/80 border border-neon-pink/20 hover:border-cyber-blue/50 hover:text-cyber-blue transition-all duration-300"
-                >
-                  Return Home
-                </a>
+      <main class="flex-1 pt-24 sm:pt-32 md:pt-40">
+          <div class="px-4 sm:px-6">
+              <div class="max-w-7xl mx-auto">
+                  <div class="cyber-card rounded-xl sm:rounded-2xl p-2 sm:p-4 relative overflow-hidden group">
+                      <div class="absolute inset-0 bg-linear-to-r from-neon-pink via-cyber-blue to-neon-pink opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                      <div class="relative bg-deep-purple/95 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-8 md:p-12">
+                          <div class="space-y-8 text-center">
+                              <div class="space-y-4">
+                                  <span class="inline-block text-cyber-blue font-mono text-xs sm:text-sm tracking-wider px-2 py-1">&lt; 404 /&gt;</span>
+                                  <div class="relative w-48 h-48 mx-auto mb-6">
+                                      <Image src={underConstruction}
+                                             alt="cyber_developer"
+                                             class="w-full h-full object-cover rounded-full border-2 border-neon-pink/50 glow-image"/>
+                                      <!--<div class="absolute inset-0 rounded-full bg-gradient-to-r from-neon-pink/20 via-cyber-blue/20 to-neon-pink/20 animate-pulse"></div>-->
+                                  </div>
+
+                                  <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-neon-pink">Under
+                                      Construction</h1>
+                                  <p class="text-cream/80 text-lg">This page is currently being built. Please check back
+                                      later!</p>
+                              </div>
+
+                              <div class="flex justify-center">
+                                  <a
+                                          href="/"
+                                          class="inline-flex items-center gap-2 px-6 py-3 bg-deep-purple/50 rounded-lg text-cream/80 border border-neon-pink/20 hover:border-cyber-blue/50 hover:text-cyber-blue transition-all duration-300"
+                                  >
+                                      Return Home
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </main>
+      </main>
+      <Footer/>
+  </div>
 </Layout>

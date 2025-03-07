@@ -1,9 +1,13 @@
-import LoadingScreen from "@/components/LoadingScreen"
+import { LoadingScreen } from "@/components/LoadingScreen"
 import { act, render, screen } from "@testing-library/react"
 import { describe, expect, it, vi } from "vitest"
 
 // Mock the loading messages
-vi.mock("@/data/loading_messages.txt", () => "initiating_portfolio.sh\nloading dependencies\nconfiguring environment");
+vi.mock(
+  "@/data/loading_messages.txt",
+  () =>
+    "initiating_portfolio.sh\nloading dependencies\nconfiguring environment",
+)
 
 describe("LoadingScreen", () => {
   it("renders initially", () => {

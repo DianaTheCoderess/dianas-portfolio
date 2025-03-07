@@ -2,7 +2,7 @@ interface ProgressBarProps {
   progress: number
 }
 
-export const ProgressBar = ({ progress }: ProgressBarProps) => {
+const ProgressBar = ({ progress }: ProgressBarProps) => {
   const scaleX = Math.min(progress, 100) / 100
 
   return (
@@ -40,3 +40,6 @@ export const ProgressBar = ({ progress }: ProgressBarProps) => {
     </div>
   )
 }
+
+export type { ProgressBarProps }
+export { ProgressBar }

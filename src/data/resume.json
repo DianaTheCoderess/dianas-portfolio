@@ -7,7 +7,7 @@
     "email": "diana@bendziula.com",
     "phone": "",
     "url": "https://diana.bendziula.com/",
-    "summary": "",
+    "summary": "I'm a Software- and DevOps Engineer, fluent in various programming languages and frameworks. Wading my way through different databases and cloud systems comes naturally to me. There's something uniquely satisfying about the organization that container and virtualization technologies and CI/CD practices bring. I've been forging my skills with Infrastructure as Code (IaC) practices and version control systems, complemented by scripting. My journey has been marked by intriguing projects that have served as stepping-stones towards growth. I have been cultivating a growing homelab over the years - tinkering with servers, clusters, networking, firewalls, you name it — illustrating my deep-rooted interest in the maker culture and a curiosity that spans across all things tech, including programming, software, hardware, homelabs, self-hosting, open-source software, AI, and home automation. Fluent in English, I effortlessly integrate into diverse teams. If there's one thing that stays constant, it's my appetite for learning and problem-solving, coupled with an undying interest in the latest tech trends and developments.",
     "profiles": [
       {
         "network": "GitHub",
@@ -20,7 +20,13 @@
         "url": "https://www.linkedin.com/in/diana-bendziula-660429142/"
       }
     ],
-    "location": {}
+    "location": {
+      ***REMOVED***
+      "city": "Jena",
+      "postalCode": "07743",
+      "region": "Thuringia",
+      "countryCode": "DE"
+    }
   },
   "work": [
     {
@@ -100,7 +106,10 @@
         "Node.js",
         "HTML",
         "CSS",
-        "SASS"
+        "SASS",
+        "Figma",
+        "Prisma",
+        "Drizzle"
       ]
     },
     {
@@ -111,7 +120,8 @@
         "MongoDB",
         "SQLite",
         "Redis",
-        "InfluxDB"
+        "InfluxDB",
+        "Kafka"
       ]
     },
     {
@@ -129,7 +139,15 @@
     },
     {
       "name": "Testing",
-      "keywords": ["Jest", "JUnit", "Mockito", "Enzyme", "Cypress"]
+      "keywords": [
+        "Vitest",
+        "Jest",
+        "JUnit",
+        "Testcontainers",
+        "Mockito",
+        "Enzyme",
+        "Cypress"
+      ]
     },
     {
       "name": "Unix/Linux Administration"
@@ -148,7 +166,16 @@
     },
     {
       "name": "Cloud Computing Services",
-      "keywords": ["AWS", "GCP", "Azure", "Hetzner", "OpenStack", "Cloudstack"]
+      "keywords": [
+        "AWS",
+        "GCP",
+        "Azure",
+        "Vercel",
+        "Netlify",
+        "Hetzner",
+        "OpenStack",
+        "Cloudstack"
+      ]
     },
     {
       "name": "IaC",
@@ -180,6 +207,10 @@
     {
       "name": "Scripting",
       "keywords": ["Shell", "Bash", "Fish"]
+    },
+    {
+      "name": "Methods",
+      "keywords": ["OOP", "DevOps", "DevSec", "Web Architecture"]
     }
   ],
   "languages": [

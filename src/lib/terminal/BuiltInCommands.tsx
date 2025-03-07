@@ -1,7 +1,9 @@
 import type React from "react"
-import commandRegistry, { type TerminalCommand } from "./CommandRegistry"
+import {
+  commandRegistry,
+  type TerminalCommand,
+} from "@/lib/terminal/CommandRegistry"
 
-// Helper function to create styled output
 const createStyledOutput = (
   title: string,
   content: React.ReactNode,
@@ -12,7 +14,6 @@ const createStyledOutput = (
   </>
 )
 
-// Register the help command
 const helpCommand: TerminalCommand = {
   name: "help",
   description: "Display available commands",
@@ -30,7 +31,6 @@ const helpCommand: TerminalCommand = {
   },
 }
 
-// Register the about command
 const aboutCommand: TerminalCommand = {
   name: "about",
   description: "Learn about Diana",
@@ -52,7 +52,6 @@ const aboutCommand: TerminalCommand = {
   },
 }
 
-// Register the skills command
 const skillsCommand: TerminalCommand = {
   name: "skills",
   description: "View technical skills",
@@ -75,7 +74,6 @@ const skillsCommand: TerminalCommand = {
   },
 }
 
-// Register the projects command
 const projectsCommand: TerminalCommand = {
   name: "projects",
   description: "Browse portfolio projects",
@@ -124,7 +122,6 @@ const projectsCommand: TerminalCommand = {
   },
 }
 
-// Register the contact command
 const contactCommand: TerminalCommand = {
   name: "contact",
   description: "Get contact information",
@@ -145,7 +142,6 @@ const contactCommand: TerminalCommand = {
   },
 }
 
-// Register the github command
 const githubCommand: TerminalCommand = {
   name: "github",
   description: "Visit GitHub profile",
@@ -157,7 +153,6 @@ const githubCommand: TerminalCommand = {
   },
 }
 
-// Register the linkedin command
 const linkedinCommand: TerminalCommand = {
   name: "linkedin",
   description: "Visit LinkedIn profile",
@@ -169,23 +164,20 @@ const linkedinCommand: TerminalCommand = {
   },
 }
 
-// Register the clear command
 const clearCommand: TerminalCommand = {
   name: "clear",
   description: "Clear terminal",
   execute: () => {
-    // Remove any matrix elements that might be in the DOM
     const matrixElements = document.querySelectorAll("[data-matrix-element]")
-    // biome-ignore lint/complexity/noForEach: <explanation>
-    matrixElements.forEach((el) => el.remove())
+    for (const el of matrixElements) {
+      el.remove()
+    }
 
-    // Make sure the input line is visible again
     const inputLine = document.querySelector(".react-terminal-active-input")
     if (inputLine) {
       inputLine.classList.remove("matrix-hidden")
     }
 
-    // Also restore the hidden input
     const hiddenInput = document.querySelector(
       ".terminal-hidden-input",
     ) as HTMLElement
@@ -200,12 +192,10 @@ const clearCommand: TerminalCommand = {
   },
 }
 
-// Matrix Neo command - simulates the famous scene from the movie with typewriter effect
 const neoCommand: TerminalCommand = {
   name: "neo",
   description: "Wake up, Neo...",
   execute: () => {
-    // We'll use setTimeout in the externalAction to create the typewriter effect
     return {
       output: "",
       shouldClear: true,
@@ -217,21 +207,16 @@ const neoCommand: TerminalCommand = {
           { text: "Knock, knock, Neo.", delay: 3000 },
         ]
 
-        // Add a custom attribute to mark matrix elements for easy cleanup
         const matrixAttr = "data-matrix-element"
 
-        // Get the terminal element to add messages to
         const terminalElement = document.querySelector(".react-terminal")
         if (!terminalElement) return
 
-        // Get the input line element (the one with the prompt)
         const inputLine = document.querySelector(".react-terminal-active-input")
         if (!inputLine) return
 
-        // Hide the input line during the animation
         inputLine.classList.add("matrix-hidden")
 
-        // Also hide any other input elements that might be present
         const hiddenInput = document.querySelector(
           ".terminal-hidden-input",
         ) as HTMLElement
@@ -239,23 +224,16 @@ const neoCommand: TerminalCommand = {
           hiddenInput.style.display = "none"
         }
 
-        // Function to create and append a message with typewriter effect
         const typeMessage = (
           message: { text: string; delay: number },
           index: number,
         ) => {
-          // Create a new line element that will appear before the input line
           const lineElement = document.createElement("div")
-          lineElement.className = "react-terminal-line matrix-line"
+          lineElement.className =
+            "react-terminal-input react-terminal-line matrix-line"
           lineElement.setAttribute(matrixAttr, "true")
           terminalElement.appendChild(lineElement)
 
-          // Add the prompt character
-          const promptSpan = document.createElement("span")
-          promptSpan.textContent = "$ "
-          lineElement.appendChild(promptSpan)
-
-          // Type the message character by character
           let charIndex = 0
           const typeChar = () => {
             if (charIndex < message.text.length) {
@@ -265,24 +243,19 @@ const neoCommand: TerminalCommand = {
               charIndex++
               setTimeout(typeChar, 100) // Adjust typing speed here
             } else if (index < messages.length - 1) {
-              // Schedule the next message, but first fade out the current message
               setTimeout(() => {
-                // Add fade-out class
                 lineElement.classList.add("matrix-fade-out")
 
-                // After fade out completes, remove the element and show next message
                 setTimeout(() => {
                   lineElement.remove()
                   typeMessage(messages[index + 1], index + 1)
-                }, 1000) // Fade out duration
+                }, 1000)
               }, message.delay)
             } else {
-              // This is the last message, show the input line again after a delay
               setTimeout(() => {
                 lineElement.remove()
                 inputLine.classList.remove("matrix-hidden")
 
-                // Also restore the hidden input
                 const hiddenInput = document.querySelector(
                   ".terminal-hidden-input",
                 ) as HTMLElement
@@ -293,19 +266,16 @@ const neoCommand: TerminalCommand = {
             }
           }
 
-          // Start typing
           typeChar()
         }
 
-        // Start with the first message
         setTimeout(() => typeMessage(messages[0], 0), 500)
       },
     }
   },
 }
 
-// Register all built-in commands
-export function registerBuiltInCommands(): void {
+const registerBuiltInCommands = (): void => {
   commandRegistry.register(helpCommand)
   commandRegistry.register(aboutCommand)
   commandRegistry.register(skillsCommand)
@@ -316,3 +286,5 @@ export function registerBuiltInCommands(): void {
   commandRegistry.register(clearCommand)
   commandRegistry.register(neoCommand)
 }
+
+export { registerBuiltInCommands }

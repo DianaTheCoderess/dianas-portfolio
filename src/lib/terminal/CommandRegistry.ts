@@ -1,7 +1,6 @@
-import type { Command } from "@/types/terminalTypes"
-import React from "react"
+import type React from "react"
 
-export interface TerminalCommand {
+interface TerminalCommand {
   name: string
   description: string
   execute: (args: string[]) => {
@@ -34,4 +33,5 @@ class CommandRegistry {
 // Create a singleton instance
 const commandRegistry = new CommandRegistry()
 
-export default commandRegistry
+export type { TerminalCommand }
+export { commandRegistry }

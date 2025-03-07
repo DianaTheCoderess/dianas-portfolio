@@ -23,10 +23,10 @@ const initialState: LoadingState = {
   status: "initializing",
 }
 
-function loadingReducer(
+const loadingReducer = (
   state: LoadingState,
   action: LoadingAction,
-): LoadingState {
+): LoadingState => {
   switch (action.type) {
     case "INITIALIZE_TEXTS":
       return {
@@ -67,7 +67,7 @@ function loadingReducer(
   }
 }
 
-export function useLoadingState() {
+const useLoadingState = () => {
   const [state, dispatch] = useReducer(loadingReducer, initialState)
 
   const scheduleAnimation = useCallback(
@@ -190,3 +190,5 @@ export function useLoadingState() {
 
   return state
 }
+
+export { useLoadingState, loadingReducer }

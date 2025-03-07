@@ -6,9 +6,7 @@ interface VisibilityWrapperProps {
   children: ReactNode
 }
 
-export const VisibilityWrapper: React.FC<VisibilityWrapperProps> = ({
-  children,
-}) => {
+const VisibilityWrapper: React.FC<VisibilityWrapperProps> = ({ children }) => {
   const { status, progress } = useLoadingState()
   const childrenArray = React.Children.toArray(children)
 
@@ -37,3 +35,7 @@ export const VisibilityWrapper: React.FC<VisibilityWrapperProps> = ({
     </>
   )
 }
+VisibilityWrapper.displayName = "VisibilityWrapper"
+
+export type { VisibilityWrapperProps }
+export { VisibilityWrapper }
