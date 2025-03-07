@@ -82,6 +82,18 @@
   }
 }
 
+.glow-image {
+  box-shadow: 0 0 15px theme('colors.neon-pink.DEFAULT'),
+              0 0 30px theme('colors.cyber-blue.DEFAULT');
+  transition: all 0.3s ease;
+}
+
+.glow-image:hover {
+  box-shadow: 0 0 25px theme('colors.neon-pink.DEFAULT'),
+              0 0 50px theme('colors.cyber-blue.DEFAULT');
+  transform: scale(1.02);
+}
+
 @layer base {
   /* Border compatibility styles for Tailwind v4 */
   *,
