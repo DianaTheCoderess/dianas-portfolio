@@ -1,10 +1,11 @@
 ---
+import AnimatedName from "@/components/AnimatedName"
 import Footer from "@/components/Footer.astro"
 import Header from "@/components/Header.astro"
 import LoadingScreen from "@/components/LoadingScreen"
 import ResumeDownload from "@/components/ResumeDownload"
 import { TechStack } from "@/components/TechStack"
-// import Terminal from "@/components/Terminal.astro"
+import TerminalController from "@/components/TerminalController"
 import { VisibilityWrapper } from "@/components/VisibilityWrapper"
 import { Link } from "@/components/ui/Link"
 import resumeData from "@/data/resume.json"
@@ -22,7 +23,7 @@ const socialIcons = {
 }
 ---
 
-<Layout title={`${resume.basics?.name} - Portfolio`}>
+<Layout title={"Diana's NetPalace"}>
         <VisibilityWrapper client:load>
             <div class="min-h-screen flex flex-col">
                 <Header/>
@@ -45,7 +46,7 @@ const socialIcons = {
                                                 <div class="inline-block">
                                             <span
                                               class="text-cyber-blue font-mono text-xs sm:text-sm tracking-wider"
-                                            >&lt; welcome /&gt;</span
+                                            >&lt; home /&gt;</span
                                             >
                                                 </div>
                                                 <h1
@@ -53,12 +54,11 @@ const socialIcons = {
                                                 >
                                                     Hello, I'm
                                                     <span
-                                                      class="text-neon-pink block mt-2"
-                                                    >{
-                                                        resume.basics?.name?.split(
+                                                      class="text-neon-pink block mt-2">
+                                                        <AnimatedName client:load name={resume.basics?.name?.split(
                                                           " ",
-                                                        )[0]
-                                                    }</span
+                                                        )[0]} className="inline-block cursor-default" />
+                                                    </span
                                                     >
                                                 </h1>
                                                 <p class="text-cyber-blue font-mono text-sm sm:text-base md:text-lg -mt-2 mb-4">
@@ -112,10 +112,10 @@ const socialIcons = {
                                             }
                                         </div>
 
-                                        <!--&lt;!&ndash; Right Column: Terminal &ndash;&gt;-->
-                                        <!--<div class="relative hidden lg:block">-->
-                                        <!--    <Terminal />-->
-                                        <!--</div>-->
+                                        <!-- Right Column: Terminal -->
+                                        <div class="relative hidden lg:block">
+                                            <TerminalController client:load />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
