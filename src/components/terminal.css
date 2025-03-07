@@ -1,17 +1,26 @@
+:root {
+  --terminal-dark-bg: rgba(20, 20, 35, 0.9);
+  --terminal-dark-color: #00f6ff;
+  --terminal-light-bg: rgba(220, 220, 235, 0.9);
+  --terminal-light-color: #ff00aa;
+  --terminal-accent: #ff3864;
+  --terminal-yellow: #ffde59;
+  --border-radius: 8px;
+  --glow-shadow: 0 0 15px;
+}
+
 .react-terminal-wrapper {
   width: 100%;
-  background: rgba(20, 20, 35, 0.9);
-  color: #00f6ff;
+  background: var(--terminal-dark-bg);
+  color: var(--terminal-dark-color);
   font-size: 16px;
-  font-family: "JetBrains Mono", Consolas, Menlo, Monaco, "Courier New", Courier,
-    monospace;
-  border-radius: 8px;
+  font-family: "JetBrains Mono", Consolas, Menlo, Monaco, "Courier New", Courier, monospace;
+  border-radius: var(--border-radius);
   padding: 60px 25px 25px;
   position: relative;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid rgba(0, 246, 255, 0.3);
-  box-shadow: 0 0 15px rgba(0, 246, 255, 0.2);
+  box-shadow: var(--glow-shadow) rgba(0, 246, 255, 0.2);
   backdrop-filter: blur(5px);
 }
 
@@ -39,10 +48,10 @@
 }
 
 .react-terminal-wrapper.react-terminal-light {
-  background: rgba(220, 220, 235, 0.9);
-  color: #ff00aa;
+  background: var(--terminal-light-bg);
+  color: var(--terminal-light-color);
   border: 1px solid rgba(255, 0, 170, 0.3);
-  box-shadow: 0 0 15px rgba(255, 0, 170, 0.2);
+  box-shadow: var(--glow-shadow) rgba(255, 0, 170, 0.2);
 }
 
 .react-terminal-window-buttons {
@@ -50,7 +59,6 @@
   top: 15px;
   left: 15px;
   display: flex;
-  flex-direction: row;
   gap: 10px;
 }
 
@@ -59,7 +67,7 @@
   height: 12px;
   border-radius: 50%;
   border: 0;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .react-terminal-window-buttons button.clickable {
@@ -67,18 +75,18 @@
 }
 
 .react-terminal-window-buttons button.red-btn {
-  background: #ff3864;
-  box-shadow: 0 0 5px #ff3864;
+  background: var(--terminal-accent);
+  box-shadow: 0 0 5px var(--terminal-accent);
 }
 
 .react-terminal-window-buttons button.yellow-btn {
-  background: #ffde59;
-  box-shadow: 0 0 5px #ffde59;
+  background: var(--terminal-yellow);
+  box-shadow: 0 0 5px var(--terminal-yellow);
 }
 
 .react-terminal-window-buttons button.green-btn {
-  background: #00f6ff;
-  box-shadow: 0 0 5px #00f6ff;
+  background: var(--terminal-dark-color);
+  box-shadow: 0 0 5px var(--terminal-dark-color);
 }
 
 .react-terminal-window-buttons button:hover {
@@ -114,14 +122,8 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .react-terminal-line:before {
@@ -139,7 +141,7 @@
 .react-terminal-input:before {
   margin-right: 0.75em;
   content: ">";
-  color: #ff3864;
+  color: var(--terminal-accent);
   text-shadow: 0 0 5px rgba(255, 56, 100, 0.5);
 }
 
@@ -153,41 +155,21 @@
   width: 0.5em;
   height: 1em;
   top: 0.225em;
-  background: #00f6ff;
-  box-shadow: 0 0 8px #00f6ff;
-  -webkit-animation: blink 1.2s infinite;
+  background: var(--terminal-dark-color);
+  box-shadow: 0 0 8px var(--terminal-dark-color);
   animation: blink 1.2s infinite;
 }
 
 .react-terminal-light:focus-within .react-terminal-active-input .cursor {
-  background: #ff00aa;
-  box-shadow: 0 0 8px #ff00aa;
+  background: var(--terminal-light-color);
+  box-shadow: 0 0 8px var(--terminal-light-color);
 }
 
 /* Cursor animation */
-
-@-webkit-keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.2;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.2;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
 }
 
 .terminal-hidden-input {
@@ -204,11 +186,8 @@
 .terminal-container::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #ff3864, #00f6ff);
+  inset: -2px;
+  background: linear-gradient(45deg, var(--terminal-accent), var(--terminal-dark-color));
   z-index: -1;
   border-radius: 10px;
   opacity: 0.7;
@@ -216,12 +195,6 @@
 }
 
 @keyframes borderGlow {
-  0% {
-    opacity: 0.5;
-    filter: blur(3px);
-  }
-  100% {
-    opacity: 0.8;
-    filter: blur(1px);
-  }
+  0% { opacity: 0.5; filter: blur(3px); }
+  100% { opacity: 0.8; filter: blur(1px); }
 }
