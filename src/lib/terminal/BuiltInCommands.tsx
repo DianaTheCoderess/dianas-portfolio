@@ -174,6 +174,22 @@ const clearCommand: TerminalCommand = {
   name: "clear",
   description: "Clear terminal",
   execute: () => {
+    // Remove any matrix elements that might be in the DOM
+    const matrixElements = document.querySelectorAll("[data-matrix-element]");
+    matrixElements.forEach(el => el.remove());
+    
+    // Make sure the input line is visible again
+    const inputLine = document.querySelector(".react-terminal-active-input");
+    if (inputLine) {
+      inputLine.classList.remove("matrix-hidden");
+    }
+    
+    // Also restore the hidden input
+    const hiddenInput = document.querySelector(".terminal-hidden-input") as HTMLElement;
+    if (hiddenInput) {
+      hiddenInput.style.display = "";
+    }
+    
     return {
       output: "",
       shouldClear: true,
@@ -198,6 +214,9 @@ const neoCommand: TerminalCommand = {
           { text: "Knock, knock, Neo.", color: "#ff3864", delay: 3000 }
         ];
         
+        // Add a custom attribute to mark matrix elements for easy cleanup
+        const matrixAttr = "data-matrix-element";
+        
         // Get the terminal element to add messages to
         const terminalElement = document.querySelector(".react-terminal");
         if (!terminalElement) return;
@@ -206,17 +225,27 @@ const neoCommand: TerminalCommand = {
         const inputLine = document.querySelector(".react-terminal-active-input");
         if (!inputLine) return;
         
+        // Hide the input line during the animation
+        inputLine.classList.add("matrix-hidden");
+        
+        // Also hide any other input elements that might be present
+        const hiddenInput = document.querySelector(".terminal-hidden-input") as HTMLElement;
+        if (hiddenInput) {
+          hiddenInput.style.display = "none";
+        }
+        
         // Function to create and append a message with typewriter effect
         const typeMessage = (message: { text: string, color: string }, index: number) => {
           // Create a new line element that will appear before the input line
           const lineElement = document.createElement("div");
           lineElement.className = "react-terminal-line matrix-line";
-          terminalElement.insertBefore(lineElement, inputLine);
+          lineElement.setAttribute(matrixAttr, "true");
+          terminalElement.appendChild(lineElement);
           
           // Add the prompt character
           const promptSpan = document.createElement("span");
           promptSpan.style.color = message.color;
-          promptSpan.textContent = "> ";
+          promptSpan.textContent = "$ ";
           lineElement.appendChild(promptSpan);
           
           // Type the message character by character
@@ -237,6 +266,17 @@ const neoCommand: TerminalCommand = {
                   lineElement.remove();
                   typeMessage(messages[index + 1], index + 1);
                 }, 1000); // Fade out duration
+              }, message.delay);
+            } else {
+              // This is the last message, show the input line again after a delay
+              setTimeout(() => {
+                inputLine.classList.remove("matrix-hidden");
+                
+                // Also restore the hidden input
+                const hiddenInput = document.querySelector(".terminal-hidden-input") as HTMLElement;
+                if (hiddenInput) {
+                  hiddenInput.style.display = "";
+                }
               }, message.delay);
             }
           };
