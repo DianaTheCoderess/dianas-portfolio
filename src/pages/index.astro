@@ -61,8 +61,8 @@ const socialIcons = {
                                                     }</span
                                                     >
                                                 </h1>
-                                                <p class="subtitle text-cyber-blue font-mono text-sm sm:text-base md:text-lg -mt-2 mb-4 cursor-default">
-                                                    your go-to code sorceress
+                                                <p class="text-cyber-blue font-mono text-sm sm:text-base md:text-lg -mt-2 mb-4">
+                                                    <span class="subtitle cursor-default inline-block">your go-to code sorceress</span>
                                                 </p>
                                                 <!--<p-->
                                                 <!--  class="text-sm sm:text-base md:text-lg text-cream/90 leading-relaxed max-w-xl"-->
@@ -144,6 +144,10 @@ const socialIcons = {
                 opacity 0.5s;
         }
         
+        .subtitle {
+            position: relative;
+            transition: all 0.3s ease;
+        }
         
         .subtitle:hover {
             text-shadow: 
