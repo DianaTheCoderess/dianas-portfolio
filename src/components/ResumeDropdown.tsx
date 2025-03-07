@@ -12,7 +12,7 @@ interface ResumeDropdownProps {
   onDownload: () => void
 }
 
-export function ResumeDropdown({ onOpen, onDownload }: ResumeDropdownProps) {
+const ResumeDropdown = ({ onOpen, onDownload }: ResumeDropdownProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -42,3 +42,5 @@ export function ResumeDropdown({ onOpen, onDownload }: ResumeDropdownProps) {
     </DropdownMenu>
   )
 }
+
+export default ResumeDropdown

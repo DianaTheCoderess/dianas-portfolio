@@ -6,7 +6,7 @@ export default getViteConfig({
   plugins: [react()],
   test: {
     environment: "jsdom",
-    setupFiles: ["./src/tests/setup.ts", "./src/tests/setup-dom.ts"],
+    setupFiles: ["./src/tests/setup.ts"],
     include: ["src/**/*.test.{ts,tsx}"],
     globals: true,
   },

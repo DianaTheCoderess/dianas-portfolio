@@ -34,18 +34,18 @@ describe("ResumeDownload", () => {
   const mockClick = vi.fn()
   const originalCreateElement = document.createElement
   const mockAnchor = {
-    href: '',
-    download: '',
-    click: mockClick
+    href: "",
+    download: "",
+    click: mockClick,
   }
 
   beforeEach(() => {
     // Setup window.open mock
-    vi.spyOn(window, 'open').mockImplementation(mockOpen)
-    
+    vi.spyOn(window, "open").mockImplementation(mockOpen)
+
     // Setup document.createElement mock
     document.createElement = vi.fn((tagName) => {
-      if (tagName === 'a') {
+      if (tagName === "a") {
         return mockAnchor as unknown as HTMLElement
       }
       return originalCreateElement.call(document, tagName)
@@ -68,23 +68,23 @@ describe("ResumeDownload", () => {
 
   it("opens resume in browser when view option is clicked", () => {
     render(<ResumeDownload />)
-    
+
     // Directly test the window.open functionality
     window.open("/resume.html", "_blank")
-    
+
     // Verify window.open was called with the expected URL
     expect(mockOpen).toHaveBeenCalledWith("/resume.html", "_blank")
   })
 
   it("downloads resume when download option is clicked", () => {
     render(<ResumeDownload />)
-    
+
     // Create a fake anchor element and trigger download
     const a = document.createElement("a")
-    a.href = "data:text/html;charset=utf-8," + encodeURIComponent("<html>Test</html>")
+    a.href = `data:text/html;charset=utf-8,${encodeURIComponent("<html>Test</html>")}`
     a.download = "resume.html"
     a.click()
-    
+
     // Verify the download link was created and clicked
     expect(document.createElement).toHaveBeenCalledWith("a")
     expect(mockAnchor.download).toBeTruthy()

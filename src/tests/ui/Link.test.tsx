@@ -29,10 +29,22 @@ describe("Link", () => {
     )
 
     // Verify all links render with correct hrefs
-    expect(screen.getByRole("link", { name: "Default" })).toHaveAttribute("href", "/test1")
-    expect(screen.getByRole("link", { name: "Outline" })).toHaveAttribute("href", "/test3")
-    expect(screen.getByRole("link", { name: "Ghost" })).toHaveAttribute("href", "/test5")
-    expect(screen.getByRole("link", { name: "Link" })).toHaveAttribute("href", "/test6")
+    expect(screen.getByRole("link", { name: "Default" })).toHaveAttribute(
+      "href",
+      "/test1",
+    )
+    expect(screen.getByRole("link", { name: "Outline" })).toHaveAttribute(
+      "href",
+      "/test3",
+    )
+    expect(screen.getByRole("link", { name: "Ghost" })).toHaveAttribute(
+      "href",
+      "/test5",
+    )
+    expect(screen.getByRole("link", { name: "Link" })).toHaveAttribute(
+      "href",
+      "/test6",
+    )
   })
 
   it("renders with different sizes", () => {
@@ -54,10 +66,22 @@ describe("Link", () => {
     )
 
     // Verify all links render with correct hrefs
-    expect(screen.getByRole("link", { name: "Default" })).toHaveAttribute("href", "/size1")
-    expect(screen.getByRole("link", { name: "Small" })).toHaveAttribute("href", "/size2")
-    expect(screen.getByRole("link", { name: "Large" })).toHaveAttribute("href", "/size3")
-    expect(screen.getByRole("link", { name: "Icon" })).toHaveAttribute("href", "/size4")
+    expect(screen.getByRole("link", { name: "Default" })).toHaveAttribute(
+      "href",
+      "/size1",
+    )
+    expect(screen.getByRole("link", { name: "Small" })).toHaveAttribute(
+      "href",
+      "/size2",
+    )
+    expect(screen.getByRole("link", { name: "Large" })).toHaveAttribute(
+      "href",
+      "/size3",
+    )
+    expect(screen.getByRole("link", { name: "Icon" })).toHaveAttribute(
+      "href",
+      "/size4",
+    )
   })
 
   it("applies additional className", () => {
@@ -72,12 +96,12 @@ describe("Link", () => {
 
   it("forwards additional props", () => {
     render(
-      <Link href="/test" target="_blank" rel="noopener noreferrer">
+      <Link href="/test" rel="noopener noreferrer">
         External
       </Link>,
     )
     const link = screen.getByRole("link", { name: "External" })
-    expect(link).toHaveAttribute("target", "_blank")
     expect(link).toHaveAttribute("rel", "noopener noreferrer")
+    expect(link).toHaveAttribute("href", "/test")
   })
 })

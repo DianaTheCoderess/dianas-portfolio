@@ -46,6 +46,7 @@ export const TechStack: React.FC<TechStackProps> = ({ technologies }) => {
         {visibleTechs.map((tech, index) => {
           return (
             <span
+              data-testid="tech-stack"
               key={`${tech}-${index}`}
               className="px-3 sm:px-4 h-8 sm:h-10 bg-deep-purple/50 rounded-lg sm:rounded-xl 
                      text-xs sm:text-sm text-cream/80 border border-neon-pink/20 
