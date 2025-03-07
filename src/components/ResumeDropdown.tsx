@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/Button"
+import { Button } from "./ui/Button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/Dropdown"
+} from "./ui/Dropdown"
 import { Download, FileText } from "lucide-react"
 
 interface ResumeDropdownProps {

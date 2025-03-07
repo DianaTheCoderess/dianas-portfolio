@@ -1,39 +1,39 @@
----
-import { useStoryblokApi } from '@storyblok/astro'
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
-import Layout from '../../layouts/Layout.astro'
-import Header from '../../components/Header.astro'
-import resumeData from '../../data/resume.json'
+<!-- -&#45;&#45;-->
+<!--import { useStoryblokApi } from '@storyblok/astro'-->
+<!--import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'-->
+<!--import Layout from '../../layouts/Layout.astro'-->
+<!--import Header from '../../components/Header.astro'-->
+<!--import resumeData from '../../data/resume.json'-->
 
-export async function getStaticPaths() {
-  const sbApi = useStoryblokApi()
+<!--export async function getStaticPaths() {-->
+<!--  const sbApi = useStoryblokApi()-->
 
-  const { data } = await sbApi.get('cdn/stories', {
-    version: import.meta.env.DEV ? 'draft' : 'published',
-    content_type: 'blogPost'
-  })
+<!--  const { data } = await sbApi.get('cdn/stories', {-->
+<!--    version: import.meta.env.DEV ? 'draft' : 'published',-->
+<!--    content_type: 'blogPost'-->
+<!--  })-->
 
-  const stories = data.stories
+<!--  const stories = data.stories-->
 
-  return stories.map((story: any) => {
-    return {
-      params: { slug: story.full_slug },
-      props: { story }
-    }
-  })
-}
+<!--  return stories.map((story: any) => {-->
+<!--    return {-->
+<!--      params: { slug: story.full_slug },-->
+<!--      props: { story }-->
+<!--    }-->
+<!--  })-->
+<!--}-->
 
-const { story } = Astro.props
----
+<!--const { story } = Astro.props-->
+<!-- -&#45;&#45;-->
 
-<Layout title={`${story.content.title} - ${resumeData.basics.name}`}>
-  <Header />
-  
-  <main class="min-h-screen pt-24 sm:pt-32 md:pt-40">
-    <div class="px-4 sm:px-6">
-      <div class="max-w-4xl mx-auto">
-        <StoryblokComponent blok={story.content} />
-      </div>
-    </div>
-  </main>
-</Layout>
+<!--<Layout title={`${story.content.title} - ${resumeData.basics.name}`}>-->
+<!--  <Header />-->
+<!--  -->
+<!--  <main class="min-h-screen pt-24 sm:pt-32 md:pt-40">-->
+<!--    <div class="px-4 sm:px-6">-->
+<!--      <div class="max-w-4xl mx-auto">-->
+<!--        <StoryblokComponent blok={story.content} />-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </main>-->
+<!--</Layout>-->

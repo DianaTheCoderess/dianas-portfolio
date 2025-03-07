@@ -1,4 +1,4 @@
-import { Button, type ButtonProps } from "@/components/ui/Button"
+import { Button, type ButtonProps } from "./Button"
 import type React from "react"
 
 export interface LinkProps extends ButtonProps {

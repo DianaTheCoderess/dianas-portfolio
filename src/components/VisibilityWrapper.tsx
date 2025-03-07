@@ -1,6 +1,6 @@
+import { useLoadingState } from "../hooks/useLoadingState"
 import type { ReactNode } from "react"
 import React from "react"
-import { useLoadingState } from "../hooks/useLoadingState"
 
 interface VisibilityWrapperProps {
   children: ReactNode
