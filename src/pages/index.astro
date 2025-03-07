@@ -1,5 +1,6 @@
 ---
 import Header from "@/components/Header.astro"
+import { TechStack } from "@/components/TechStack"
 import Terminal from "@/components/Terminal.astro"
 import Layout from "@/layouts/Layout.astro"
 import resumeData from "../data/resume.json"
@@ -75,27 +76,7 @@ const socialIcons = {
                                         </Link>
                                     </div>
 
-                                    <!-- Tech Stack -->
-                                    <div
-                                        class="border-t border-cream/10 pt-6 sm:pt-8"
-                                    >
-                                        <h2
-                                            class="text-cyber-blue font-mono text-xs sm:text-sm mb-3 sm:mb-4"
-                                        >
-                                            TECH STACK
-                                        </h2>
-                                        <div
-                                            class="flex flex-wrap gap-2 sm:gap-3"
-                                        >
-                                            {
-                                                techStack.map((tech) => (
-                                                    <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-deep-purple/50 rounded-lg sm:rounded-xl text-xs sm:text-sm text-cream/80 border border-neon-pink/20 hover:border-cyber-blue/50 transition-colors duration-300">
-                                                        {tech}
-                                                    </span>
-                                                ))
-                                            }
-                                        </div>
-                                    </div>
+                                    <TechStack technologies={techStack} client:load />
 
                                     <!-- Social Links 
                                     {
