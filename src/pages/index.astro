@@ -23,7 +23,7 @@ const socialIcons = {
 ---
 
 <Layout title={`${resume.basics?.name} - Portfolio`}>
-    {!Astro.url.searchParams.get('skip-loading') && <LoadingScreen client:load />}
+    <LoadingScreen client:load />
 
     <VisibilityWrapper client:load class="min-h-screen flex flex-col">
         <Header />
