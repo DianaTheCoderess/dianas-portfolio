@@ -1,6 +1,6 @@
+import { Button } from "@/components/ui/Button"
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
-import { Button } from "@/components/ui/Button"
 
 describe("Button", () => {
   it("renders with default variant and size", () => {
@@ -14,14 +14,12 @@ describe("Button", () => {
     render(
       <>
         <Button variant="default">Default</Button>
-        <Button variant="destructive">Destructive</Button>
         <Button variant="outline">Outline</Button>
-        <Button variant="secondary">Secondary</Button>
         <Button variant="ghost">Ghost</Button>
         <Button variant="link">Link</Button>
-      </>
+      </>,
     )
-    
+
     // Instead of checking for specific classes, just verify the buttons render
     expect(screen.getByText("Default")).toBeInTheDocument()
     expect(screen.getByText("Destructive")).toBeInTheDocument()
@@ -38,9 +36,9 @@ describe("Button", () => {
         <Button size="sm">Small</Button>
         <Button size="lg">Large</Button>
         <Button size="icon">Icon</Button>
-      </>
+      </>,
     )
-    
+
     // Instead of checking for specific height classes, just verify the buttons render
     expect(screen.getByText("Default")).toBeInTheDocument()
     expect(screen.getByText("Small")).toBeInTheDocument()
@@ -54,7 +52,11 @@ describe("Button", () => {
   })
 
   it("forwards additional props", () => {
-    render(<Button disabled aria-label="Test button">Disabled</Button>)
+    render(
+      <Button disabled aria-label="Test button">
+        Disabled
+      </Button>,
+    )
     const button = screen.getByText("Disabled")
     expect(button).toBeDisabled()
     expect(button).toHaveAttribute("aria-label", "Test button")
