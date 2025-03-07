@@ -24,8 +24,7 @@
 
   /* Keyframe Animations */
   @keyframes float {
-    0%,
-    100% {
+    0%, 100% {
       transform: translateY(0);
     }
     50% {
@@ -34,8 +33,7 @@
   }
 
   @keyframes pulse {
-    0%,
-    100% {
+    0%, 100% {
       opacity: 0.3;
     }
     50% {
@@ -55,8 +53,7 @@
   }
 
   @keyframes blink {
-    0%,
-    100% {
+    0%, 100% {
       opacity: 1;
     }
     50% {
@@ -65,8 +62,7 @@
   }
 
   @keyframes border {
-    0%,
-    100% {
+    0%, 100% {
       transform: translateX(-100%);
     }
     50% {
@@ -75,8 +71,7 @@
   }
 
   @keyframes gridPulse {
-    0%,
-    100% {
+    0%, 100% {
       opacity: 0.3;
     }
     50% {
