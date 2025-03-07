@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generateTypes": "curl https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json -o src/data/resume-schema.json && json2ts -i src/data/resume-schema.json -o src/types/resumeTypes.d.ts"
+    "generateTypes": "curl https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json -o src/data/resume-schema.json && json2ts -i src/data/resume-schema.json -o src/types/resumeTypes.d.ts",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/netlify": "^6.2.0",
@@ -38,8 +39,12 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@commitlint/cli": "19.7.1",
+    "@commitlint/config-conventional": "19.7.1",
     "@types/node": "^22.13.4",
     "@types/react": "^18.3.18",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7",
     "json-schema-to-typescript": "^15.0.4",
     "vite": "^6.1.0"
   },
@@ -50,5 +55,10 @@
       "sharp"
     ]
   },
-  "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92"
+  "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
