@@ -48,8 +48,8 @@ describe("ResumeDropdown", () => {
       <ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />
     )
     
-    // Get the View Online button by text
-    const viewButton = screen.getByText(/view online/i)
+    // Get the Open in Browser button by text
+    const viewButton = screen.getByText(/open in browser/i)
     fireEvent.click(viewButton)
     
     // Check that onOpen was called
@@ -61,8 +61,8 @@ describe("ResumeDropdown", () => {
       <ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />
     )
     
-    // Get the Download PDF button by text
-    const downloadButton = screen.getByText(/download pdf/i)
+    // Get the Download HTML button by text
+    const downloadButton = screen.getByText(/download html/i)
     fireEvent.click(downloadButton)
     
     // Check that onDownload was called
