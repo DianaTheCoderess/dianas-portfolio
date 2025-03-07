@@ -1,6 +1,6 @@
+import { Link } from "@/components/ui/Link"
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
-import { Link } from "@/components/ui/Link"
 
 describe("Link", () => {
   it("renders with default variant and size", () => {
@@ -13,15 +13,21 @@ describe("Link", () => {
   it("renders with different variants", () => {
     render(
       <>
-        <Link href="/test1" variant="default">Default</Link>
-        <Link href="/test2" variant="destructive">Destructive</Link>
-        <Link href="/test3" variant="outline">Outline</Link>
-        <Link href="/test4" variant="secondary">Secondary</Link>
-        <Link href="/test5" variant="ghost">Ghost</Link>
-        <Link href="/test6" variant="link">Link</Link>
-      </>
+        <Link href="/test1" variant="default">
+          Default
+        </Link>
+        <Link href="/test3" variant="outline">
+          Outline
+        </Link>
+        <Link href="/test5" variant="ghost">
+          Ghost
+        </Link>
+        <Link href="/test6" variant="link">
+          Link
+        </Link>
+      </>,
     )
-    
+
     // Verify all links render with correct hrefs
     expect(screen.getByText("Default")).toHaveAttribute("href", "/test1")
     expect(screen.getByText("Destructive")).toHaveAttribute("href", "/test2")
@@ -34,13 +40,21 @@ describe("Link", () => {
   it("renders with different sizes", () => {
     render(
       <>
-        <Link href="/size1" size="default">Default</Link>
-        <Link href="/size2" size="sm">Small</Link>
-        <Link href="/size3" size="lg">Large</Link>
-        <Link href="/size4" size="icon">Icon</Link>
-      </>
+        <Link href="/size1" size="default">
+          Default
+        </Link>
+        <Link href="/size2" size="sm">
+          Small
+        </Link>
+        <Link href="/size3" size="lg">
+          Large
+        </Link>
+        <Link href="/size4" size="icon">
+          Icon
+        </Link>
+      </>,
     )
-    
+
     // Verify all links render with correct hrefs
     expect(screen.getByText("Default")).toHaveAttribute("href", "/size1")
     expect(screen.getByText("Small")).toHaveAttribute("href", "/size2")
@@ -49,12 +63,20 @@ describe("Link", () => {
   })
 
   it("applies additional className", () => {
-    render(<Link href="/test" className="custom-class">Custom</Link>)
+    render(
+      <Link href="/test" className="custom-class">
+        Custom
+      </Link>,
+    )
     expect(screen.getByText("Custom")).toHaveClass("custom-class")
   })
 
   it("forwards additional props", () => {
-    render(<Link href="/test" target="_blank" rel="noopener noreferrer">External</Link>)
+    render(
+      <Link href="/test" rel="noopener noreferrer">
+        External
+      </Link>,
+    )
     const link = screen.getByText("External")
     expect(link).toHaveAttribute("target", "_blank")
     expect(link).toHaveAttribute("rel", "noopener noreferrer")
