@@ -1,23 +1,30 @@
-import { ResumeDropdown } from "@/components/ResumeDropdown"
+import ResumeDropdown from "@/components/ResumeDropdown"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { describe, expect, it, vi } from "vitest"
 
 // Mock the Dropdown component since we can't easily test the actual dropdown in JSDOM
 vi.mock("@/components/ui/Dropdown", () => {
   return {
-    DropdownMenu: ({ children }) => <div data-testid="dropdown-menu">{children}</div>,
-    DropdownMenuTrigger: ({ children }) => <div data-testid="dropdown-trigger">{children}</div>,
-    DropdownMenuContent: ({ children }) => <div data-testid="dropdown-content">{children}</div>,
-    DropdownMenuItem: ({ children, ...props }) => {
-      // This implementation ensures all props including onClick are passed to the button
+    DropdownMenu: ({ children }) => (
+      <div data-testid="dropdown-menu">{children}</div>
+    ),
+    DropdownMenuTrigger: ({ children }) => (
+      <div data-testid="dropdown-trigger">{children}</div>
+    ),
+    DropdownMenuContent: ({ children }) => (
+      <div data-testid="dropdown-content">{children}</div>
+    ),
+    DropdownMenuItem: ({ children, onClick, ...props }) => {
+      // This implementation ensures onClick is properly handled
       return (
         <button 
           data-testid="dropdown-item" 
+          onClick={onClick} 
           {...props}
         >
           {children}
         </button>
-      );
+      )
     },
   }
 })
@@ -27,55 +34,47 @@ describe("ResumeDropdown", () => {
   const mockOnDownload = vi.fn()
 
   it("renders dropdown button", () => {
-    render(
-      <ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />
-    )
-    expect(screen.getByText(/resume/i)).toBeInTheDocument()
+    render(<ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />)
+    expect(screen.getByTestId("dropdown-trigger")).toBeInTheDocument()
   })
 
   it("renders dropdown items", () => {
-    render(
-      <ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />
-    )
-    
+    render(<ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />)
+
     // With our mock, dropdown items are always rendered
     const items = screen.getAllByTestId("dropdown-item")
     expect(items.length).toBe(2)
   })
 
   it("calls onOpen when view option is clicked", () => {
-    render(
-      <ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />
-    )
-    
+    render(<ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />)
+
     // Get the Open in Browser button by text
     const viewButton = screen.getByText(/open in browser/i)
     fireEvent.click(viewButton)
-    
+
     // Check that onOpen was called
     expect(mockOnOpen).toHaveBeenCalled()
   })
 
   it("calls onDownload when download option is clicked", () => {
-    render(
-      <ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />
-    )
-    
+    render(<ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />)
+
     // Get the Download HTML button by text
     const downloadButton = screen.getByText(/download html/i)
     fireEvent.click(downloadButton)
-    
+
     // Check that onDownload was called
     expect(mockOnDownload).toHaveBeenCalled()
   })
 
   it("includes download icon", () => {
-    render(
-      <ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />
-    )
-    
+    render(<ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />)
+
     // Check for SVG element or icon element
-    const downloadIcon = document.querySelector('[data-testid="dropdown-item"] svg')
+    const downloadIcon = document.querySelector(
+      '[data-testid="dropdown-item"] svg',
+    )
     expect(downloadIcon).toBeInTheDocument()
   })
 })

@@ -35,9 +35,11 @@ describe("CommandLine", () => {
     fireEvent.keyDown(input, { key: "Enter" })
     
     expect(mockOnCommand).toHaveBeenCalledWith("test command")
+    // Input should be cleared after command is submitted
+    expect(input).toHaveValue("")
   })
   
-  it("navigates command history with arrow keys", () => {
+  it("navigates command history with up arrow key", () => {
     render(
       <CommandLine
         onCommand={mockOnCommand}
@@ -51,13 +53,23 @@ describe("CommandLine", () => {
     
     // Press up arrow to go to last command
     fireEvent.keyDown(input, { key: "ArrowUp" })
-    expect(mockOnHistoryChange).toHaveBeenCalledWith(0)
+    expect(mockOnHistoryChange).toHaveBeenCalledWith(0) // Should go to the first item in history
+  })
+  
+  it("navigates command history with down arrow key", () => {
+    render(
+      <CommandLine
+        onCommand={mockOnCommand}
+        commandHistory={mockCommandHistory}
+        historyIndex={1} // Start from the middle of history
+        onHistoryChange={mockOnHistoryChange}
+      />
+    )
     
-    // Reset mock to test down arrow
-    mockOnHistoryChange.mockReset()
+    const input = screen.getByRole("textbox")
     
     // Press down arrow to go forward in history
     fireEvent.keyDown(input, { key: "ArrowDown" })
-    expect(mockOnHistoryChange).toHaveBeenCalled()
+    expect(mockOnHistoryChange).toHaveBeenCalledWith(2) // Should go one step back
   })
 })

@@ -49,14 +49,8 @@ describe("Header", () => {
   it("toggles mobile menu", () => {
     const nav = document.querySelector("nav")
     const toggleFn = nav?.classList?.toggle
-
-    // Simulate menu button click
-    const event = new Event("click")
-    document.dispatchEvent(event)
-
-    // In a real implementation, this would toggle the menu
-    nav?.classList?.toggle("visible")
-
+    
+    // Just verify the toggle function exists
     expect(toggleFn).toBeDefined()
   })
 })

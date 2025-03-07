@@ -3,14 +3,16 @@ import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
 
 describe("ProgressBar", () => {
-  it("renders with correct width", () => {
+  it("renders with correct width for 50% progress", () => {
     render(<ProgressBar progress={50} />)
     const progressBar = screen.getByTestId("loading-progress")
     expect(progressBar).toBeInTheDocument()
-    
-    // Find the inner progress elements with transform style
-    const innerBars = progressBar.querySelectorAll("div[style*='transform: scaleX(0.5)']")
-    expect(innerBars.length).toBeGreaterThan(0)
+
+    // Find the inner progress element with transform style
+    const innerBar = progressBar.querySelector(
+      "div[style*='transform: scaleX(0.5)']",
+    )
+    expect(innerBar).toBeInTheDocument()
   })
 
   it("shows correct aria attributes", () => {
@@ -24,15 +26,19 @@ describe("ProgressBar", () => {
   it("handles 0% progress", () => {
     render(<ProgressBar progress={0} />)
     const progressBar = screen.getByTestId("loading-progress")
-    const innerBars = progressBar.querySelectorAll("div[style*='transform: scaleX(0)']")
-    expect(innerBars.length).toBeGreaterThan(0)
+    const innerBar = progressBar.querySelector(
+      "div[style*='transform: scaleX(0)']",
+    )
+    expect(innerBar).toBeInTheDocument()
   })
 
   it("handles 100% progress", () => {
     render(<ProgressBar progress={100} />)
     const progressBar = screen.getByTestId("loading-progress")
-    const innerBars = progressBar.querySelectorAll("div[style*='transform: scaleX(1)']")
-    expect(innerBars.length).toBeGreaterThan(0)
+    const innerBar = progressBar.querySelector(
+      "div[style*='transform: scaleX(1)']",
+    )
+    expect(innerBar).toBeInTheDocument()
   })
 
   it("applies correct styling", () => {
