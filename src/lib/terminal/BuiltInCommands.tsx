@@ -1,4 +1,4 @@
-import React from "react"
+import type React from "react"
 import commandRegistry, { type TerminalCommand } from "./CommandRegistry"
 
 // Helper function to create styled output
@@ -18,19 +18,14 @@ const helpCommand: TerminalCommand = {
   description: "Display available commands",
   execute: () => {
     const commands = commandRegistry.getAllCommands()
-    const commandList = commands.map(
-      (cmd) => (
-        <div key={cmd.name}>
-          {cmd.name} - {cmd.description}
-        </div>
-      ),
-    )
+    const commandList = commands.map((cmd) => (
+      <div key={cmd.name}>
+        {cmd.name} - {cmd.description}
+      </div>
+    ))
 
     return {
-      output: createStyledOutput(
-        "AVAILABLE COMMANDS:\n",
-        <>{commandList}</>,
-      ),
+      output: createStyledOutput("AVAILABLE COMMANDS:\n", commandList),
     }
   },
 }
@@ -90,22 +85,24 @@ const projectsCommand: TerminalCommand = {
       if (projectNum === "1") {
         return {
           output: "Opening CyberCommerce project...",
-          externalAction: () => window.open("/projects#cybercommerce", "_blank"),
+          externalAction: () =>
+            window.open("/projects#cybercommerce", "_blank"),
         }
-      } else if (projectNum === "2") {
+      }
+      if (projectNum === "2") {
         return {
           output: "Opening NeuralNotes project...",
           externalAction: () => window.open("/projects#neuralnotes", "_blank"),
         }
-      } else if (projectNum === "3") {
+      }
+      if (projectNum === "3") {
         return {
           output: "Opening QuantumDash project...",
           externalAction: () => window.open("/projects#quantumdash", "_blank"),
         }
-      } else {
-        return {
-          output: "Invalid project number",
-        }
+      }
+      return {
+        output: "Invalid project number",
       }
     }
 
