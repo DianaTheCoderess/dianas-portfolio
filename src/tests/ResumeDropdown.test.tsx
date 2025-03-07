@@ -8,12 +8,12 @@ vi.mock("@/components/ui/Dropdown", () => {
     DropdownMenu: ({ children }) => <div data-testid="dropdown-menu">{children}</div>,
     DropdownMenuTrigger: ({ children }) => <div data-testid="dropdown-trigger">{children}</div>,
     DropdownMenuContent: ({ children }) => <div data-testid="dropdown-content">{children}</div>,
-    DropdownMenuItem: ({ onClick, children }) => {
-      // This implementation ensures the onClick function is called when clicked
+    DropdownMenuItem: ({ children, ...props }) => {
+      // This implementation ensures all props including onClick are passed to the button
       return (
         <button 
           data-testid="dropdown-item" 
-          onClick={onClick}
+          {...props}
         >
           {children}
         </button>
@@ -48,9 +48,9 @@ describe("ResumeDropdown", () => {
       <ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />
     )
     
-    // Get all dropdown items and click the first one (View Online)
-    const items = screen.getAllByTestId("dropdown-item")
-    fireEvent.click(items[0])
+    // Get the View Online button by text
+    const viewButton = screen.getByText(/view online/i)
+    fireEvent.click(viewButton)
     
     // Check that onOpen was called
     expect(mockOnOpen).toHaveBeenCalled()
@@ -61,9 +61,9 @@ describe("ResumeDropdown", () => {
       <ResumeDropdown onOpen={mockOnOpen} onDownload={mockOnDownload} />
     )
     
-    // Get all dropdown items and click the second one (Download PDF)
-    const items = screen.getAllByTestId("dropdown-item")
-    fireEvent.click(items[1])
+    // Get the Download PDF button by text
+    const downloadButton = screen.getByText(/download pdf/i)
+    fireEvent.click(downloadButton)
     
     // Check that onDownload was called
     expect(mockOnDownload).toHaveBeenCalled()
