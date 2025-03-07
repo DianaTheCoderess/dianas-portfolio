@@ -75,8 +75,7 @@ describe("ResumeDropdown", () => {
     )
     
     // Check for SVG element or icon element
-    const downloadIcon = document.querySelector('[data-testid="dropdown-item"] svg') || 
-                         screen.getByText(/download pdf/i).closest('button')
+    const downloadIcon = document.querySelector('[data-testid="dropdown-item"] svg')
     expect(downloadIcon).toBeInTheDocument()
   })
 })
