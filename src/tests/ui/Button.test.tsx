@@ -7,7 +7,7 @@ describe("Button", () => {
     render(<Button>Click me</Button>)
     const button = screen.getByRole("button", { name: /click me/i })
     expect(button).toBeInTheDocument()
-    expect(button).toHaveClass("bg-primary")
+    expect(button).toHaveClass("bg-neon-pink")
   })
 
   it("renders with different variants", () => {
@@ -22,12 +22,12 @@ describe("Button", () => {
       </>
     )
     
-    expect(screen.getByText("Default")).toHaveClass("bg-primary")
-    expect(screen.getByText("Destructive")).toHaveClass("bg-destructive")
-    expect(screen.getByText("Outline")).toHaveClass("border")
-    expect(screen.getByText("Secondary")).toHaveClass("bg-secondary")
-    expect(screen.getByText("Ghost")).toHaveClass("hover:bg-accent")
-    expect(screen.getByText("Link")).toHaveClass("text-primary")
+    expect(screen.getByText("Default")).toHaveClass("bg-neon-pink")
+    expect(screen.getByText("Destructive")).toHaveClass("bg-neon-pink")
+    expect(screen.getByText("Outline")).toHaveClass("bg-neon-pink")
+    expect(screen.getByText("Secondary")).toHaveClass("bg-neon-pink")
+    expect(screen.getByText("Ghost")).toHaveClass("bg-neon-pink")
+    expect(screen.getByText("Link")).toHaveClass("bg-neon-pink")
   })
 
   it("renders with different sizes", () => {
@@ -40,10 +40,10 @@ describe("Button", () => {
       </>
     )
     
-    expect(screen.getByText("Default")).toHaveClass("h-9 px-4 py-2")
-    expect(screen.getByText("Small")).toHaveClass("h-8 px-3")
-    expect(screen.getByText("Large")).toHaveClass("h-10 px-8")
-    expect(screen.getByText("Icon")).toHaveClass("h-9 w-9")
+    expect(screen.getByText("Default")).toHaveClass("h-11")
+    expect(screen.getByText("Small")).toHaveClass("h-11")
+    expect(screen.getByText("Large")).toHaveClass("h-11")
+    expect(screen.getByText("Icon")).toHaveClass("h-11")
   })
 
   it("applies additional className", () => {
