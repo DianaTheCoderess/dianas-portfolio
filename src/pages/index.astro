@@ -61,7 +61,7 @@ const socialIcons = {
                                                     }</span
                                                     >
                                                 </h1>
-                                                <p class="subtitle text-cyber-blue font-mono text-sm sm:text-base md:text-lg -mt-2 mb-4 transition-all duration-300 hover:text-neon-pink hover:scale-105 cursor-default">
+                                                <p class="subtitle text-cyber-blue font-mono text-sm sm:text-base md:text-lg -mt-2 mb-4 cursor-default">
                                                     your go-to code sorceress
                                                 </p>
                                                 <p
@@ -147,26 +147,34 @@ const socialIcons = {
         .subtitle {
             position: relative;
             display: inline-block;
+            transition: all 0.3s ease;
         }
         
         .subtitle:hover {
-            text-shadow: 0 0 8px rgba(255, 0, 255, 0.7), 0 0 12px rgba(255, 0, 255, 0.5);
-            letter-spacing: 0.5px;
+            text-shadow: 
+                0 0 5px #00f6ff,
+                0 0 10px #00f6ff,
+                0 0 20px #00f6ff,
+                0 0 40px #00f6ff;
+            color: #fff;
+            transform: translateY(-2px);
+            animation: pulse 1.5s infinite alternate;
         }
         
-        .subtitle::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: #ff65b5; /* neon-pink */
-            transition: width 0.3s ease;
-        }
-        
-        .subtitle:hover::after {
-            width: 100%;
+        @keyframes pulse {
+            0% {
+                text-shadow: 
+                    0 0 5px #00f6ff,
+                    0 0 10px #00f6ff,
+                    0 0 20px #00f6ff;
+            }
+            100% {
+                text-shadow: 
+                    0 0 10px #00f6ff,
+                    0 0 20px #00f6ff,
+                    0 0 30px #00f6ff,
+                    0 0 40px #00f6ff;
+            }
         }
     </style>
 </Layout>
