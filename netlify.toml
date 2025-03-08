@@ -4,5 +4,3 @@ publish = "dist"
 
 [dev]
 command = "pnpm run dev"
-targetPort = 4321
-port = 8888
