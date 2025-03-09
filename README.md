@@ -1,5 +1,5 @@
 # Diana's NetPalace
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f7f212a5-3899-480e-989b-df9912545528/deploy-status)](https://app.netlify.com/sites/joyful-jalebi-577dfd/deploys)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## 🧞 Commands

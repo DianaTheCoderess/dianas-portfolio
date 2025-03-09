@@ -32,7 +32,7 @@
       "name": "PARIMEO GmbH",
       "location": "Jena, Germany",
       "description": "",
-      "summary": " ",
+      "summary": "",
       "position": "Software Engineer / DevOps / SysAdmin",
       "website": "https://parimeo.de/",
       "startDate": "2019-08",
@@ -66,8 +66,8 @@
       "institution": "Lietz Internat Schloss Bieberstein",
       "area": "Gymnasium",
       "studyType": "",
-      "startDate": "2014",
-      "endDate": "2016"
+      "startDate": "2014-09",
+      "endDate": "2016-07"
     }
   ],
   "awards": [],
@@ -241,14 +241,7 @@
     },
     {
       "name": "Music",
-      "keywords": [
-        "Guitar",
-        "Piano",
-        "Singing",
-        "Songwriting",
-        "Music Production",
-        "Live Performance"
-      ]
+      "keywords": ["Guitar", "Piano", "Singing", "Music Production"]
     },
     {
       "name": "DIY Projects/Maker Culture",

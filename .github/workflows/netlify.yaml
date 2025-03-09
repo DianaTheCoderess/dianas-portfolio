@@ -39,9 +39,9 @@ jobs:
         if: always()
         uses: davelosert/vitest-coverage-report-action@v2
 
-      - name: Deploy to Netlify
-        id: netlify_deploy
-        run: |
-          netlify deploy \
-            --site ${{ secrets.NETLIFY_SITE_ID }} \
-            --auth ${{ secrets.NETLIFY_API_TOKEN }}
+#      - name: Deploy to Netlify
+#        id: netlify_deploy
+#        run: |
+#          netlify deploy \
+#            --site ${{ secrets.NETLIFY_SITE_ID }} \
+#            --auth ${{ secrets.NETLIFY_API_TOKEN }}
