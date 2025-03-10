@@ -7,7 +7,7 @@
     "email": "diana@bendziula.com",
     "phone": "",
     "url": "https://diana.bendziula.com/",
-    "summary": "I'm a Software- and DevOps Engineer, fluent in various programming languages and frameworks. Wading my way through different databases and cloud systems comes naturally to me. There's something uniquely satisfying about the organization that container and virtualization technologies and CI/CD practices bring. I've been forging my skills with Infrastructure as Code (IaC) practices and version control systems, complemented by scripting. My journey has been marked by intriguing projects that have served as stepping-stones towards growth. I have been cultivating a growing homelab over the years - tinkering with servers, clusters, networking, firewalls, you name it — illustrating my deep-rooted interest in the maker culture and a curiosity that spans across all things tech, including programming, software, hardware, homelabs, self-hosting, open-source software, AI, and home automation. Fluent in English, I effortlessly integrate into diverse teams. If there's one thing that stays constant, it's my appetite for learning and problem-solving, coupled with an undying interest in the latest tech trends and developments.",
+    "summary": "I’m a Full Stack Developer and DevOps Engineer dedicated to crafting solutions that balance sleek front-end experiences with reliable back-end operations. I focus on scalability, maintainability, and clear build pipelines to keep projects running smoothly. I regularly experiment with new tools and open-source tech in my home lab to stay ahead of the curve, and I enjoy collaborating across international teams to share knowledge and refine best practices.",
     "profiles": [
       {
         "network": "GitHub",
@@ -31,41 +31,65 @@
     {
       "name": "PARIMEO GmbH",
       "location": "Jena, Germany",
-      "description": "",
-      "summary": "",
+      "description": "PARIMEO GmbH is an IT solutions provider specializing in Java-based software development, DevOps practices, and system administration services. The company focuses on delivering robust and scalable infrastructure solutions to its clients.",
+      "summary": "Responsible for full-stack development, DevOps automation, and server administration. Ensured continuous delivery pipelines were set up to streamline deployment workflows and maintenance processes. Collaborated with cross-functional teams to coordinate software releases and troubleshoot complex infrastructure issues.",
       "position": "Software Engineer / DevOps / SysAdmin",
       "website": "https://parimeo.de/",
       "startDate": "2019-08",
       "endDate": "2025-02"
     }
   ],
-  "volunteer": [],
+  "volunteer": [
+    {
+      "organization": "Local Tech Community Meetups",
+      "position": "Speaker & Mentor",
+      "startDate": "2022",
+      "endDate": "2024",
+      "summary": "Volunteered as a speaker and mentor at local developer meetups. Topics included DevOps and Cloud Infrastructure, focusing on best practices and lessons learned.",
+      "highlights": [
+        "Delivered talks on modern CI/CD pipelines",
+        "Mentored junior developers transitioning to DevOps roles"
+      ]
+    },
+    {
+      "organization": "Smart City Project Jena - Hack the paradise!",
+      "position": "Team 'Passantenfrequenz'",
+      "startDate": "2023-06-16",
+      "endDate": "2023-06-17",
+      "summary": "Developed a privacy-compliant solution to measure pedestrian traffic at various city locations. The core codebase showcases a modular data processing pipeline, sensor integration, and real-time analytics—all designed to optimize urban planning, retail strategies, and economic development while maintaining user anonymity.",
+      "highlights": [
+        "Created a prototype for anonymized pedestrian frequency measurement",
+        "Implemented real-time data processing and privacy-focused technologies",
+        "Achieved second place overall, prompting the city to request further use and research"
+      ]
+    }
+  ],
   "education": [
     {
       "institution": "Staatliches Berufsschulzentrum Hermsdorf",
       "area": "Fachinformatik für Anwendungsentwicklung",
-      "studyType": "",
+      "studyType": "Apprenticeship",
       "startDate": "2019-09",
       "endDate": "2022-05"
     },
     {
       "institution": "Bauhaus-Universität Weimar",
       "area": "Medieninformatik",
-      "studyType": "",
+      "studyType": "Bachelor's Program (not completed)",
       "startDate": "2018-09",
       "endDate": "2019-07"
     },
     {
       "institution": "Ernst-Abbe-Hochschule Jena",
       "area": "Medizintechnik",
-      "studyType": "",
+      "studyType": "Bachelor's Program (not completed)",
       "startDate": "2017-09",
       "endDate": "2018-07"
     },
     {
       "institution": "Lietz Internat Schloss Bieberstein",
       "area": "Gymnasium",
-      "studyType": "",
+      "studyType": "Allgemeine Hochschulreife",
       "startDate": "2014-09",
       "endDate": "2016-07"
     }
@@ -149,9 +173,6 @@
       ]
     },
     {
-      "name": "Unix/Linux Administration"
-    },
-    {
       "name": "Frameworks",
       "keywords": [
         "SpringBoot",
@@ -185,9 +206,6 @@
       "keywords": ["GitHub", "Gitlab", "Bitbucket", "Gitea"]
     },
     {
-      "name": "Network Administration"
-    },
-    {
       "name": "Containers & Virtualization",
       "keywords": [
         "Docker",
@@ -210,6 +228,10 @@
     {
       "name": "Methods",
       "keywords": ["OOP", "DevOps", "DevSec", "Web Architecture"]
+    },
+    {
+      "name": "Others",
+      "keywords": ["Network Administration", "Unix/Linux Administration"]
     }
   ],
   "languages": [
@@ -290,8 +312,10 @@
   "references": [],
   "projects": [
     {
-      "name": "Bundesdruckerei GmbH - Bundesportal",
-      "roles": ["DevOps", "Developer"],
+      "name": "Bundesportal - Onlineverwaltung von Bund & Ländern",
+      "entity": "Bundesdruckerei GmbH",
+      "description": "Contributed to container-based microservices and infrastructure for the official German federal portal, focusing on secure and scalable deployments.",
+      "roles": ["DevOps", "Full-Stack Developer"],
       "startDate": "2023-05",
       "endDate": "2024-12",
       "url": "https://verwaltung.bund.de/",
@@ -302,14 +326,19 @@
         "Grafana",
         "Prometheus",
         "Keycloak"
+      ],
+      "highlights": [
+        "Implemented automated CI/CD pipelines on an Openshift cluster",
+        "Optimized logging and monitoring with ELK Stack, Grafana, and Prometheus"
       ]
     },
     {
-      "name": "PVH Corp. - Calvin Klein",
+      "name": "Calvin Klein - E-Commerce & CMS Integration",
+      "entity": "PVH Corp. - Calvin Klein & Tommy Hilfiger",
+      "description": "Developed and maintained cloud-native e-commerce solutions for Calvin Klein & Tommy Hilfiger, integrating CoreMedia CMS with Kubernetes-based deployments.",
       "roles": ["DevOps", "CMS Development"],
       "startDate": "2022-07",
       "endDate": "2023-05",
-      "entity": "Calvin Klein & Tommy Hilfiger",
       "url": "https://www.calvinklein.de/",
       "keywords": [
         "Kubernetes",
@@ -317,23 +346,60 @@
         "SpringBoot",
         "CoreMedia CMS",
         "ELK Stack"
+      ],
+      "highlights": [
+        "Optimized performance monitoring using Dynatrace and the ELK Stack",
+        "Led integration of CoreMedia CMS into an existing Kubernetes ecosystem"
       ]
     },
     {
-      "name": "IDA Innovations- und Digitalagentur GmbH",
-      "description": "KIKA Mediathek Relaunch",
+      "name": "KIKA Mediathek Relaunch & MDR Cloud-Migration",
+      "entity": "IDA Innovations- und Digitalagentur GmbH for MDR / KIKA",
+      "description": "",
+      "roles": ["DevOps & Cloud Engineer", "Full-Stack Developer"],
       "startDate": "2021-06",
       "endDate": "2022-07",
-      "url": "https://www.kika.de/"
+      "url": "https://www.kika.de/",
+      "keywords": ["Microservices", "Continuous Integration", "Cloud Hosting"],
+      "highlights": [
+        "Implemented a modern DevOps workflow for a live streaming service",
+        "Collaborated with cross-functional teams to enhance platform stability"
+      ]
     },
     {
-      "name": "AUSY Technologies/Randstad Digital - Telefónica/O2",
-      "description": "",
+      "name": "ePOS DPS – Digitales Pencil Selling",
+      "entity": "AUSY Technologies/Randstad Digital - Telefónica/O2",
+      "roles": ["Full-Stack Developer"],
+      "description": "Developed and enhanced Telefónica’s ePOS DPS solution to enable swift, paperless customer consultations and contract signings directly at the point of sale. Integrated real-time CRM data so customers and sales staff could collaboratively explore tariffs, promotions, and bundling options on any device, ensuring a transparent experience.",
       "startDate": "2020-05",
-      "endDate": "2021-05"
+      "endDate": "2021-05",
+      "keywords": [
+        "React",
+        "Microfrontends",
+        "Java",
+        "Spring Boot",
+        "Containerization",
+        "POS- & Legacy 'PartOS' Integration"
+      ],
+      "highlights": [
+        "Implemented an intuitive, touch-optimized interface for quick bundling of complex product offerings",
+        "Streamlined the PoS process with real-time CRM data, reducing manual steps and paperwork",
+        "Enabled side-by-side customer consultations, fostering transparency and trust",
+        "Facilitated an agile rollout by collaborating with pilot store managers and continuously integrating feedback"
+      ]
     },
     {
-      "name": "PARIMEO GmbH"
+      "name": "",
+      "entity": "PARIMEO GmbH",
+      "description": "Worked on in-house solutions and client projects, covering everything from backend service architectures and deployment pipelines to server management and on-premise hosting. Specialized in Java-based systems, container orchestration, and continuous improvement of DevOps workflows.",
+      "roles": ["Full-Stack Developer", "SysAdmin", "DevOps"],
+      "startDate": "2019-08",
+      "endDate": "2025-02",
+      "keywords": ["Java", "Docker", "Kubernetes", "CI/CD", "Virtualization"],
+      "highlights": [
+        "Implemented a standardized CI/CD pipeline to unify development teams",
+        "Migrated legacy systems to containerized architectures, reducing deployment time"
+      ]
     }
   ],
   "meta": {
