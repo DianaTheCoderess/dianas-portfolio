@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@/components/terminal.css";
+@import "@/components/terminal/terminal.css";
 
 @theme {
   /* Color Variables */
