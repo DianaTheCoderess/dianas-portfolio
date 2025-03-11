@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/Button"
 import {
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/Dropdown"
+} from "@/components/ui"
 import { Download, FileText } from "lucide-react"
 import type React from "react"
 import { useState } from "react"
@@ -28,7 +28,13 @@ const ResumeDropdown = ({ onOpen, onDownload }: ResumeDropdownProps) => {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <Button variant="default" onClick={handleButtonClick}>
+        <Button
+          variant="default"
+          onClick={handleButtonClick}
+          aria-haspopup="true"
+          aria-expanded={open}
+          aria-label="Resume Options"
+        >
           <Download className="w-5 h-5" />
           Resume
         </Button>
