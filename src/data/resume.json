@@ -315,7 +315,7 @@
     {
       "name": "Bundesportal - Onlineverwaltung von Bund & Ländern",
       "entity": "Bundesdruckerei GmbH",
-      "description": "Contributed to container-based microservices and infrastructure for the official German federal portal, focusing on secure and scalable deployments.",
+      "description": "Played a hybrid role in developing and maintaining the container-based microservices architecture for the official German federal portal. This project focused on creating a secure, scalable, and user-friendly platform that facilitates efficient online public administration services. By leveraging cutting-edge technologies such as Openshift and the ELK Stack, the project aimed to optimize system performance and ensure compliance with stringent security standards. Collaborated closely with governmental stakeholders and cross-functional teams to deliver a solution that supports over a million concurrent users, enhancing accessibility and reliability of public services.",
       "roles": ["DevOps", "Full-Stack Developer"],
       "startDate": "2023-05",
       "endDate": "2024-12",
@@ -343,7 +343,7 @@
     {
       "name": "Calvin Klein - E-Commerce & CMS Integration",
       "entity": "PVH Corp. - Calvin Klein & Tommy Hilfiger",
-      "description": "Developed and maintained cloud-native e-commerce solutions for Calvin Klein & Tommy Hilfiger, integrating CoreMedia CMS with Kubernetes-based deployments.",
+      "description": "Development and maintenance of cloud-native e-commerce solutions for Calvin Klein and Tommy Hilfiger, focusing on seamless integration of CoreMedia CMS within a Kubernetes-based deployment environment. The project aimed to enhance customer engagement and ensure high availability during peak shopping periods like Black Friday. By implementing a real-time data pipeline and optimizing performance monitoring with Dynatrace and the ELK Stack, the project achieved significant improvements in response times and user experience. Led efforts to integrate a Content Delivery Network (CDN), further enhancing global content delivery speed and reliability.",
       "roles": ["DevOps", "CMS Development"],
       "startDate": "2022-07",
       "endDate": "2023-05",
@@ -369,7 +369,7 @@
     {
       "name": "KIKA Mediathek Relaunch & MDR Cloud-Migration",
       "entity": "IDA Innovations- und Digitalagentur GmbH for MDR / KIKA",
-      "description": "",
+      "description": "Supported the transformation of KIKA's Mediathek by migrating its infrastructure to the cloud, enhancing user experience and operational efficiency. The project involved redesigning the platform's architecture to utilize microservices and cloud-native technologies, ensuring scalability and reliability. Collaborated with cross-functional teams to implement a robust DevOps workflow, facilitating continuous integration and deployment on Google Cloud Platform.",
       "roles": ["DevOps & Cloud Engineer", "Full-Stack Developer"],
       "startDate": "2021-06",
       "endDate": "2022-07",
