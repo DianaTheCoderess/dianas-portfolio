@@ -7,6 +7,8 @@ import React, {
   type ReactNode,
 } from "react"
 
+import "./terminal.css"
+
 enum ColorMode {
   Light = 0,
   Dark = 1,

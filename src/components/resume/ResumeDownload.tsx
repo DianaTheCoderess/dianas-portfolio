@@ -1,4 +1,4 @@
-import { ResumeDropdown } from "@/components/resume/ResumeDropdown"
+import { ResumeDropdown } from "@/components/resume"
 import { render } from "jsonresume-theme-even"
 import resumeData from "@/data/resume.json"
 

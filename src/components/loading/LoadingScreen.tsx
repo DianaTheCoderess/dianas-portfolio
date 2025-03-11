@@ -1,5 +1,4 @@
-import { LoadingLines } from "@/components/loading/LoadingLines"
-import { ProgressBar } from "@/components/loading/ProgressBar"
+import { LoadingLines, ProgressBar } from "@/components/loading"
 import { useLoadingState } from "@/hooks/useLoadingState"
 
 const LoadingScreen = () => {
