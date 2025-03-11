@@ -1,10 +1,10 @@
-import { ColorMode, Terminal } from "@/components/Terminal"
+import { ColorMode, Terminal } from "@/components/terminal/Terminal"
 import type React from "react"
 import { useState, useEffect } from "react"
 import { commandRegistry } from "@/lib/terminal/CommandRegistry"
 import { registerBuiltInCommands } from "@/lib/terminal/BuiltInCommands"
-import { TerminalOutput } from "@/components/TerminalOutput"
-import { TerminalInput } from "@/components/TerminalInput.tsx"
+import { TerminalOutput } from "@/components/terminal/TerminalOutput"
+import { TerminalInput } from "@/components/terminal/TerminalInput.tsx"
 import "@/styles/global.css"
 
 const TerminalController = () => {
