@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/refs/tags/v1.2.1/schema.json",
   "basics": {
     "name": "Diana Bendziula",
-    "label": "Software Engineer & DevOps",
+    "label": "Full-Stack Developer & DevOps",
     "image": "",
     "email": "diana@bendziula.com",
     "phone": "",
     "url": "https://diana.bendziula.com/",
-    "summary": "I’m a Full Stack Developer and DevOps Engineer dedicated to crafting solutions that balance sleek front-end experiences with reliable back-end operations. I focus on scalability, maintainability, and clear build pipelines to keep projects running smoothly. I regularly experiment with new tools and open-source tech in my home lab to stay ahead of the curve, and I enjoy collaborating across international teams to share knowledge and refine best practices.",
+    "summary": "I’m a Full Stack Developer and DevOps Engineer dedicated to crafting solutions that balance sleek front-end experiences with reliable back-end operations. I focus on scalability, maintainability, and clear build pipelines to keep projects running smoothly. I regularly experiment with new tools and open-source tech in my home lab to stay ahead of the curve, and I enjoy collaborating across international teams to share knowledge and refine best practice.",
     "profiles": [
       {
         "network": "GitHub",
@@ -31,8 +31,8 @@
     {
       "name": "PARIMEO GmbH",
       "location": "Jena, Germany",
-      "description": "PARIMEO GmbH is an IT solutions provider specializing in Java-based software development, DevOps practices, and system administration services. The company focuses on delivering robust and scalable infrastructure solutions to its clients.",
-      "summary": "Responsible for full-stack development, DevOps automation, and server administration. Ensured continuous delivery pipelines were set up to streamline deployment workflows and maintenance processes. Collaborated with cross-functional teams to coordinate software releases and troubleshoot complex infrastructure issues.",
+      "description": "PARIMEO GmbH is an IT solutions provider specializing in enterprise web development and content management system solutions.",
+      "summary": "Responsible for full-stack development, DevOps automation, server administration and cloud infrastructure management. Worked on in-house solutions and client projects. Also responsible for mentoring junior developers and leading agile development processes.",
       "position": "Software Engineer / DevOps / SysAdmin",
       "website": "https://parimeo.de/",
       "startDate": "2019-08",
@@ -132,7 +132,8 @@
         "SASS",
         "Figma",
         "Prisma",
-        "Drizzle"
+        "Drizzle",
+        "Kysely"
       ]
     },
     {
@@ -219,7 +220,7 @@
     },
     {
       "name": "Monitoring",
-      "keywords": ["Prometheus", "Grafana", "CheckMK"]
+      "keywords": ["Prometheus", "Grafana", "Loki", "Tempo", "CheckMK"]
     },
     {
       "name": "Scripting",
@@ -231,7 +232,7 @@
     },
     {
       "name": "Others",
-      "keywords": ["Network Administration", "Unix/Linux Administration"]
+      "keywords": ["Network Administration", "Linux Administration"]
     }
   ],
   "languages": [
@@ -321,15 +322,22 @@
       "url": "https://verwaltung.bund.de/",
       "keywords": [
         "Openshift",
+        "React",
         "SpringBoot",
         "ELK Stack",
         "Grafana",
         "Prometheus",
-        "Keycloak"
+        "Kafka",
+        "Keycloak",
+        "CI/CD Automation",
+        "Microservices Architecture",
+        "Security Compliance"
       ],
       "highlights": [
-        "Implemented automated CI/CD pipelines on an Openshift cluster",
-        "Optimized logging and monitoring with ELK Stack, Grafana, and Prometheus"
+        "Engineered automated CI/CD pipelines on an Openshift cluster, reducing deployment times by 40%.",
+        "Enhanced system observability and troubleshooting by optimizing logging and monitoring with the ELK Stack, Grafana, and Prometheus.",
+        "Collaborated with a cross-functional team to ensure compliance with stringent security and data protection standards, achieving ISO 27001 certification.",
+        "Developed microservices architecture that supported over 1 million concurrent users during peak times, ensuring high availability and performance."
       ]
     },
     {
@@ -345,11 +353,17 @@
         "Dynatrace",
         "SpringBoot",
         "CoreMedia CMS",
-        "ELK Stack"
+        "ELK Stack",
+        "Kafka",
+        "Cloud-Native",
+        "High-Throughput",
+        "Content Delivery Network (CDN)"
       ],
       "highlights": [
-        "Optimized performance monitoring using Dynatrace and the ELK Stack",
-        "Led integration of CoreMedia CMS into an existing Kubernetes ecosystem"
+        "Designed and implemented a real-time data pipeline capable of handling high-throughput event streaming, enhancing customer engagement and a stable performance even during peak traffic (Black Friday Sale).",
+        "Optimized performance monitoring using Dynatrace and the ELK Stack, resulting in a 30% reduction in response time.",
+        "Led the integration of CoreMedia CMS into an existing Kubernetes ecosystem, improving content management efficiency.",
+        "Implemented a Content Delivery Network (CDN) strategy that improved global content delivery speed and enhanced user experience."
       ]
     },
     {
@@ -360,10 +374,19 @@
       "startDate": "2021-06",
       "endDate": "2022-07",
       "url": "https://www.kika.de/",
-      "keywords": ["Microservices", "Continuous Integration", "Cloud Hosting"],
+      "keywords": [
+        "Microservices",
+        "Continuous Integration",
+        "Cloud Hosting",
+        "Google Cloud Platform",
+        "Scalability",
+        "User Experience"
+      ],
       "highlights": [
         "Implemented a modern DevOps workflow for a live streaming service",
-        "Collaborated with cross-functional teams to enhance platform stability"
+        "Collaborated with cross-functional teams to enhance platform stability",
+        "Transitioned the platform to a fully containerized and cloud-based architecture, significantly improving scalability and operational efficiency.",
+        "Implemented an effective hybrid cloud strategy, ensuring seamless and highly available content delivery."
       ]
     },
     {
@@ -379,26 +402,49 @@
         "Java",
         "Spring Boot",
         "Containerization",
-        "POS- & Legacy 'PartOS' Integration"
+        "POS- & Legacy 'PartOS' Integration",
+        "Agile Development"
       ],
       "highlights": [
         "Implemented an intuitive, touch-optimized interface for quick bundling of complex product offerings",
         "Streamlined the PoS process with real-time CRM data, reducing manual steps and paperwork",
         "Enabled side-by-side customer consultations, fostering transparency and trust",
-        "Facilitated an agile rollout by collaborating with pilot store managers and continuously integrating feedback"
+        "Facilitated an agile rollout by collaborating with pilot store managers and continuously integrating feedback",
+        "Mentored team on test-driven development approaches with Playwright and Testcontainers, ensuring robust, maintainable code."
       ]
     },
     {
-      "name": "",
+      "name": "In-house Solutions & Client Projects",
       "entity": "PARIMEO GmbH",
-      "description": "Worked on in-house solutions and client projects, covering everything from backend service architectures and deployment pipelines to server management and on-premise hosting. Specialized in Java-based systems, container orchestration, and continuous improvement of DevOps workflows.",
+      "description": "Led the development and deployment of in-house as well as client focused comprehensive IT solutions, specializing in cloud infrastructure and full-stack application development. Applied advanced technologies to develop systems that are scalable, secure, and efficient, effectively addressing a wide range of client requirements. Emphasized the integration of modern DevOps practices to enhance operational efficiency and increase productivity.",
       "roles": ["Full-Stack Developer", "SysAdmin", "DevOps"],
       "startDate": "2019-08",
       "endDate": "2025-02",
-      "keywords": ["Java", "Docker", "Kubernetes", "CI/CD", "Virtualization"],
+      "keywords": [
+        "Azure",
+        "Spring Boot",
+        "React",
+        "Angular",
+        "CloudStack",
+        "QEMU",
+        "Linux",
+        "PostgreSQL",
+        "MySQL",
+        "Redis",
+        "GitLab CI/CD",
+        "Docker",
+        "Kubernetes",
+        "Virtualization",
+        "Network Administration"
+      ],
       "highlights": [
-        "Implemented a standardized CI/CD pipeline to unify development teams",
-        "Migrated legacy systems to containerized architectures, reducing deployment time"
+        "Architected and deployed scalable and cost-efficient cloud solutions on Azure, leveraging Kubernetes for container orchestration to enhance system reliability and scalability.",
+        "Developed robust backend services using Spring Boot, integrated with frontend frameworks like React and Angular, to deliver seamless user experiences.",
+        "Managed virtualization environments using QEMU and CloudStack, optimizing resource allocation and improving infrastructure cost-efficiency.",
+        "Drove architectural decisions and sprint planning in an agile setting, emphasizing knowledge-sharing and best practices.",
+        "Trained employees on security best practices, including phishing awareness, password management and incident response, to enhance overall security posture.",
+        "Mentoring junior developers on best practices in full-stack development and DevOps methodologies, fostering a culture of continuous learning and improvement.",
+        "Enhanced network administration and security protocols, ensuring robust protection against threats and maintaining availability of services."
       ]
     }
   ],
