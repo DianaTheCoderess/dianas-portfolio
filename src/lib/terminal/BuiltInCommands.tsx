@@ -3,6 +3,10 @@ import {
   commandRegistry,
   type TerminalCommand,
 } from "@/lib/terminal/CommandRegistry"
+import resumeData from "@/data/resume.json"
+import type { ResumeSchema } from "@/types/resumeTypes"
+
+const resume: ResumeSchema = resumeData
 
 const createStyledOutput = (
   title: string,
@@ -31,97 +35,6 @@ const helpCommand: TerminalCommand = {
   },
 }
 
-const aboutCommand: TerminalCommand = {
-  name: "about",
-  description: "Learn about Diana",
-  execute: () => {
-    return {
-      output: createStyledOutput(
-        "ABOUT DIANA:\n",
-        <>
-          <br />
-          Full-stack developer specializing in modern web technologies.
-          <br />
-          Passionate about creating elegant, efficient, and user-friendly
-          applications.
-          <br />
-          Based in Berlin, Germany.
-        </>,
-      ),
-    }
-  },
-}
-
-const skillsCommand: TerminalCommand = {
-  name: "skills",
-  description: "View technical skills",
-  execute: () => {
-    return {
-      output: createStyledOutput(
-        "TECHNICAL SKILLS:\n",
-        <>
-          <br />
-          Frontend: React, TypeScript, Next.js, Astro
-          <br />
-          Backend: Node.js, Express, Python, Django
-          <br />
-          Database: PostgreSQL, MongoDB, Redis
-          <br />
-          DevOps: Docker, AWS, CI/CD, Git
-        </>,
-      ),
-    }
-  },
-}
-
-const projectsCommand: TerminalCommand = {
-  name: "projects",
-  description: "Browse portfolio projects",
-  execute: (args) => {
-    if (args.length > 0 && args[0] === "open") {
-      const projectNum = args[1]
-      if (projectNum === "1") {
-        return {
-          output: "Opening CyberCommerce project...",
-          externalAction: () =>
-            window.open("/projects#cybercommerce", "_blank"),
-        }
-      }
-      if (projectNum === "2") {
-        return {
-          output: "Opening NeuralNotes project...",
-          externalAction: () => window.open("/projects#neuralnotes", "_blank"),
-        }
-      }
-      if (projectNum === "3") {
-        return {
-          output: "Opening QuantumDash project...",
-          externalAction: () => window.open("/projects#quantumdash", "_blank"),
-        }
-      }
-      return {
-        output: "Invalid project number",
-      }
-    }
-
-    return {
-      output: createStyledOutput(
-        "FEATURED PROJECTS:\n",
-        <>
-          <br />
-          Use 'projects open [number]' to view details
-          <br />
-          1. CyberCommerce - E-commerce platform
-          <br />
-          2. NeuralNotes - AI-powered note-taking app
-          <br />
-          3. QuantumDash - Analytics dashboard
-        </>,
-      ),
-    }
-  },
-}
-
 const contactCommand: TerminalCommand = {
   name: "contact",
   description: "Get contact information",
@@ -131,11 +44,17 @@ const contactCommand: TerminalCommand = {
         "CONTACT INFO:\n",
         <>
           <br />
-          Email: diana@example.com
+          Email: {resume.basics?.email}
           <br />
-          LinkedIn: linkedin.com/in/diana-example
+          LinkedIn:{" "}
+          {resume.basics?.profiles?.find(
+            (profile) => profile.network === "LinkedIn",
+          )?.url ?? "Not available"}
           <br />
-          GitHub: github.com/diana-example
+          GitHub:{" "}
+          {resume.basics?.profiles?.find(
+            (profile) => profile.network === "GitHub",
+          )?.url ?? "Not available"}
         </>,
       ),
     }
@@ -148,7 +67,13 @@ const githubCommand: TerminalCommand = {
   execute: () => {
     return {
       output: "Opening GitHub profile...",
-      externalAction: () => window.open("https://github.com", "_blank"),
+      externalAction: () =>
+        window.open(
+          resume.basics?.profiles?.find(
+            (profile) => profile.network === "GitHub",
+          )?.url ?? "https://github.com",
+          "_blank",
+        ),
     }
   },
 }
@@ -159,7 +84,13 @@ const linkedinCommand: TerminalCommand = {
   execute: () => {
     return {
       output: "Opening LinkedIn profile...",
-      externalAction: () => window.open("https://linkedin.com", "_blank"),
+      externalAction: () =>
+        window.open(
+          resume.basics?.profiles?.find(
+            (profile) => profile.network === "LinkedIn",
+          )?.url ?? "https://linkedin.com",
+          "_blank",
+        ),
     }
   },
 }
@@ -277,9 +208,6 @@ const neoCommand: TerminalCommand = {
 
 const registerBuiltInCommands = (): void => {
   commandRegistry.register(helpCommand)
-  commandRegistry.register(aboutCommand)
-  commandRegistry.register(skillsCommand)
-  commandRegistry.register(projectsCommand)
   commandRegistry.register(contactCommand)
   commandRegistry.register(githubCommand)
   commandRegistry.register(linkedinCommand)
