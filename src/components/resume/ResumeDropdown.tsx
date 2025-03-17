@@ -41,7 +41,6 @@ const ResumeDropdown = ({ onOpen, onDownload }: ResumeDropdownProps) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         className="bg-deep-purple/95 border border-neon-pink/20"
-        // Ensure the dropdown closes after an item is clicked
         onInteractOutside={() => setOpen(false)}
       >
         <DropdownMenuItem
@@ -50,6 +49,7 @@ const ResumeDropdown = ({ onOpen, onDownload }: ResumeDropdownProps) => {
             setOpen(false)
           }}
           className="text-cream hover:text-cyber-blue hover:bg-deep-purple/50 cursor-pointer gap-2"
+          data-umami-event="resume-download"
         >
           <Download className="w-4 h-4" />
           Download HTML
@@ -60,6 +60,7 @@ const ResumeDropdown = ({ onOpen, onDownload }: ResumeDropdownProps) => {
             setOpen(false)
           }}
           className="text-cream hover:text-cyber-blue hover:bg-deep-purple/50 cursor-pointer gap-2"
+          data-umami-event="resume-open-in-browser"
         >
           <FileText className="w-4 h-4" />
           Open in Browser
