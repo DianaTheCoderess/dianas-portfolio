@@ -7,6 +7,7 @@ interface TechStackProps {
   maxWidth?: string
 }
 
+// TODO: Fix width of the tech stack items on mobile
 const TechStack: React.FC<TechStackProps> = ({
   technologies,
   maxWidth = "100%",
