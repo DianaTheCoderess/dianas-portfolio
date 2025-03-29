@@ -31,7 +31,7 @@ importers:
         version: 1.1.2(@types/react@19.0.12)(react@19.1.0)
       '@storyblok/astro':
         specifier: ^6.0.2
-        version: 6.0.2(astro@5.4.2(@netlify/blobs@8.1.1)(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.34.9)(typescript@5.7.3)(yaml@2.7.0))
+        version: 6.1.1(astro@5.4.2(@netlify/blobs@8.1.1)(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.34.9)(typescript@5.7.3)(yaml@2.7.0))
       '@tailwindcss/vite':
         specifier: ^4.0.11
         version: 4.0.11(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0))
@@ -1150,16 +1150,16 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@storyblok/astro@6.0.2':
-    resolution: {integrity: sha512-/k8Z1chuge7NE1fP3dQtRS8fliPkmeQSnlDNImh3hdVR+1E9a63cOSQLymOXnv8SR/VGkU9qbT3c4QqSdx75XA==}
+  '@storyblok/astro@6.1.1':
+    resolution: {integrity: sha512-iM+lbf1jMWz/Z4DdbvFL9N18lLLwebNYJf2loSZedThEZFhwDLaLaYRMpWgmBbjFe61Tr8MeHM29KhRkko8fDg==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0 || ^5.0.0
 
-  '@storyblok/js@3.2.3':
-    resolution: {integrity: sha512-RRnskb6GCpy2CeVVxQMEwAgbWqG7ehnzCVqbidsR7GpPhcdfdCgsAYDlSnAePwzbpMZXqpW1itJXDnuLmm1LXQ==}
+  '@storyblok/js@3.3.0':
+    resolution: {integrity: sha512-+i0I6nvbCXnfO6L5b5SYvoqLHUb1j3iIznuN/tcGO9c8MYNopY7XGOjrOOTlJVAoiFECJyzYiwC7mDRwrotvfw==}
 
-  '@storyblok/richtext@3.0.2':
-    resolution: {integrity: sha512-KBLx9ycNVMyVnNyPiwBH5g9uWmiJpMzp9YvpnnADXlPLoksusrwI56BusSM8HaIgJgcnB5RR0LvhySkPFdC8Zg==}
+  '@storyblok/richtext@3.1.0':
+    resolution: {integrity: sha512-QtH5G+F7w3YuGGnHAFldo71vPpBT5prndZWFPDihlIsWaW0rEWyE9iX+6fp2f4XDgbhi0vyF1HqajFplGOtFVg==}
 
   '@tailwindcss/node@4.0.11':
     resolution: {integrity: sha512-y1Ko/QaZh6Fv8sSOOPpRztT8nvNKSetvE4CLxsDdyY5kkBS7hKq04D3y3ldelniWe6YqRIzBHTzfAIc1hZ+0FA==}
@@ -3256,8 +3256,8 @@ packages:
   std-env@3.8.1:
     resolution: {integrity: sha512-vj5lIj3Mwf9D79hBkltk5qmkFI+biIKWS2IBxEyEU3AX1tUf7AoL8nSazCOiiqQsGKIq01SClsKEzweu34uwvA==}
 
-  storyblok-js-client@6.10.8:
-    resolution: {integrity: sha512-yjXzKQO16ry+LMEUksfLjO/Eq88DwMflHVxg1YDF2Ak13fHhSD/M36XE/E1jrTbjdVuxSnlxrt8jYP6NiCnCSQ==}
+  storyblok-js-client@6.10.10:
+    resolution: {integrity: sha512-4TK6jZHTJbgbUVCne+2fg6omSmWTWBaBtmDJY0fhBw/BN5flE7wrPU41cU0olVqSbkFNF62WJnoznE1a7pzkKA==}
 
   string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
@@ -4815,18 +4815,18 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@storyblok/astro@6.0.2(astro@5.4.2(@netlify/blobs@8.1.1)(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.34.9)(typescript@5.7.3)(yaml@2.7.0))':
+  '@storyblok/astro@6.1.1(astro@5.4.2(@netlify/blobs@8.1.1)(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.34.9)(typescript@5.7.3)(yaml@2.7.0))':
     dependencies:
-      '@storyblok/js': 3.2.3
+      '@storyblok/js': 3.3.0
       astro: 5.4.2(@netlify/blobs@8.1.1)(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.34.9)(typescript@5.7.3)(yaml@2.7.0)
       camelcase: 8.0.0
 
-  '@storyblok/js@3.2.3':
+  '@storyblok/js@3.3.0':
     dependencies:
-      '@storyblok/richtext': 3.0.2
-      storyblok-js-client: 6.10.8
+      '@storyblok/richtext': 3.1.0
+      storyblok-js-client: 6.10.10
 
-  '@storyblok/richtext@3.0.2': {}
+  '@storyblok/richtext@3.1.0': {}
 
   '@tailwindcss/node@4.0.11':
     dependencies:
@@ -7300,7 +7300,7 @@ snapshots:
 
   std-env@3.8.1: {}
 
-  storyblok-js-client@6.10.8: {}
+  storyblok-js-client@6.10.10: {}
 
   string-width@4.2.3:
     dependencies:
