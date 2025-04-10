@@ -1,4 +1,4 @@
-import { LoadingScreen } from "@/components/LoadingScreen"
+import { LoadingScreen } from "@/components/loading/LoadingScreen"
 import { act, render, screen } from "@testing-library/react"
 import { describe, expect, it, vi } from "vitest"
 

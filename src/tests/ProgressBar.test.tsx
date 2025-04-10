@@ -1,4 +1,4 @@
-import { ProgressBar } from "@/components/ProgressBar"
+import { ProgressBar } from "@/components/loading/ProgressBar"
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
 

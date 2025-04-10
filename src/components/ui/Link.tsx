@@ -1,4 +1,4 @@
-import { Button, type ButtonProps } from "./Button"
+import { Button, type ButtonProps } from "@/components/ui"
 import type React from "react"
 
 interface LinkProps extends ButtonProps {
@@ -9,7 +9,9 @@ interface LinkProps extends ButtonProps {
 const Link: React.FC<LinkProps> = ({ href, children, ...props }) => {
   return (
     <Button {...props} asChild>
-      <a href={href}>{children}</a>
+      <a href={href} data-umami-event={props.id}>
+        {children}
+      </a>
     </Button>
   )
 }
