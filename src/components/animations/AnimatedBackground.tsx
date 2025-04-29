@@ -1,26 +1,37 @@
+import { cn } from "@/lib/utils.ts"
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 
-const AnimatedBackground: React.FC = () => {
+interface ParticleProps {
+  x: number
+  y: number
+  size: number
+  speedX: number
+  speedY: number
+  color: string
+  baseSpeedX: number
+  baseSpeedY: number
+}
+
+interface AnimatedBackgroundProps {
+  particleCount?: number
+  className?: string
+  particles?: ParticleProps[]
+}
+
+// TODO: Fix for re-rendering on mobile
+const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
+  particleCount = 42,
+  className,
+  particles: initialParticles,
+}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mousePosition = useRef({ x: 0, y: 0 })
-  const particles = useRef<
-    Array<{
-      x: number
-      y: number
-      size: number
-      speedX: number
-      speedY: number
-      color: string
-      baseSpeedX: number
-      baseSpeedY: number
-    }>
-  >([])
+  const particles = useRef<ParticleProps[]>(initialParticles || [])
   const animationFrameId = useRef<number | null>(null)
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    // Set initial mobile state
     setIsMobile(window.innerWidth < 768)
 
     const canvas = canvasRef.current
@@ -30,23 +41,19 @@ const AnimatedBackground: React.FC = () => {
     if (!ctx) return
 
     const colors = ["#FF6B97", "#00F5FF", "#9D4EDD"]
-    // Reduce particle count on mobile for better performance
-    const particleCount = isMobile ? 24 : 42
+    particleCount = isMobile ? 24 : particleCount
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
 
-      // Set background color
       ctx.fillStyle = "#2A1B3D"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      // Update isMobile on resize
       setIsMobile(window.innerWidth < 768)
     }
 
     const createParticle = (x?: number, y?: number) => {
-      // Slower base speed for mobile
       const speedMultiplier = isMobile ? 0.5 : 1
       const baseSpeedX = (Math.random() - 0.5) * 2 * speedMultiplier
       const baseSpeedY = (Math.random() - 0.5) * 2 * speedMultiplier
@@ -54,7 +61,7 @@ const AnimatedBackground: React.FC = () => {
       return {
         x: x ?? Math.random() * canvas.width,
         y: y ?? Math.random() * canvas.height,
-        size: Math.random() * (isMobile ? 3 : 2) + 2, // Slightly larger particles on mobile
+        size: Math.random() * (isMobile ? 3 : 2) + 2,
         speedX: baseSpeedX,
         speedY: baseSpeedY,
         baseSpeedX,
@@ -78,14 +85,12 @@ const AnimatedBackground: React.FC = () => {
 
     const updateParticle = (particle: (typeof particles.current)[0]) => {
       if (isMobile) {
-        // Mobile animation pattern: gentle wave motion
-        const time = Date.now() / 2000 // Slower wave motion
+        const time = Date.now() / 2000
         particle.speedX =
           particle.baseSpeedX + Math.sin(time + particle.y * 0.01) * 0.2
         particle.speedY =
           particle.baseSpeedY + Math.cos(time + particle.x * 0.01) * 0.2
       } else {
-        // Desktop: Mouse interaction
         const dx = mousePosition.current.x - particle.x
         const dy = mousePosition.current.y - particle.y
         const distance = Math.sqrt(dx * dx + dy * dy)
@@ -96,12 +101,10 @@ const AnimatedBackground: React.FC = () => {
           particle.speedX += Math.cos(angle) * force
           particle.speedY += Math.sin(angle) * force
         } else {
-          // Return to base speed when not influenced by mouse
           particle.speedX = particle.speedX * 0.95 + particle.baseSpeedX * 0.05
           particle.speedY = particle.speedY * 0.95 + particle.baseSpeedY * 0.05
         }
 
-        // Limit maximum speed
         const maxSpeed = 3
         const currentSpeed = Math.sqrt(
           particle.speedX ** 2 + particle.speedY ** 2,
@@ -113,12 +116,10 @@ const AnimatedBackground: React.FC = () => {
         }
       }
 
-      // Update position
       particle.x += particle.speedX
       particle.y += particle.speedY
 
-      // Bounce off screen borders with damping
-      const damping = isMobile ? 0.8 : 1 // More damping on mobile for smoother motion
+      const damping = isMobile ? 0.8 : 1
       if (particle.x <= 0 || particle.x >= canvas.width) {
         particle.speedX *= -damping
         particle.baseSpeedX *= -damping
@@ -134,11 +135,9 @@ const AnimatedBackground: React.FC = () => {
     const animate = () => {
       if (!ctx || !canvas) return
 
-      // Clear canvas and redraw background
       ctx.fillStyle = "#2A1B3D"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      // Update and draw particles
       for (const particle of particles.current) {
         updateParticle(particle)
         drawParticle(particle)
@@ -147,13 +146,11 @@ const AnimatedBackground: React.FC = () => {
       animationFrameId.current = requestAnimationFrame(animate)
     }
 
-    // Handle window resize
     const handleResize = () => {
       resizeCanvas()
-      createParticles() // Recreate particles on resize for better distribution
+      createParticles()
     }
 
-    // Handle mouse movement
     const handleMouseMove = (e: MouseEvent) => {
       if (!isMobile) {
         mousePosition.current = {
@@ -177,12 +174,15 @@ const AnimatedBackground: React.FC = () => {
       window.removeEventListener("resize", handleResize)
       window.removeEventListener("mousemove", handleMouseMove)
     }
-  }, [isMobile]) // Add isMobile to dependencies
+  }, [isMobile, particleCount])
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] will-change-transform transform-gpu"
+      className={cn(
+        "fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] will-change-transform transform-gpu",
+        className,
+      )}
     />
   )
 }
@@ -190,3 +190,4 @@ const AnimatedBackground: React.FC = () => {
 AnimatedBackground.displayName = "AnimatedBackground"
 
 export { AnimatedBackground }
+export type { ParticleProps, AnimatedBackgroundProps }

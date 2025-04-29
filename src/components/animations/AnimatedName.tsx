@@ -1,4 +1,5 @@
 "use client"
+import { cn } from "@/lib/utils.ts"
 import type React from "react"
 import { memo, useCallback, useEffect, useRef, useState } from "react"
 
@@ -73,7 +74,7 @@ const AnimatedName: React.FC<AnimatedNameProps> = memo(
     }, [name])
 
     return (
-      <span ref={elementRef} className={className} aria-label={finalText}>
+      <span ref={elementRef} className={cn(className)} aria-label={finalText}>
         {displayText}
       </span>
     )
