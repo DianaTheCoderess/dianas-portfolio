@@ -31,7 +31,7 @@ importers:
         version: 1.1.2(@types/react@19.0.12)(react@19.1.0)
       '@storyblok/astro':
         specifier: ^6.0.2
-        version: 6.0.2(astro@5.4.2(@netlify/blobs@8.1.1)(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.34.9)(typescript@5.7.3)(yaml@2.7.0))
+        version: 6.2.0(astro@5.4.2(@netlify/blobs@8.1.1)(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.34.9)(typescript@5.7.3)(yaml@2.7.0))
       '@tailwindcss/vite':
         specifier: ^4.0.11
         version: 4.0.11(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0))
@@ -178,6 +178,10 @@ packages:
     resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/code-frame@7.27.1':
+    resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/compat-data@7.26.8':
     resolution: {integrity: sha512-oH5UPLMWR3L2wEFLnFJ1TZXqHufiTKAiLfqw5zkhS4dKXLJ10yVztfil/twG8EDTA4F/tvVNw9nOl4ZMslB8rQ==}
     engines: {node: '>=6.9.0'}
@@ -216,6 +220,10 @@ packages:
     resolution: {integrity: sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/helper-validator-identifier@7.27.1':
+    resolution: {integrity: sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/helper-validator-option@7.25.9':
     resolution: {integrity: sha512-e/zv1co8pp55dNdEcCynfj9X7nyUKUXoUEwfXqaZt0omVOmDe9oOTdKStH4GmAw6zxMFs50ZayuMfHDKlO7Tfw==}
     engines: {node: '>=6.9.0'}
@@ -245,8 +253,8 @@ packages:
     resolution: {integrity: sha512-aA63XwOkcl4xxQa3HjPMqOP6LiK0ZDv3mUPYEFXkpHbaFjtGggE1A61FjFzJnB+p7/oy2gA8E+rcBNl/zC1tMg==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/runtime@7.27.0':
-    resolution: {integrity: sha512-VtPOkrdPHZsKc/clNqyi9WUA8TINkZ4cGk63UUE3u4pmB2k+ZMQRDuIOagv8UVd6j7k0T3+RRIb7beKTebNbcw==}
+  '@babel/runtime@7.28.3':
+    resolution: {integrity: sha512-9uIQ10o0WGdpP6GDhXcdOJPJuDgFtIDtN/9+ArJQ2NAfAmiuhTQdzkaTGR33v43GYS2UrSA0eX2pPPHoFVvpxA==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.26.9':
@@ -1150,16 +1158,16 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@storyblok/astro@6.0.2':
-    resolution: {integrity: sha512-/k8Z1chuge7NE1fP3dQtRS8fliPkmeQSnlDNImh3hdVR+1E9a63cOSQLymOXnv8SR/VGkU9qbT3c4QqSdx75XA==}
+  '@storyblok/astro@6.2.0':
+    resolution: {integrity: sha512-EsUwDXykEDCPeTgCrLPsHT/ZOif08m2YDFK8eJ47WNytxoW2fPcuMEksB77LAnUmlSLHAWap4zOtm5TMFsBKNg==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0 || ^5.0.0
 
-  '@storyblok/js@3.2.3':
-    resolution: {integrity: sha512-RRnskb6GCpy2CeVVxQMEwAgbWqG7ehnzCVqbidsR7GpPhcdfdCgsAYDlSnAePwzbpMZXqpW1itJXDnuLmm1LXQ==}
+  '@storyblok/js@3.5.0':
+    resolution: {integrity: sha512-1gGY6t4CIZNOt9t5h+Q7lMN6lfG8VgrChktv1L3gsMzBcOcEnQdr7ZeqUWFbB9VlGPc8X/RRfULRgckzEwJ6BA==}
 
-  '@storyblok/richtext@3.0.2':
-    resolution: {integrity: sha512-KBLx9ycNVMyVnNyPiwBH5g9uWmiJpMzp9YvpnnADXlPLoksusrwI56BusSM8HaIgJgcnB5RR0LvhySkPFdC8Zg==}
+  '@storyblok/richtext@3.2.0':
+    resolution: {integrity: sha512-koVGDv1HtiI5vymE5fzRB1VO1PNguj+RSfHI4zCy2+90pRoqZbsUCR8V2TaNl7Pg8R1oOkFZnbAxdt9Z4xoxDg==}
 
   '@tailwindcss/node@4.0.11':
     resolution: {integrity: sha512-y1Ko/QaZh6Fv8sSOOPpRztT8nvNKSetvE4CLxsDdyY5kkBS7hKq04D3y3ldelniWe6YqRIzBHTzfAIc1hZ+0FA==}
@@ -3256,8 +3264,8 @@ packages:
   std-env@3.8.1:
     resolution: {integrity: sha512-vj5lIj3Mwf9D79hBkltk5qmkFI+biIKWS2IBxEyEU3AX1tUf7AoL8nSazCOiiqQsGKIq01SClsKEzweu34uwvA==}
 
-  storyblok-js-client@6.10.8:
-    resolution: {integrity: sha512-yjXzKQO16ry+LMEUksfLjO/Eq88DwMflHVxg1YDF2Ak13fHhSD/M36XE/E1jrTbjdVuxSnlxrt8jYP6NiCnCSQ==}
+  storyblok-js-client@6.11.0:
+    resolution: {integrity: sha512-2uhd/VA51AB88XoqQ+rw9JqkWNoPl2ydg+J49w+2KBqqFvV2EtUhrS2umnabU8sD7HftFsMg0n69EWhkeDyM/A==}
 
   string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
@@ -3953,6 +3961,12 @@ snapshots:
       js-tokens: 4.0.0
       picocolors: 1.1.1
 
+  '@babel/code-frame@7.27.1':
+    dependencies:
+      '@babel/helper-validator-identifier': 7.27.1
+      js-tokens: 4.0.0
+      picocolors: 1.1.1
+
   '@babel/compat-data@7.26.8': {}
 
   '@babel/core@7.26.9':
@@ -4013,6 +4027,8 @@ snapshots:
 
   '@babel/helper-validator-identifier@7.25.9': {}
 
+  '@babel/helper-validator-identifier@7.27.1': {}
+
   '@babel/helper-validator-option@7.25.9': {}
 
   '@babel/helpers@7.26.9':
@@ -4038,9 +4054,7 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.14.1
 
-  '@babel/runtime@7.27.0':
-    dependencies:
-      regenerator-runtime: 0.14.1
+  '@babel/runtime@7.28.3': {}
 
   '@babel/template@7.26.9':
     dependencies:
@@ -4815,18 +4829,18 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@storyblok/astro@6.0.2(astro@5.4.2(@netlify/blobs@8.1.1)(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.34.9)(typescript@5.7.3)(yaml@2.7.0))':
+  '@storyblok/astro@6.2.0(astro@5.4.2(@netlify/blobs@8.1.1)(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.34.9)(typescript@5.7.3)(yaml@2.7.0))':
     dependencies:
-      '@storyblok/js': 3.2.3
+      '@storyblok/js': 3.5.0
       astro: 5.4.2(@netlify/blobs@8.1.1)(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.34.9)(typescript@5.7.3)(yaml@2.7.0)
       camelcase: 8.0.0
 
-  '@storyblok/js@3.2.3':
+  '@storyblok/js@3.5.0':
     dependencies:
-      '@storyblok/richtext': 3.0.2
-      storyblok-js-client: 6.10.8
+      '@storyblok/richtext': 3.2.0
+      storyblok-js-client: 6.11.0
 
-  '@storyblok/richtext@3.0.2': {}
+  '@storyblok/richtext@3.2.0': {}
 
   '@tailwindcss/node@4.0.11':
     dependencies:
@@ -4891,8 +4905,8 @@ snapshots:
 
   '@testing-library/dom@10.4.0':
     dependencies:
-      '@babel/code-frame': 7.26.2
-      '@babel/runtime': 7.27.0
+      '@babel/code-frame': 7.27.1
+      '@babel/runtime': 7.28.3
       '@types/aria-query': 5.0.4
       aria-query: 5.3.0
       chalk: 4.1.2
@@ -7300,7 +7314,7 @@ snapshots:
 
   std-env@3.8.1: {}
 
-  storyblok-js-client@6.10.8: {}
+  storyblok-js-client@6.11.0: {}
 
   string-width@4.2.3:
     dependencies:
