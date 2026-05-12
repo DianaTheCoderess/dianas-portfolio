@@ -101,10 +101,10 @@ importers:
         version: 4.3.4(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0))
       '@vitest/coverage-v8':
         specifier: ^3.0.8
-        version: 3.0.8(vitest@3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(jiti@2.4.2)(jsdom@26.0.0(canvas@3.1.0))(lightningcss@1.29.2)(yaml@2.7.0))
+        version: 3.0.8(vitest@3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(jiti@2.4.2)(jsdom@26.0.0(canvas@3.2.3))(lightningcss@1.29.2)(yaml@2.7.0))
       canvas:
         specifier: ^3.1.0
-        version: 3.1.0
+        version: 3.2.3
       cz-conventional-changelog:
         specifier: ^3.3.0
         version: 3.3.0(@types/node@22.13.9)(typescript@5.7.3)
@@ -113,7 +113,7 @@ importers:
         version: 9.1.7
       jsdom:
         specifier: ^26.0.0
-        version: 26.0.0(canvas@3.1.0)
+        version: 26.0.0(canvas@3.2.3)
       json-schema-to-typescript:
         specifier: ^15.0.4
         version: 15.0.4
@@ -122,7 +122,7 @@ importers:
         version: 6.2.0(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0)
       vitest:
         specifier: ^3.0.8
-        version: 3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(jiti@2.4.2)(jsdom@26.0.0(canvas@3.1.0))(lightningcss@1.29.2)(yaml@2.7.0)
+        version: 3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(jiti@2.4.2)(jsdom@26.0.0(canvas@3.2.3))(lightningcss@1.29.2)(yaml@2.7.0)
 
 packages:
 
@@ -1337,6 +1337,7 @@ packages:
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
+    deprecated: Potential CWE-502 - Update to 1.3.1 or higher
 
   '@vercel/nft@0.29.2':
     resolution: {integrity: sha512-A/Si4mrTkQqJ6EXJKv5EYCDQ3NL6nJXxG8VGXePsaiQigsomHYQC9xSpX8qGk7AEZk4b1ssbYIqJ0ISQQ7bfcA==}
@@ -1556,8 +1557,8 @@ packages:
   caniuse-lite@1.0.30001702:
     resolution: {integrity: sha512-LoPe/D7zioC0REI5W73PeR1e1MLCipRGq/VkovJnd6Df+QVqT+vT33OXCp8QUd7kA7RZrHWxb1B36OQKI/0gOA==}
 
-  canvas@3.1.0:
-    resolution: {integrity: sha512-tTj3CqqukVJ9NgSahykNwtGda7V33VLObwrHfzT0vqJXu7J4d4C/7kQQW3fOEGDfZZoILPut5H00gOjyttPGyg==}
+  canvas@3.2.3:
+    resolution: {integrity: sha512-PzE5nJZPz72YUAfo8oTp0u3fqqY7IzlTubneAihqDYAUcBk7ryeCmBbdJBEdaH0bptSOe2VT2Zwcb3UaFyaSWw==}
     engines: {node: ^18.12.0 || >= 20.9.0}
 
   ccount@2.0.1:
@@ -1841,6 +1842,10 @@ packages:
     resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
     engines: {node: '>=8'}
 
+  detect-libc@2.1.2:
+    resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
+    engines: {node: '>=8'}
+
   detect-node-es@1.1.0:
     resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
 
@@ -1897,8 +1902,8 @@ packages:
   emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
 
-  end-of-stream@1.4.4:
-    resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
+  end-of-stream@1.4.5:
+    resolution: {integrity: sha512-ooEGc6HP26xXq/N+GCGOT0JKCLDGrq2bQUZrQ7gyrJiZANJ/8YDTxTpQBXGMn+WbIQXNVpyWymm7KYVICQnyOg==}
 
   enhanced-resolve@5.18.1:
     resolution: {integrity: sha512-ZSW3ma5GkcQBIpwZTSRAI8N71Uuwgs93IezB7mf7R60tC8ZbJideoDNKjHn2O9KIlx6rkGTTEk1xUCK2E1Y2Yg==}
@@ -2804,8 +2809,8 @@ packages:
   nlcst-to-string@4.0.0:
     resolution: {integrity: sha512-YKLBCcUYKAg0FNlOBT6aI91qFmSiFKiluk655WzPF+DDMA02qIyy8uiRqI8QXtcFpEvll12LpL5MXqEmAZ+dcA==}
 
-  node-abi@3.74.0:
-    resolution: {integrity: sha512-c5XK0MjkGBrQPGYG24GBADZud0NCbznxNx0ZkS+ebUTrmV1qTDxPxSL8zEAPURXSbLRWVexxmP4986BziahL5w==}
+  node-abi@3.92.0:
+    resolution: {integrity: sha512-KdHvFWZjEKDf0cakgFjebl371GPsISX2oZHcuyKqM7DtogIsHrqKeLTo8wBHxaXRAQlY2PsPlZmfo+9ZCxEREQ==}
     engines: {node: '>=10'}
 
   node-addon-api@7.1.1:
@@ -3005,8 +3010,8 @@ packages:
   property-information@7.0.0:
     resolution: {integrity: sha512-7D/qOz/+Y4X/rzSB6jKxKUsQnphO046ei8qxG59mtM3RG3DHgTK81HrxrmoDVINJb8NKT5ZsRbwHvQ6B68Iyhg==}
 
-  pump@3.0.2:
-    resolution: {integrity: sha512-tUPXtzlGM8FE3P0ZL6DVs/3P58k9nk8/jZeQCurTJylQA8qFYzHFfhBJkuqyE0FifOsQ0uKWekiZ5g8wtr28cw==}
+  pump@3.0.4:
+    resolution: {integrity: sha512-VS7sjc6KR7e1ukRFhQSY5LM2uBWAUPiOPa/A3mkKmiMwSmRFUITt0xuj+/lesgnCv+dPIEYlkzrcyXgquIHMcA==}
 
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
@@ -3203,6 +3208,11 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  semver@7.8.0:
+    resolution: {integrity: sha512-AcM7dV/5ul4EekoQ29Agm5vri8JNqRyj39o0qpX6vDF2GZrtutZl5RwgD1XnZjiTAfncsJhMI48QQH3sN87YNA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
   sharp@0.33.5:
     resolution: {integrity: sha512-haPVm1EkS9pgvHrQ/F3Xy+hgcuMV0Wm9vfIBSiwZ05k+xgb0PkBQpGsAA/oWdDobNaZTH5ppvHtzCFbnSEwHVw==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
@@ -3349,8 +3359,8 @@ packages:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
 
-  tar-fs@2.1.2:
-    resolution: {integrity: sha512-EsaAXwxmx8UB7FRKqeozqEPop69DXcmYwTQwXvyAPF352HJsPdkVhvTaDPYqfNgruveJIJy3TA2l+2zj8LJIJA==}
+  tar-fs@2.1.4:
+    resolution: {integrity: sha512-mDAjwmZdh7LTT6pNleZ05Yt65HC3E+NiQzl672vQG38jIrehtJk/J3mNwIg+vShQPcLF/LV7CMnDW6vjj6sfYQ==}
 
   tar-stream@2.2.0:
     resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
@@ -5042,7 +5052,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/coverage-v8@3.0.8(vitest@3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(jiti@2.4.2)(jsdom@26.0.0(canvas@3.1.0))(lightningcss@1.29.2)(yaml@2.7.0))':
+  '@vitest/coverage-v8@3.0.8(vitest@3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(jiti@2.4.2)(jsdom@26.0.0(canvas@3.2.3))(lightningcss@1.29.2)(yaml@2.7.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 1.0.2
@@ -5056,7 +5066,7 @@ snapshots:
       std-env: 3.8.1
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(jiti@2.4.2)(jsdom@26.0.0(canvas@3.1.0))(lightningcss@1.29.2)(yaml@2.7.0)
+      vitest: 3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(jiti@2.4.2)(jsdom@26.0.0(canvas@3.2.3))(lightningcss@1.29.2)(yaml@2.7.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -5347,7 +5357,7 @@ snapshots:
 
   caniuse-lite@1.0.30001702: {}
 
-  canvas@3.1.0:
+  canvas@3.2.3:
     dependencies:
       node-addon-api: 7.1.1
       prebuild-install: 7.1.3
@@ -5614,6 +5624,8 @@ snapshots:
 
   detect-libc@2.0.3: {}
 
+  detect-libc@2.1.2: {}
+
   detect-node-es@1.1.0: {}
 
   deterministic-object-hash@2.0.2:
@@ -5658,7 +5670,7 @@ snapshots:
 
   emoji-regex@9.2.2: {}
 
-  end-of-stream@1.4.4:
+  end-of-stream@1.4.5:
     dependencies:
       once: 1.4.0
 
@@ -6206,7 +6218,7 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  jsdom@26.0.0(canvas@3.1.0):
+  jsdom@26.0.0(canvas@3.2.3):
     dependencies:
       cssstyle: 4.2.1
       data-urls: 5.0.0
@@ -6230,7 +6242,7 @@ snapshots:
       ws: 8.18.1
       xml-name-validator: 5.0.0
     optionalDependencies:
-      canvas: 3.1.0
+      canvas: 3.2.3
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -6784,9 +6796,9 @@ snapshots:
     dependencies:
       '@types/nlcst': 2.0.3
 
-  node-abi@3.74.0:
+  node-abi@3.92.0:
     dependencies:
-      semver: 7.7.1
+      semver: 7.8.0
 
   node-addon-api@7.1.1: {}
 
@@ -6947,17 +6959,17 @@ snapshots:
 
   prebuild-install@7.1.3:
     dependencies:
-      detect-libc: 2.0.3
+      detect-libc: 2.1.2
       expand-template: 2.0.3
       github-from-package: 0.0.0
       minimist: 1.2.8
       mkdirp-classic: 0.5.3
       napi-build-utils: 2.0.0
-      node-abi: 3.74.0
-      pump: 3.0.2
+      node-abi: 3.92.0
+      pump: 3.0.4
       rc: 1.2.8
       simple-get: 4.0.1
-      tar-fs: 2.1.2
+      tar-fs: 2.1.4
       tunnel-agent: 0.6.0
 
   preferred-pm@4.1.1:
@@ -6985,9 +6997,9 @@ snapshots:
 
   property-information@7.0.0: {}
 
-  pump@3.0.2:
+  pump@3.0.4:
     dependencies:
-      end-of-stream: 1.4.4
+      end-of-stream: 1.4.5
       once: 1.4.0
 
   punycode@2.3.1: {}
@@ -7236,6 +7248,8 @@ snapshots:
 
   semver@7.7.1: {}
 
+  semver@7.8.0: {}
+
   sharp@0.33.5:
     dependencies:
       color: 4.2.3
@@ -7392,17 +7406,17 @@ snapshots:
 
   tapable@2.2.1: {}
 
-  tar-fs@2.1.2:
+  tar-fs@2.1.4:
     dependencies:
       chownr: 1.1.4
       mkdirp-classic: 0.5.3
-      pump: 3.0.2
+      pump: 3.0.4
       tar-stream: 2.2.0
 
   tar-stream@2.2.0:
     dependencies:
       bl: 4.1.0
-      end-of-stream: 1.4.4
+      end-of-stream: 1.4.5
       fs-constants: 1.0.0
       inherits: 2.0.4
       readable-stream: 3.6.2
@@ -7639,7 +7653,7 @@ snapshots:
     optionalDependencies:
       vite: 6.2.0(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0)
 
-  vitest@3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(jiti@2.4.2)(jsdom@26.0.0(canvas@3.1.0))(lightningcss@1.29.2)(yaml@2.7.0):
+  vitest@3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(jiti@2.4.2)(jsdom@26.0.0(canvas@3.2.3))(lightningcss@1.29.2)(yaml@2.7.0):
     dependencies:
       '@vitest/expect': 3.0.8
       '@vitest/mocker': 3.0.8(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0))
@@ -7664,7 +7678,7 @@ snapshots:
     optionalDependencies:
       '@types/debug': 4.1.12
       '@types/node': 22.13.9
-      jsdom: 26.0.0(canvas@3.1.0)
+      jsdom: 26.0.0(canvas@3.2.3)
     transitivePeerDependencies:
       - jiti
       - less
