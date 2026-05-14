@@ -54,7 +54,7 @@
     "husky": "^9.1.7",
     "jsdom": "^26.0.0",
     "json-schema-to-typescript": "^15.0.4",
-    "vite": "^6.2.0",
+    "vite": "^8.0.0",
     "vitest": "^3.0.8"
   },
   "pnpm": {
