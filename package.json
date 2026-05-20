@@ -16,8 +16,8 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.2.2",
-    "@astrojs/react": "^4.2.1",
+    "@astrojs/netlify": "^7.0.0",
+    "@astrojs/react": "^5.0.0",
     "@fontsource/jetbrains-mono": "^5.2.5",
     "@fontsource/space-grotesk": "^5.2.5",
     "@heroicons/react": "^2.2.0",
@@ -25,7 +25,7 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@storyblok/astro": "^6.0.2",
     "@tailwindcss/vite": "^4.0.11",
-    "astro": "^5.4.2",
+    "astro": "^6.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "jsonresume-theme-even": "^0.23.0",
